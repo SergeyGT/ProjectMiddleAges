@@ -5,13 +5,15 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Set In Inspector")]
-    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private List<GameObject> _enemyPrefabs;
     [SerializeField] private int _enemyCount = 0;
     [SerializeField] private Vector2 _rangeXPos = Vector2.zero;
     [SerializeField] private Vector2 _rangeZPos = Vector2.zero;
 
-    private EnemySpawner ES;
+    [Header("Set Dynamically")]
     private List<GameObject> _enemies;
+
+    private EnemySpawner ES;
 
     private void Awake()
     {
