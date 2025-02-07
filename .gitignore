@@ -1,0 +1,27 @@
+# Игнорирование временных файлов Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]serSettings/
+
+# Игнорирование настроек IDE
+.vscode/
+.idea/
+
+# Игнорирование системных файлов
+.DS_Store
+*.swp
+*.suo
+*.user
+*.vcxproj
+*.pidb
+*.booproj
+*.svd
+*.orig
+*.csproj
+*.unityproj
+*.sln
+*.tmproj
