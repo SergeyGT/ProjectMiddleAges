@@ -11,6 +11,10 @@
 .vscode/
 .idea/
 
+# Игнорирование кэша Visual Studio
+.vs/
+
+
 # Игнорирование системных файлов
 .DS_Store
 *.swp
