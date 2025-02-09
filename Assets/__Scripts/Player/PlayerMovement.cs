@@ -1,25 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+[RequireComponent(typeof(Rigidbody))]
+public class Movement : MonoBehaviour
 {
+    public float Speed = 0.3f;
 
-    [SerializeField] private float _speed = 10;
+    private Rigidbody _rb;
 
-    private void FixedUpdate()
+
+    private Vector3 _movementVector
     {
-        MovementLogic();
+        get
+        {
+            var horizontal = Input.GetAxis("Horizontal");
+            var vertical = Input.GetAxis("Vertical");
+
+            return new Vector3(horizontal, 0.0f, vertical);
+        }
+    }
+
+    void Start()
+    {
+        _rb = GetComponent<Rigidbody>();
+
+        _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+    }
+
+    void FixedUpdate()
+    {
+        MoveLogic();
+    }
+
+    private void MoveLogic()
+    {
+        _rb.AddForce(_movementVector * Speed);
     }
 
 
-    private void MovementLogic()
-    {
-        float horInput = Input.GetAxisRaw("Horizontal");
-        float vertInput = Input.GetAxisRaw("Vertical");
-
-        Vector3 moveDirection = new Vector3 (horInput, 0.0f, vertInput);
-
-        transform.Translate(moveDirection * _speed * Time.fixedDeltaTime);
-    }
 }
