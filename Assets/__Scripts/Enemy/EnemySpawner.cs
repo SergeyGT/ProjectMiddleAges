@@ -1,30 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Set In Inspector")]
     [SerializeField] private List<GameObject> _enemyPrefabs;
-    [SerializeField] private int _enemyCount = 0;
+    [SerializeField] static private int _enemyCount = 0;
     [SerializeField] private Vector2 _rangeXPos = Vector2.zero;
+    [SerializeField] private Vector2 _rangeYPos = Vector2.zero;
     [SerializeField] private Vector2 _rangeZPos = Vector2.zero;
 
     [Header("Set Dynamically")]
     private List<GameObject> _enemies;
+    private Transform _enemiesAnchor;
 
-    private EnemySpawner ES;
+    static private EnemySpawner ES;
 
     private void Awake()
     {
         ES = this;
         _enemies = new List<GameObject>();
+        _enemiesAnchor = GameObject.Find("EnemiesAnchor").GetComponent<Transform>();
     }
 
     //HACK: добавить логику генерации врага в класс, управляющий игрой
     static private void SetEnemy(Enemy s)
     {
+        
+        for(int i = 0; i < _enemyCount; i++)
+        {
+            GameObject enemy = Instantiate(ES._enemyPrefabs[0]) as GameObject;
+            ES._enemies.Add(enemy);
+            enemy.transform.SetParent(ES._enemiesAnchor, false);
 
+            Vector3 offset = Random.insideUnitSphere;
+            offset.x *= Random.Range(ES._rangeXPos.x, ES._rangeXPos.y);
+            offset.y *= Random.Range(ES._rangeYPos.x, ES._rangeYPos.y);
+            offset.z *= Random.Range(ES._rangeZPos.x, ES._rangeZPos.y);
+
+            enemy.transform.localPosition = offset;
+        }
     }
 
 

@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    // «атычка до по€вл€ени€ других классов врагов
+    
+
     protected int _hp;
     protected int _damage;
     protected int _speedAtack;
