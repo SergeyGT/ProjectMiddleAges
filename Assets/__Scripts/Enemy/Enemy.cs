@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
-    // «атычка до по€вл€ени€ других классов врагов
     protected virtual int _hp { get; set; } =  100;
     protected virtual int _damage { get; set; } = 10;
     protected virtual int _speedAtack { get; set; } = 3;
@@ -31,15 +30,21 @@ public class Enemy : MonoBehaviour
         if (_hp == 0)
         {
             Kill();
+            FallDrop();
         }
     }
 
-    protected virtual void Attack() { };
+    protected abstract void Attack();
 
     protected void Kill()
     {
-        //Make Drop
         Destroy(this.gameObject);
+    }
+
+    protected virtual void FallDrop()
+    {
+        EnemyDrop drop = GetComponent<EnemyDrop>();
+        drop.FallDrop(transform.position, Drop.blue);
     }
 
     private void Update()

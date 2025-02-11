@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField]
-    private int _numLevel = 0;
+
+    [Range(0,20)][SerializeField] private int _numLevel = 0;
 
     private bool isSpawning = false;
     private Level L;
