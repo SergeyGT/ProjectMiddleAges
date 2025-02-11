@@ -20,16 +20,18 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        if (ES != null)
+        if (ES != null && ES != this) 
         {
-            Debug.LogWarning("Enemy Spawner is exist");
+            Debug.LogWarning("Enemy Spawner уже существует, уничтожаем дубликат.");
+            Destroy(gameObject); 
+            return;
         }
-        else
-        {
-            ES = this;
-            _enemies = new List<GameObject>();
-            _enemiesAnchor = GameObject.Find("EnemiesAnchor").GetComponent<Transform>();
-        }
+
+        ES = this; 
+        _enemies = new List<GameObject>();
+        _enemiesAnchor = GameObject.Find("EnemiesAnchor").GetComponent<Transform>();
+        
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()

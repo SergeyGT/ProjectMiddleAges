@@ -6,6 +6,19 @@ public class Level : MonoBehaviour
     private int _numLevel = 0;
 
     private bool isSpawning = false;
+    private Level L;
+
+    private void Awake()
+    {
+        if (L != null && L != this)
+        {
+            Debug.LogWarning("Enemy Spawner уже существует, уничтожаем дубликат.");
+            Destroy(gameObject);
+            return;
+        }
+
+        L = this;
+    }
 
     private void Start()
     {
