@@ -8,9 +8,9 @@ public class Enemy : MonoBehaviour
     // «атычка до по€вл€ени€ других классов врагов
     
 
-    protected int _hp;
-    protected int _damage;
-    protected int _speedAtack;
+    protected int _hp = 100;
+    protected int _damage = 10;
+    protected int _speedAtack = 3;
     protected GameObject _weapon;
 
     private Transform _playerPosition;

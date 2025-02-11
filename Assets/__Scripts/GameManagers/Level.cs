@@ -23,7 +23,7 @@ public class Level : MonoBehaviour
         if (!isSpawning)
         {
             isSpawning = true;
-            InvokeRepeating(nameof(SpawnEnemy), 0f, 20f); 
+            SpawnEnemy();
         }
     }
 

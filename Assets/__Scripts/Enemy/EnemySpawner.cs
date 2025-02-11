@@ -32,16 +32,18 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        print(ES._enemyPrefabs.Count);
+    }
 
     //HACK: добавить логику генерации врага в класс, управляющий игрой
     static public void SetEnemy(Enemy s = null)
-    {
-        
-        for(int i = 0; i < ES._enemyCount; i++)
+    {    
+        for (int i = 0; i < ES._enemyCount; i++)
         {
-            GameObject enemy = Instantiate(ES._enemyPrefabs[0]) as GameObject;
+            GameObject enemy = Instantiate(ES._enemyPrefabs[0]);
             ES._enemies.Add(enemy);
-            enemy.transform.SetParent(ES._enemiesAnchor, true);
 
             Vector3 offset = Random.insideUnitSphere;
             offset.x *= Random.Range(ES._rangeXPos.x, ES._rangeXPos.y);
@@ -49,8 +51,8 @@ public class EnemySpawner : MonoBehaviour
             offset.z *= Random.Range(ES._rangeZPos.x, ES._rangeZPos.y);
 
             enemy.transform.position= offset;
+            enemy.SetActive(true);
         }
     }
-
 
 }
