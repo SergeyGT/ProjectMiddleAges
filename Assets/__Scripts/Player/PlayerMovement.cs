@@ -8,10 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody _rb;
 
-    ///////////////////////
-    private float lastHor;
-    private float lastVert;
-    public Vector3 lastMovedVector;
+    public Vector3 LastMovedVector {  get; private set; }
     public Vector3 MovementVector { get; private set; }
 
     private void Start()
@@ -20,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
         _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
-        lastMovedVector = Vector3.right;
+        LastMovedVector = Vector3.right;
     }
 
     private void Update()
@@ -38,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        MovementVector = new Vector3(horizontalInput, 0.0f, verticalInput).normalized;
+        MovementVector = new Vector3(horizontalInput, 0.0f, verticalInput);
 
         SetLastMovedVector();
     }
@@ -46,21 +43,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void SetLastMovedVector()
     {
-        if (MovementVector.x!=0)
+        if (MovementVector.x!=0 || MovementVector.z!=0)
         {
-            lastHor= MovementVector.x;
-            lastMovedVector = new Vector3(lastHor, 0, 0);
-        }
-
-        if (MovementVector.z!=0)
-        {
-            lastVert= MovementVector.z;
-            lastMovedVector = new Vector3(0,0, lastVert);
-        }
-
-        if (MovementVector.x!=0 && MovementVector.z!=0)
-        {
-            lastMovedVector = new Vector3(lastHor, 0, lastVert);
+            LastMovedVector = new Vector3(MovementVector.x, 0, MovementVector.z);
         }
     }
 
@@ -68,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     private void MoveLogic()
     {
         _rb.AddForce(MovementVector * _speed);
+        transform.rotation = Quaternion.LookRotation(LastMovedVector);
     }
 
 
