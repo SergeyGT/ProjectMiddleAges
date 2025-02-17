@@ -5,20 +5,27 @@ using UnityEngine.AI;
 
 public abstract class Enemy : MonoBehaviour
 {
-    protected virtual int _hp { get; set; } =  100;
-    protected virtual int _damage { get; set; } = 10;
-    protected virtual int _speedAtack { get; set; } = 3;
-    protected  GameObject _weapon;
+    protected int _hp = 100;
+    protected int _damage  = 10;
+    protected float _speedAttack = 3;
+    protected GameObject _weapon;
     protected Transform _playerPosition;
     protected NavMeshAgent _agent;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _playerPosition = GameObject.Find("Player").transform;
+        _playerPosition = GameObject.FindWithTag("Player").transform;
     }
 
-    private void Move()
+    protected void Init(int hp, int damage, float speedAttack)
+    {
+        _hp = hp;
+        _damage = damage;
+        _speedAttack = speedAttack;
+    }
+
+    protected virtual void Move()
     {
         _agent.SetDestination(_playerPosition.position);
     }
@@ -30,7 +37,7 @@ public abstract class Enemy : MonoBehaviour
         if (_hp == 0)
         {
             Kill();
-            FallDrop();
+            FallDrop(Drop.blue);
         }
     }
 
@@ -41,17 +48,9 @@ public abstract class Enemy : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    protected virtual void FallDrop()
+    protected virtual void FallDrop(Drop _drop)
     {
         EnemyDrop drop = GetComponent<EnemyDrop>();
-        drop.FallDrop(transform.position, Drop.blue);
+        drop.FallDrop(transform.position, _drop);
     }
-
-    private void Update()
-    {
-        Move();
-        Attack();
-    }
-
-
 }
