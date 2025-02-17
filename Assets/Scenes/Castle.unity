@@ -1229,7 +1229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 7219041780689316929, guid: cb82edb08ce319f448946b62a7f067df, type: 3}
+  - {fileID: 134933331722267004, guid: 3bde6de5a40930244a757833c32320b6, type: 3}
   _rangeXPos: {x: -5, y: 21}
   _rangeYPos: {x: 2, y: 2.5}
   _rangeZPos: {x: 5, y: 30}

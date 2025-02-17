@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Skeleton : Enemy
 {
+    [Header("Set Stats Skeleton In Inspector")]
     [SerializeField] private int _skeletonHp = 100;
+    [Space]
     [SerializeField] private int _skeletonDamage = 5;
+    [Space]
     [SerializeField] private int _skeletonSpeedAttack = 1;
     private bool _collidedPlayer = false;
 
@@ -14,6 +17,11 @@ public class Skeleton : Enemy
     {
         Init(_skeletonHp, _skeletonDamage, _skeletonSpeedAttack);
         base.Awake();
+    }
+
+    private void Start()
+    {
+        transform.localRotation = Quaternion.Euler(90,0,0);
     }
     protected override void Attack()
     {
