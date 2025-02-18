@@ -1229,9 +1229,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 134933331722267004, guid: 3bde6de5a40930244a757833c32320b6, type: 3}
+  - {fileID: 4366576660837253778, guid: 50a3da2fd326dcd4fb28e4f431ec8a91, type: 3}
   _rangeXPos: {x: -5, y: 21}
-  _rangeYPos: {x: 2, y: 2.5}
+  _rangeYPos: {x: 5, y: 6}
   _rangeZPos: {x: 5, y: 30}
   _enemyCount: 20
 --- !u!114 &963194230
