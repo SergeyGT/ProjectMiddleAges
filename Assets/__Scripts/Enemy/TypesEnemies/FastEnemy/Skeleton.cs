@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Skeleton : Enemy
+public class Skeleton : FastEnemy
 {
     [Header("Set Stats Skeleton In Inspector")]
     [SerializeField] private int _skeletonHp = 100;
