@@ -27,7 +27,13 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void Move()
     {
-        _agent.SetDestination(_playerPosition.position);
+        if (_playerPosition != null)
+        {
+            _agent.SetDestination(_playerPosition.position);
+        } else
+        {
+            _agent.isStopped = true;
+        }
     }
 
     public void TakeDamage(int damage)

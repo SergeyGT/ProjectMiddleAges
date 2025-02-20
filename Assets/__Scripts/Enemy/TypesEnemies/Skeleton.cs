@@ -10,8 +10,11 @@ public class Skeleton : Enemy
     [Space]
     [SerializeField] private int _skeletonDamage = 5;
     [Space]
-    [SerializeField] private int _skeletonSpeedAttack = 1;
-    private bool _collidedPlayer = false;
+    [SerializeField] private int _skeletonSpeedAttack = 5;
+
+    [SerializeField] private bool _collidedPlayer = false;
+    private IDamagable _playerIDamagable;
+    private bool isAttacking = false;
 
 
     protected override void Awake()
@@ -26,13 +29,18 @@ public class Skeleton : Enemy
     }
     protected override void Attack()
     {
-        //Нанесение уронов ГГ
-        StartCoroutine(DelayAttack(_skeletonSpeedAttack));
+        if (_playerIDamagable != null && !isAttacking)
+        {
+            _playerIDamagable.TakeDamage(_skeletonDamage);
+            StartCoroutine(DelayAttack(_skeletonSpeedAttack));
+        }
     }
 
     private IEnumerator DelayAttack (float _delayAttack)
     {
+        isAttacking = true;
         yield return new WaitForSeconds(_delayAttack);
+        isAttacking = false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -40,6 +48,7 @@ public class Skeleton : Enemy
         if (collision.gameObject.CompareTag("Player"))
         {
             _collidedPlayer = true;
+            _playerIDamagable = collision.gameObject.GetComponent<IDamagable>();
         }
     }
 
@@ -48,6 +57,7 @@ public class Skeleton : Enemy
         if (collision.gameObject.CompareTag("Player"))
         {
             _collidedPlayer = false;
+            _playerIDamagable = null;
         }
     }
 
@@ -57,11 +67,6 @@ public class Skeleton : Enemy
         if (_collidedPlayer)
         {
             Attack();
-        }
-        if(_skeletonHp <= 0)
-        {
-            Kill();
-            FallDrop(transform.position, Drop.blue);
         }
     }
     protected override void FallDrop(Vector3 pos, Drop _drop)

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4719852061701189889}
   - component: {fileID: 8723565259099806701}
   - component: {fileID: 8630292701812681794}
+  - component: {fileID: 1908070507573387529}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -59,7 +60,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4366576660837253778}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.27
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -88,6 +89,29 @@ MonoBehaviour:
   - {fileID: 1948294129532512597, guid: 4687bc55b69e7494cb8f79d8a86ef8b9, type: 3}
   - {fileID: 1948294129532512597, guid: 4687bc55b69e7494cb8f79d8a86ef8b9, type: 3}
   - {fileID: 862158837893720390, guid: 1086d03e712b2f54b9243ac503f07937, type: 3}
+--- !u!136 &1908070507573387529
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4366576660837253778}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.26, z: 0}
 --- !u!1001 &144725124100820311
 PrefabInstance:
   m_ObjectHideFlags: 0
