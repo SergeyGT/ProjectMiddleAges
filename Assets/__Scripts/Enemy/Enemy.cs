@@ -37,7 +37,7 @@ public abstract class Enemy : MonoBehaviour
         if (_hp == 0)
         {
             Kill();
-            FallDrop(Drop.blue);
+            FallDrop(transform.position, Drop.blue);
         }
     }
 
@@ -48,9 +48,9 @@ public abstract class Enemy : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    protected virtual void FallDrop(Drop _drop)
+    protected virtual void FallDrop(Vector3 pos, Drop _drop)
     {
         EnemyDrop drop = GetComponent<EnemyDrop>();
-        drop.FallDrop(transform.position, _drop);
+        drop.FallDrop(pos, _drop);
     }
 }

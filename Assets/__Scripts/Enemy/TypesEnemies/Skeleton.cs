@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Skeleton : Enemy
@@ -57,9 +58,15 @@ public class Skeleton : Enemy
         {
             Attack();
         }
+        if(_skeletonHp <= 0)
+        {
+            Kill();
+            FallDrop(transform.position, Drop.blue);
+        }
     }
-    protected override void FallDrop(Drop _drop)
+    protected override void FallDrop(Vector3 pos, Drop _drop)
     {
-        base.FallDrop(Drop.blue);
+        base.FallDrop(pos, Drop.blue);
     }
+
 }
