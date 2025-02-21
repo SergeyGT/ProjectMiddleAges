@@ -6,7 +6,7 @@ public class RedDiamond : Diamonds, IInteract
     [Range(1, 50)][SerializeField] private int _redDiamondXP;
     public void Interact()
     {
-        XPBar.Instance.AddExp(_redDiamondXP);
+        base.ChangeHp(_redDiamondXP);
         Destroy(this.gameObject);
     }
 }

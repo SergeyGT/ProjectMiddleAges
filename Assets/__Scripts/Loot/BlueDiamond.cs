@@ -6,7 +6,7 @@ public class BlueDiamond : Diamonds, IInteract
 
     public void Interact()
     {
-        XPBar.Instance.AddExp(_blueDiamondXP);
+        base.ChangeHp(_blueDiamondXP);
         Destroy(this.gameObject);
     }
 }

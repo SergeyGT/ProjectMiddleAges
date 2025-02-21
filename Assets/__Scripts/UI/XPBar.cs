@@ -18,28 +18,27 @@ public class XPBar : MonoBehaviour
     [Header("Interface")]
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private Image fill;
-
-    public static XPBar Instance;
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Debug.LogWarning("XPBar уже существует, уничтожаем дубликат.");
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-    }
+    private Diamonds _diamond;
 
     private void Start()
     {
+        _diamond = FindObjectOfType<Diamonds>();
+        if(_diamond != null)
+        {
+            _diamond.XpChanged += AddExp;
+        }
         currentLevel = Level.L.numL;
         previousLevelXP = (int)curve.Evaluate(currentLevel);
         nextLevelXP = (int)curve.Evaluate(currentLevel + 1);
     }
 
+    private void OnDestroy()
+    {
+        if(_diamond != null)
+        {
+            _diamond.XpChanged -= AddExp;
+        }
+    }
     public void AddExp(int amount)
     {
         totalXP += amount;
