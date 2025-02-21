@@ -22,6 +22,14 @@ public class Player : MonoBehaviour, IDamagable
 
     private void FixedUpdate()
     {
-        //Make RaycastPhysx collides with interact obj
+        RaycastHit hit;
+        if(Physics.SphereCast(transform.position, 2f, transform.forward, out hit))
+        {
+            IInteract interactable = hit.collider.gameObject.GetComponent<IInteract>();
+            if (interactable != null)
+            {
+                interactable.Interact();
+            }
+        }
     }
 }
