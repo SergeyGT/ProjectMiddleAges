@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cfe85ffce2743d4cb32d504b1763f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHp: 0
+  _maxHp: 1000
 --- !u!54 &419305465
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1805,7 +1805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 4366576660837253778, guid: 50a3da2fd326dcd4fb28e4f431ec8a91, type: 3}
+  - {fileID: 8884922081379807063, guid: 0f90ad3446caaa840a2d6721a0964eee, type: 3}
   _rangeXPos: {x: -5, y: 21}
   _rangeYPos: {x: 5, y: 6}
   _rangeZPos: {x: 5, y: 30}
