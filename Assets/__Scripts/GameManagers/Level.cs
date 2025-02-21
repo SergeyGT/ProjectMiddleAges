@@ -6,7 +6,21 @@ public class Level : MonoBehaviour
     [Range(0,20)][SerializeField] private int _numLevel = 0;
 
     private bool isSpawning = false;
-    private Level L;
+    public Level L;
+
+    public int numL
+    {
+        get
+        {
+            return _numLevel;
+        }
+        set
+        {
+            _numLevel = value;
+            LevelUp();
+        }
+
+    }
 
     private void Awake()
     {
@@ -27,7 +41,6 @@ public class Level : MonoBehaviour
 
     public void LevelUp()
     {
-        _numLevel++;
         StartSpawning();
     }
 

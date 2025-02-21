@@ -18,6 +18,11 @@ public class XPBar : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private Image fill;
 
+    private void Awake()
+    {
+        currentLevel = Camera.main.GetComponent<Level>().numL;
+    }
+
     public void AddExp(int amount)
     {
         totalXP += amount;
