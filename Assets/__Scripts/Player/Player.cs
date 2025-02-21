@@ -1,15 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IDamagable
 {
-    [SerializeField] private int _hp;
+    [SerializeField] private int _maxHp;
+    private int _currentHp;
+    public event Action<int, int> OnHealthChanged;
+
+    private void Start()
+    {
+        _currentHp = _maxHp;
+        OnHealthChanged?.Invoke(_currentHp, _maxHp);
+    }
 
     public void TakeDamage(int damage)
     {
-        _hp = Mathf.Max(0, _hp-damage);
-        if(_hp == 0)
+        _currentHp = Mathf.Max(0, _currentHp - damage);
+        OnHealthChanged?.Invoke(_currentHp, _maxHp);
+        if (_currentHp == 0)
         {
             Kill();
         }
