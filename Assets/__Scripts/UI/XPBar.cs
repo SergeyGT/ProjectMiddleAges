@@ -22,7 +22,7 @@ public class XPBar : MonoBehaviour
 
     private void Start()
     {
-        _diamond = FindObjectOfType<Diamonds>();
+        _diamond = FindAnyObjectByType<Diamonds>();
         if(_diamond != null)
         {
             _diamond.XpChanged += AddExp;
@@ -39,14 +39,16 @@ public class XPBar : MonoBehaviour
             _diamond.XpChanged -= AddExp;
         }
     }
-    public void AddExp(int amount)
+    private void AddExp(int amount)
     {
+        print(amount);
         totalXP += amount;
         CheckForLevelUp();
         UpdateInterface();
     }
     private void CheckForLevelUp()
     {
+        print("Check level");
         if (levelText != null)
         {
             if(totalXP >= nextLevelXP)
