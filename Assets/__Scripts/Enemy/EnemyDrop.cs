@@ -37,11 +37,7 @@ public class EnemyDrop : MonoBehaviour
                 break;
         }        
         drop.transform.position = positionDrop;
-        drop.transform.SetParent(_dropAnchor, false);
+        drop.transform.SetParent(_dropAnchor, true);
     }
 
-    public void PickDrop()
-    {
-
-    }
 }
