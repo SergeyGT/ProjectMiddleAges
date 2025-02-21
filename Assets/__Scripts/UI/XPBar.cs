@@ -19,19 +19,25 @@ public class XPBar : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private Image fill;
 
+    public static XPBar Instance;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Debug.LogWarning("XPBar уже существует, уничтожаем дубликат.");
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
+
     private void Start()
     {
         currentLevel = Level.L.numL;
         previousLevelXP = (int)curve.Evaluate(currentLevel);
         nextLevelXP = (int)curve.Evaluate(currentLevel + 1);
-    }
-
-    private void Update()
-    {
-        if(Input.GetMouseButton(0))
-        {
-            AddExp(5);
-        }
     }
 
     public void AddExp(int amount)

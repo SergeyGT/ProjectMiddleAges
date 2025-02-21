@@ -40,8 +40,4 @@ public class EnemyDrop : MonoBehaviour
         drop.transform.SetParent(_dropAnchor, true);
     }
 
-    public void PickDrop()
-    {
-
-    }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3664027776977814554}
   - component: {fileID: 1185277427659705131}
   - component: {fileID: 1747050830545326064}
+  - component: {fileID: -2532143723038949819}
   m_Layer: 0
   m_Name: GreenDiamond
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-2532143723038949819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2802197936211634486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2346b18301fc4db4d80bad1f084a9871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _greenDiamondXP: 0

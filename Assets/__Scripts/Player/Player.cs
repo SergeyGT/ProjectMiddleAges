@@ -19,4 +19,9 @@ public class Player : MonoBehaviour, IDamagable
     {
         Destroy(this.gameObject);
     }
+
+    private void FixedUpdate()
+    {
+        //Make RaycastPhysx collides with interact obj
+    }
 }

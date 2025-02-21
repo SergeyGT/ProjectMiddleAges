@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 419305463}
   - component: {fileID: 419305464}
   - component: {fileID: 419305465}
+  - component: {fileID: 419305466}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -306,7 +307,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -358,6 +359,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &419305466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419305458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff19e3901ef93444aa344c25a3200e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 10
 --- !u!1 &440723483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,7 +1745,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _numLevel: 0
-  L: {fileID: 0}
 --- !u!1 &1076437412
 GameObject:
   m_ObjectHideFlags: 0
