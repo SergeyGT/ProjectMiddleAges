@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        MovementVector = new Vector3(horizontalInput, 0.0f, verticalInput);
+        MovementVector = new Vector3(horizontalInput, 0.0f, verticalInput).normalized;
 
         SetLastMovedVector();
     }
