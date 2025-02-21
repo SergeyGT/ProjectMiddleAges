@@ -22,13 +22,18 @@ public class Player : MonoBehaviour, IDamagable
 
     private void FixedUpdate()
     {
-        RaycastHit hit;
-        if(Physics.SphereCast(transform.position, 2f, transform.forward, out hit))
+        CheckDrop();
+    }
+
+    private void CheckDrop()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 1.5f);
+        foreach(Collider collider in colliders)
         {
-            IInteract interactable = hit.collider.gameObject.GetComponent<IInteract>();
-            if (interactable != null)
+            IInteract interact = collider.gameObject.GetComponent<IInteract>();
+            if(interact != null)
             {
-                interactable.Interact();
+                interact.Interact();
             }
         }
     }

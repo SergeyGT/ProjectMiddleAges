@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7293311850736858027}
   - component: {fileID: 2311183392942419985}
   - component: {fileID: 2780084236668007664}
-  - component: {fileID: -2689709895105803400}
+  - component: {fileID: 1808112684146096129}
+  - component: {fileID: -3845053132818491156}
   m_Layer: 0
   m_Name: BlueDiamond
   m_TagString: Untagged
@@ -84,7 +85,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-2689709895105803400
+--- !u!65 &1808112684146096129
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862158837893720390}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.017320508, y: 0.019999996, z: 0.016090743}
+  m_Center: {x: 0, y: 0, z: 0.00095046527}
+--- !u!114 &-3845053132818491156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,4 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b75f59f64d9ae8409a1d14417031218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blueDiamondXP: 0
+  _blueDiamondXP: 5

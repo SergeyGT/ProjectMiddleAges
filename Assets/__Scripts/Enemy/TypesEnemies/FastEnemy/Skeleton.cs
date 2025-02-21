@@ -68,6 +68,11 @@ public class Skeleton : FastEnemy
         {
             Attack();
         }
+        if(_skeletonHp == 0)
+        {
+            base.Kill();
+            FallDrop(transform.position, Drop.blue);
+        }
     }
     protected override void FallDrop(Vector3 pos, Drop _drop)
     {

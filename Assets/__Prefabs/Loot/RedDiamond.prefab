@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1808028670900036361}
   - component: {fileID: 4384563169945673823}
   - component: {fileID: 7601869865548179148}
+  - component: {fileID: -2132128322058391652}
   m_Layer: 0
   m_Name: RedDiamond
   m_TagString: Untagged
@@ -96,4 +97,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3251159034a7fe9428c2f36bcca51724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _redDiamondXP: 0
+  _redDiamondXP: 1
+--- !u!65 &-2132128322058391652
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948294129532512597}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.017320508, y: 0.019999996, z: 0.016090743}
+  m_Center: {x: 0, y: 0, z: 0.00095046527}

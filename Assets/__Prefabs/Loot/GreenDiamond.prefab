@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1185277427659705131}
   - component: {fileID: 1747050830545326064}
   - component: {fileID: -2532143723038949819}
+  - component: {fileID: 2595575260922090992}
   m_Layer: 0
   m_Name: GreenDiamond
   m_TagString: Untagged
@@ -96,4 +97,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2346b18301fc4db4d80bad1f084a9871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _greenDiamondXP: 0
+  _greenDiamondXP: 1
+--- !u!65 &2595575260922090992
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2802197936211634486}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.017320508, y: 0.019999996, z: 0.016090743}
+  m_Center: {x: 0, y: 0, z: 0.00095046527}

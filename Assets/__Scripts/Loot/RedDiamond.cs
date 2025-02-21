@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class RedDiamond : Diamonds
+public class RedDiamond : Diamonds, IInteract
 {
     [Header("Set XP")]
     [Range(1, 50)][SerializeField] private int _redDiamondXP;
-    protected override void Interact()
+    public void Interact()
     {
         XPBar.Instance.AddExp(_redDiamondXP);
+        Destroy(this.gameObject);
     }
 }
