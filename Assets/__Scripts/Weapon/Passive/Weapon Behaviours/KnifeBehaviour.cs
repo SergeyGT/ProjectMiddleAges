@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class KnifeBehaviour : ProjectileWeaponBehaviour
+public class KnifeBehaviour : WeaponBehaviour
 {
     private KnifeController _knifeController;
     protected override void Start()
@@ -13,12 +13,12 @@ public class KnifeBehaviour : ProjectileWeaponBehaviour
         _knifeController = FindObjectOfType<KnifeController>();
 
         transform.position = _knifeController.transform.position;
-        Direction = _knifeController.PlayerMovement.LastMovedVector.normalized;
+        Direction = _knifeController.PlayerMovement.LastMovedVector.normalized * _knifeController.Speed;
     }
 
-    private void Update()
+    protected void Update()
     {
-        transform.position += Direction * _knifeController.Speed * Time.deltaTime;
+        transform.position += Direction * Time.deltaTime;
         transform.rotation = Quaternion.LookRotation(Direction);
     }
 }

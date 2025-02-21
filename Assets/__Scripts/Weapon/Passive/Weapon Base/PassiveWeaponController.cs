@@ -2,25 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PassiveWeaponController : MonoBehaviour
+public class PassiveWeaponController : WeaponController
 {
-    [Header("Weapon Stats")]
-    [SerializeField] protected GameObject _weapon;
-
-    [field:SerializeField] public float Damage { get; private set; }
-    [field: SerializeField] public float Speed { get; private set; }
     [field: SerializeField] public float CooldownDuration { get; private set; }
 
     [SerializeField] private float _currentCooldown;
-    public PlayerMovement PlayerMovement { get; private set; }
 
-
-
-    private int pirce;
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         _currentCooldown = CooldownDuration; //В начале игры кд дефолтное
-        PlayerMovement = FindObjectOfType<PlayerMovement>();
     }
 
 
@@ -34,9 +25,8 @@ public class PassiveWeaponController : MonoBehaviour
         }
     }
 
-    protected virtual void Attack()
+    protected override void Attack()
     {
         _currentCooldown = CooldownDuration;
     }
-
 }
