@@ -6,7 +6,7 @@ public class Level : MonoBehaviour
     [Range(0,20)][SerializeField] private int _numLevel = 0;
 
     private bool isSpawning = false;
-    public Level L;
+    public static Level L;
 
     public int numL
     {
@@ -42,6 +42,7 @@ public class Level : MonoBehaviour
     public void LevelUp()
     {
         StartSpawning();
+        print(_numLevel);
     }
 
     private void StartSpawning()

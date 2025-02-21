@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class XPBar : MonoBehaviour
 {
@@ -18,9 +19,19 @@ public class XPBar : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private Image fill;
 
-    private void Awake()
+    private void Start()
     {
-        currentLevel = Camera.main.GetComponent<Level>().numL;
+        currentLevel = Level.L.numL;
+        previousLevelXP = (int)curve.Evaluate(currentLevel);
+        nextLevelXP = (int)curve.Evaluate(currentLevel + 1);
+    }
+
+    private void Update()
+    {
+        if(Input.GetMouseButton(0))
+        {
+            AddExp(5);
+        }
     }
 
     public void AddExp(int amount)
@@ -35,6 +46,7 @@ public class XPBar : MonoBehaviour
         {
             if(totalXP >= nextLevelXP)
             {
+                Level.L.numL++;
                 currentLevel++;
                 UpdateLevel();
             }
