@@ -19,30 +19,52 @@ public class XPBar : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private Image fill;
     private Diamonds _diamond;
+    private List<Diamonds> diamondsList = new List<Diamonds>();
 
     private void Start()
     {
-        _diamond = FindAnyObjectByType<Diamonds>();
-        if(_diamond != null)
-        {
-            _diamond.XpChanged += AddExp;
-        }
         currentLevel = Level.L.numL;
         previousLevelXP = (int)curve.Evaluate(currentLevel);
         nextLevelXP = (int)curve.Evaluate(currentLevel + 1);
     }
 
-    private void OnDestroy()
+
+    private void OnEnable()
     {
-        if(_diamond != null)
+        Diamonds.OnDiamondSpawned += SubscribeToDiamonds;
+    }
+
+    private void OnDisable()
+    {
+        Diamonds.OnDiamondSpawned -= SubscribeToDiamonds;
+
+        // Отписываемся от всех оставшихся алмазов
+        foreach (var diamond in diamondsList)
         {
-            _diamond.XpChanged -= AddExp;
+            if (diamond != null)
+            {
+                diamond.XpChanged -= AddExp;
+            }
+        }
+        diamondsList.Clear();
+    }
+
+    private void SubscribeToDiamonds(Diamonds diamond)
+    {
+        if (!diamondsList.Contains(diamond))
+        {
+            diamondsList.Add(diamond);
+            diamond.XpChanged += AddExp;
         }
     }
+
     private void AddExp(int amount)
     {
         print(amount);
         totalXP += amount;
+        print(totalXP);
+        
+
         CheckForLevelUp();
         UpdateInterface();
     }
