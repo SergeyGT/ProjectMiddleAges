@@ -94,7 +94,7 @@ ModelImporter:
       name: Armature.001|Armature.004|Armature.001|Armature.001|Armature.001|mixamo.com|
       takeName: Armature.001|Armature.004|Armature.001|Armature.001|Armature.001|mixamo.com|
       internalID: -5792482196968297840
-      firstFrame: 0
+      firstFrame: 1
       lastFrame: 21
       wrapMode: 0
       orientationOffsetY: 0
@@ -102,8 +102,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
