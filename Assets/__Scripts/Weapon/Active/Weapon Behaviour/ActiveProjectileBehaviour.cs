@@ -15,7 +15,7 @@ public class ActiveProjectileBehaviour : WeaponBehaviour
         _rb = GetComponent<Rigidbody>();    
 
         _controller = FindObjectOfType<ActiveWeaponController>();
-        Direction = _controller.ShootDirection * _controller.Speed;
+        Direction = _controller.ShootDirection * Speed;
     }
 
     // Update is called once per frame
@@ -23,6 +23,11 @@ public class ActiveProjectileBehaviour : WeaponBehaviour
     {
         transform.position += Direction * Time.deltaTime;
         transform.rotation = Quaternion.LookRotation(Direction);
+    }
+
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
     }
 }
 

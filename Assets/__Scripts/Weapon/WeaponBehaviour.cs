@@ -6,7 +6,8 @@ using UnityEngine;
 public class WeaponBehaviour : MonoBehaviour
 {
     public Vector3 Direction { get; protected set; }
-
+    [field: SerializeField] public float Damage { get; private set; }
+    [field: SerializeField] public float Speed { get; private set; }
 
     [SerializeField] private float _destroyAfterSeconds;
     protected virtual void Start()
@@ -15,9 +16,13 @@ public class WeaponBehaviour : MonoBehaviour
         Direction = Vector3.zero;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        //other.transform.GetComponent<Enemy>().Die....
-        //Destroy(gameObject);
+        if (other.CompareTag("Enemy") || other.CompareTag("Environment"))
+        {
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+
+            enemy?.TakeDamage(Damage);
+        }
     }
 }

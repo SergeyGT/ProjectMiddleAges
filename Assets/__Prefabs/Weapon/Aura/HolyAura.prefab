@@ -118,4 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa83cc04006a9bc4da946619f5717531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Damage>k__BackingField: 50
+  <Speed>k__BackingField: 0
   _destroyAfterSeconds: 2

@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public abstract class Enemy : MonoBehaviour
 {
-    protected int _hp = 100;
-    protected int _damage  = 10;
+    protected float _hp = 100;
+    protected float _damage  = 10;
     protected float _speedAttack = 3;
     protected GameObject _weapon;
     protected Transform _playerPosition;
@@ -36,11 +36,11 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        _hp = Mathf.Max(0, _hp-damage);
+        _hp -= damage;
 
-        if (_hp == 0)
+        if (_hp <= 0)
         {
             Kill();
             FallDrop(transform.position, Drop.blue);

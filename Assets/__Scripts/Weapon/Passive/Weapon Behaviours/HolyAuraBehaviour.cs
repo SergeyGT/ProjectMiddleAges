@@ -8,4 +8,9 @@ public class HolyAuraBehaviour : WeaponBehaviour
     {
         base.Start();
     }
+
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+    }
 }
