@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class KnifeBehaviour : WeaponBehaviour
+public class KnifeBehaviour : ProjectileWeaponBehaviour
 {
     private KnifeController _knifeController;
     protected override void Start()
@@ -25,7 +25,5 @@ public class KnifeBehaviour : WeaponBehaviour
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-
-        Destroy(gameObject);
     }
 }

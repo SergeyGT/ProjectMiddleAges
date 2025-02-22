@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HolyAuraBehaviour : MeleeWeaponBehaviour
+public class ProjectileWeaponBehaviour : WeaponBehaviour
 {
+
     protected override void Start()
     {
         base.Start();
@@ -12,5 +13,9 @@ public class HolyAuraBehaviour : MeleeWeaponBehaviour
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Environment"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

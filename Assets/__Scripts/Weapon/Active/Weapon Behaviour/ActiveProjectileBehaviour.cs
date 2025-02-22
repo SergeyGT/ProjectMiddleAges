@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ActiveProjectileBehaviour : WeaponBehaviour
+public class ActiveProjectileBehaviour : ProjectileWeaponBehaviour
 {
     private ActiveWeaponController _controller;
 
@@ -18,7 +18,7 @@ public class ActiveProjectileBehaviour : WeaponBehaviour
         Direction = _controller.ShootDirection * Speed;
     }
 
-    // Update is called once per frame
+
     protected void Update()
     {
         transform.position += Direction * Time.deltaTime;

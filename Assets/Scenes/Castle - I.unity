@@ -308,6 +308,10 @@ PrefabInstance:
       value: Skeleton
       objectReference: {fileID: 0}
     - target: {fileID: 8884922081379807063, guid: 0f90ad3446caaa840a2d6721a0964eee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884922081379807063, guid: 0f90ad3446caaa840a2d6721a0964eee, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}

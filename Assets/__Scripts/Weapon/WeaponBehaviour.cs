@@ -13,7 +13,6 @@ public class WeaponBehaviour : MonoBehaviour
     protected virtual void Start()
     {
         Destroy(gameObject, _destroyAfterSeconds);
-        Direction = Vector3.zero;
     }
 
     protected virtual void OnTriggerEnter(Collider other)
