@@ -25,7 +25,7 @@ public class Diamonds : MonoBehaviour, IInteract
 
     private void OnDestroy()
     {
-        XpChanged = null; // Удаляем все подписки, чтобы избежать утечек памяти
+        XpChanged = null; 
     }
 
 }
