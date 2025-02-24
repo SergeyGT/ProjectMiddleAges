@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public abstract class Enemy : MonoBehaviour
 {
-    protected float _hp = 100;
-    protected float _damage  = 10;
+    protected int _hp = 100;
+    protected int _damage  = 10;
     protected float _speedAttack = 3;
     protected GameObject _weapon;
     protected Transform _playerPosition;
@@ -36,7 +36,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         _hp -= damage;
 

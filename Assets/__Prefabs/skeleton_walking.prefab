@@ -859,6 +859,8 @@ GameObject:
   m_Component:
   - component: {fileID: 516228167298458238}
   - component: {fileID: 8734119646426395872}
+  - component: {fileID: 2314433128811559080}
+  - component: {fileID: 8187300303785617277}
   m_Layer: 0
   m_Name: skeleton_walking
   m_TagString: Untagged
@@ -904,6 +906,44 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!195 &2314433128811559080
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6825420273539004083}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &8187300303785617277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6825420273539004083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c53ec4015f6b147b5827d438a0b683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skeletonHp: 100
+  _skeletonDamage: 5
+  _skeletonSpeedAttack: 5
+  _collidedPlayer: 0
 --- !u!1 &6868243253874866726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,9 +1146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1414756108654222071}
-  - component: {fileID: 2906100595122002093}
   - component: {fileID: 7643427131500463335}
-  - component: {fileID: 3687133359228939193}
   m_Layer: 0
   m_Name: Armature.001
   m_TagString: Untagged
@@ -1125,29 +1163,13 @@ Transform:
   m_GameObject: {fileID: 7988492294561554220}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000037748947, y: -0.00000032584134, z: -1.23001695e-14, w: 1}
-  m_LocalPosition: {x: 13.407346, y: 1.02, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6935092766852196722}
   m_Father: {fileID: 516228167298458238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2906100595122002093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7988492294561554220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c53ec4015f6b147b5827d438a0b683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _skeletonHp: 100
-  _skeletonDamage: 5
-  _skeletonSpeedAttack: 5
-  _collidedPlayer: 0
 --- !u!95 &7643427131500463335
 Animator:
   serializedVersion: 5
@@ -1169,28 +1191,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!195 &3687133359228939193
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7988492294561554220}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &8424926853576742782
 GameObject:
   m_ObjectHideFlags: 0
