@@ -12662,6 +12662,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2004740772}
+  - component: {fileID: 2004740773}
   m_Layer: 0
   m_Name: EnemiesPool
   m_TagString: Untagged
@@ -12687,6 +12688,23 @@ Transform:
   - {fileID: 1148309950}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2004740773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004740771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4181dc55850f0bd48bac117aab817f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyPrefabs:
+  - {fileID: 8884922081379807063, guid: 0f90ad3446caaa840a2d6721a0964eee, type: 3}
+  - {fileID: 5672138324983214018, guid: 70dd584e7ce93cd4c85565cb3b053a59, type: 3}
+  - {fileID: 7690301533877904944, guid: 2678fa9c6f11b7f4f99b1dd82656bf5f, type: 3}
+  _countPrefabs: 10
 --- !u!1001 &2039677081
 PrefabInstance:
   m_ObjectHideFlags: 0
