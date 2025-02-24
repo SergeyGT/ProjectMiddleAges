@@ -11,6 +11,9 @@ public abstract class Enemy : MonoBehaviour
     protected GameObject _weapon;
     protected Transform _playerPosition;
     protected NavMeshAgent _agent;
+    protected bool _collidedPlayer = false;
+    protected IDamagable _playerIDamagable;
+    protected bool isAttacking = false;
 
     protected virtual void Awake()
     {
@@ -58,5 +61,31 @@ public abstract class Enemy : MonoBehaviour
     {
         EnemyDrop drop = GetComponent<EnemyDrop>();
         drop.FallDrop(pos, _drop);
+    }
+
+    protected void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            _collidedPlayer = true;
+            _playerIDamagable = collision.gameObject.GetComponent<IDamagable>();
+        }
+    }
+
+    protected void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            _collidedPlayer = false;
+            _playerIDamagable = null;
+        }
+    }
+
+
+    protected IEnumerator DelayAttack(float _delayAttack)
+    {
+        isAttacking = true;
+        yield return new WaitForSeconds(_delayAttack);
+        isAttacking = false;
     }
 }

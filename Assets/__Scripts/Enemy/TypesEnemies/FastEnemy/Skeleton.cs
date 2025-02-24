@@ -10,11 +10,7 @@ public class Skeleton : FastEnemy
     [Space]
     [SerializeField] private int _skeletonDamage = 5;
     [Space]
-    [SerializeField] private int _skeletonSpeedAttack = 5;
-
-    [SerializeField] private bool _collidedPlayer = false;
-    private IDamagable _playerIDamagable;
-    private bool isAttacking = false;
+    [SerializeField] private int _skeletonSpeedAttack = 5;   
 
 
     protected override void Awake()
@@ -29,35 +25,10 @@ public class Skeleton : FastEnemy
     }
     protected override void Attack()
     {
-        if (_playerIDamagable != null && !isAttacking)
+        if (base._playerIDamagable != null && !base.isAttacking)
         {
-            _playerIDamagable.TakeDamage(_skeletonDamage);
-            StartCoroutine(DelayAttack(_skeletonSpeedAttack));
-        }
-    }
-
-    private IEnumerator DelayAttack (float _delayAttack)
-    {
-        isAttacking = true;
-        yield return new WaitForSeconds(_delayAttack);
-        isAttacking = false;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            _collidedPlayer = true;
-            _playerIDamagable = collision.gameObject.GetComponent<IDamagable>();
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            _collidedPlayer = false;
-            _playerIDamagable = null;
+            base._playerIDamagable.TakeDamage(_skeletonDamage);
+            StartCoroutine(base.DelayAttack(_skeletonSpeedAttack));
         }
     }
 
