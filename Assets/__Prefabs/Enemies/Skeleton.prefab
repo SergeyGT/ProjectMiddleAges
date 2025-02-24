@@ -1279,7 +1279,6 @@ MonoBehaviour:
   _skeletonHp: 100
   _skeletonDamage: 5
   _skeletonSpeedAttack: 1
-  _collidedPlayer: 0
 --- !u!195 &1923710416289272659
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1349,7 +1348,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8884922081379807063}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 91166388e5ffab9469adb6d7dca09bba, type: 2}
   m_CullingMode: 0

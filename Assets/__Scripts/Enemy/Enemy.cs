@@ -21,6 +21,12 @@ public abstract class Enemy : MonoBehaviour
         _playerPosition = GameObject.FindWithTag("Player").transform;
     }
 
+    public void Init(Transform playerTransform, IDamagable playerDamagable)
+    {
+        _playerPosition = playerTransform;
+        _playerIDamagable = playerDamagable;
+    }
+
     protected void Init(int hp, int damage, float speedAttack)
     {
         _hp = hp;

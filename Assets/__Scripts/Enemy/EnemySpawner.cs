@@ -15,9 +15,11 @@ public class EnemySpawner : MonoBehaviour
     [Header("Set Dynamically")]
     private List<GameObject> _enemies;
     private Transform _enemiesAnchor;
+    private Transform _playerTransform;
+    private IDamagable _playerDamagable;
 
     static private EnemySpawner ES;
-
+    
     private void Awake()
     {
         if (ES != null && ES != this) 
@@ -34,6 +36,16 @@ public class EnemySpawner : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            _playerTransform = player.transform;
+            _playerDamagable = player.GetComponent<IDamagable>();
+        }
+    }
+
     //HACK: добавить логику генерации врага в класс, управляющий игрой
     static public void SetEnemy(Enemy s = null)
     {    
@@ -43,6 +55,12 @@ public class EnemySpawner : MonoBehaviour
             ES._enemies.Add(enemy);
             enemy.transform.SetParent(ES._enemiesAnchor, false);
 
+            Enemy en = enemy.GetComponent<Enemy>();
+            if (en != null)
+            {
+                en.Init(ES._playerTransform, ES._playerDamagable);
+            }
+
             Vector3 offset = Random.insideUnitSphere;
             offset.x *= Random.Range(ES._rangeXPos.x, ES._rangeXPos.y);
             offset.y *= Random.Range(ES._rangeYPos.x, ES._rangeYPos.y);
@@ -50,6 +68,7 @@ public class EnemySpawner : MonoBehaviour
 
             enemy.transform.position= offset;
             enemy.SetActive(true);
+
         }
     }
 
