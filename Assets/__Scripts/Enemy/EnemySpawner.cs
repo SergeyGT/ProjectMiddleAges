@@ -6,17 +6,17 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Set In Inspector")]
-    [SerializeField] private List<GameObject> _enemyPrefabs;
     [SerializeField] private Vector2 _rangeXPos = Vector2.zero;
     [SerializeField] private Vector2 _rangeYPos = Vector2.zero;
     [SerializeField] private Vector2 _rangeZPos = Vector2.zero;
-    [SerializeField] private int _enemyCount = 0;
+    [SerializeField] private int _enemyCount;
 
     [Header("Set Dynamically")]
     private List<GameObject> _enemies;
     private Transform _enemiesAnchor;
     private Transform _playerTransform;
     private IDamagable _playerDamagable;
+    private EnemyPool _enemyPool;
 
     static private EnemySpawner ES;
     
@@ -32,7 +32,8 @@ public class EnemySpawner : MonoBehaviour
         ES = this; 
         _enemies = new List<GameObject>();
         _enemiesAnchor = GameObject.Find("EnemiesAnchor").GetComponent<Transform>();
-        
+        _enemyPool = FindObjectOfType<EnemyPool>();
+
         DontDestroyOnLoad(gameObject);
     }
 
@@ -47,11 +48,15 @@ public class EnemySpawner : MonoBehaviour
     }
 
     //HACK: добавить логику генерации врага в класс, управляющий игрой
-    static public void SetEnemy(Enemy s = null)
-    {    
+    static public void SetEnemy(string enemyType)
+    {
+        if (ES._enemyPool == null) return;
+
         for (int i = 0; i < ES._enemyCount; i++)
         {
-            GameObject enemy = Instantiate(ES._enemyPrefabs[0]);
+            GameObject enemy = ES._enemyPool.GetEnemy(enemyType);
+            if (enemy == null) continue;
+
             ES._enemies.Add(enemy);
             enemy.transform.SetParent(ES._enemiesAnchor, false);
 
@@ -61,14 +66,23 @@ public class EnemySpawner : MonoBehaviour
                 en.Init(ES._playerTransform, ES._playerDamagable);
             }
 
-            Vector3 offset = Random.insideUnitSphere;
-            offset.x *= Random.Range(ES._rangeXPos.x, ES._rangeXPos.y);
-            offset.y *= Random.Range(ES._rangeYPos.x, ES._rangeYPos.y);
-            offset.z *= Random.Range(ES._rangeZPos.x, ES._rangeZPos.y);
+            Vector3 offset = new Vector3(
+                Random.Range(ES._rangeXPos.x, ES._rangeXPos.y),
+                Random.Range(ES._rangeYPos.x, ES._rangeYPos.y),
+                Random.Range(ES._rangeZPos.x, ES._rangeZPos.y)
+            );
 
-            enemy.transform.position= offset;
+            enemy.transform.position = offset;
             enemy.SetActive(true);
+        }
+    }
 
+    static public void RemoveEnemy(GameObject enemy)
+    {
+        if (ES._enemyPool != null)
+        {
+            enemy.SetActive(false);
+            ES._enemyPool.ReleaseEnemy(enemy);
         }
     }
 
