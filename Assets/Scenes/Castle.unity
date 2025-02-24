@@ -1805,7 +1805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 4012558362961013362, guid: 3f52939b31c0eed4c8735dcc56e07b78, type: 3}
+  - {fileID: 7690301533877904944, guid: 2678fa9c6f11b7f4f99b1dd82656bf5f, type: 3}
   _rangeXPos: {x: -5, y: 21}
   _rangeYPos: {x: 5, y: 6}
   _rangeZPos: {x: 5, y: 30}

@@ -37,10 +37,20 @@ public class Shooter : TankEnemy
     private void FixedUpdate()
     {
         Move();
-        if(base._hp > 0)
+        if (base._hp > 0)
         {
             Attack();
         }
+        else
+        {
+            base.Kill(); 
+            FallDrop(transform.position, Drop.red);
+        }
 
+    }
+
+    protected override void FallDrop(Vector3 pos, Drop _drop)
+    {
+        base.FallDrop(pos, _drop);
     }
 }
