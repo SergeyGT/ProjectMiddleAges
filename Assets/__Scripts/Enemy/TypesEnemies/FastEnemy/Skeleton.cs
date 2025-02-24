@@ -19,10 +19,6 @@ public class Skeleton : FastEnemy
         base.Awake();
     }
 
-    private void Start()
-    {
-        transform.localRotation = Quaternion.Euler(90,0,0);
-    }
     protected override void Attack()
     {
         if (base._playerIDamagable != null && !base.isAttacking)
@@ -39,7 +35,7 @@ public class Skeleton : FastEnemy
         {
             Attack();
         }
-        if(_skeletonHp == 0)
+        if(_skeletonHp <= 0)
         {
             base.Kill();
             FallDrop(transform.position, Drop.blue);
