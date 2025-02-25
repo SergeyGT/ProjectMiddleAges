@@ -9,7 +9,6 @@ public class Shooter : TankEnemy
     private float _distanceBetweenPlayer;
     protected override void Awake()
     {
-        Init(_hp, _damage, _speedAttack);
         base.Awake();
     }
 

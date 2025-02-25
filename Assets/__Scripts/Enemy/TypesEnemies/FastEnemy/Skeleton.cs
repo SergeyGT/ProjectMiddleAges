@@ -9,7 +9,6 @@ public class Skeleton : FastEnemy
 
     protected override void Awake()
     {
-        Init(_hp, _damage, _speedAttack);
         base.Awake();
     }
 

@@ -4,7 +4,6 @@ public class Ogr : AverageEnemy
 {
     protected override void Awake()
     {
-        Init(_hp, _damage, _speedAttack);
         base.Awake();
     }
 
