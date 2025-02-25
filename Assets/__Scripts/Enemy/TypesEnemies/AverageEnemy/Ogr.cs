@@ -2,16 +2,8 @@ using UnityEngine;
 
 public class Ogr : AverageEnemy
 {
-    [Header("Set Stats Ogr In Inspector")]
-    [SerializeField] private int _ogrHp = 100;
-    [Space]
-    [SerializeField] private int _ogrDamage = 5;
-    [Space]
-    [SerializeField] private int _ogrSpeedAttack = 5;
-
     protected override void Awake()
     {
-        Init(_ogrHp, _ogrDamage, _ogrSpeedAttack);
         base.Awake();
     }
 
@@ -19,8 +11,8 @@ public class Ogr : AverageEnemy
     {
         if (base._playerIDamagable != null && !base.isAttacking)
         {
-            base._playerIDamagable.TakeDamage(_ogrDamage);
-            StartCoroutine(base.DelayAttack(_ogrSpeedAttack));
+            base._playerIDamagable.TakeDamage(_damage);
+            StartCoroutine(base.DelayAttack(_speedAttack));
         }
     }
 
@@ -31,7 +23,7 @@ public class Ogr : AverageEnemy
         {
             Attack();
         }
-        if (_ogrHp <= 0)
+        if (_hp <= 0)
         {
             base.Kill();
             FallDrop(transform.position, Drop.green);

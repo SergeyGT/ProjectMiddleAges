@@ -3,15 +3,12 @@ using UnityEngine;
 public class Shooter : TankEnemy
 {
     [Header("Set In Inspector Stats Shooter")]
-    [SerializeField] private int _shooterHp;
-    [SerializeField] private int _shooterDamage;
-    [SerializeField] private float _shooterDelayAttack;
+    
     [SerializeField] private int _shooterRadiusAttack;
 
     private float _distanceBetweenPlayer;
     protected override void Awake()
     {
-        Init(_shooterHp, _shooterDamage, _shooterDelayAttack);
         base.Awake();
     }
 
@@ -28,8 +25,8 @@ public class Shooter : TankEnemy
     {
         if (base._playerIDamagable != null && !base.isAttacking && _agent.isStopped)
         {
-            base._playerIDamagable.TakeDamage(_shooterDamage);
-            StartCoroutine(base.DelayAttack(_shooterDelayAttack));
+            base._playerIDamagable.TakeDamage(_damage);
+            StartCoroutine(base.DelayAttack(_speedAttack));
         }
     }
     

@@ -5,9 +5,9 @@ using UnityEngine.AI;
 
 public abstract class Enemy : MonoBehaviour, IDamagable
 {
-    protected int _hp = 100;
-    protected int _damage  = 10;
-    protected float _speedAttack = 3;
+    [SerializeField] protected int _hp = 100;
+    [SerializeField] protected int _damage  = 10;
+    [SerializeField] protected float _speedAttack = 3;
     protected GameObject _weapon;
     protected Transform _playerPosition;
     protected NavMeshAgent _agent;
@@ -25,13 +25,6 @@ public abstract class Enemy : MonoBehaviour, IDamagable
     {
         _playerPosition = playerTransform;
         _playerIDamagable = playerDamagable;
-    }
-
-    protected void Init(int hp, int damage, float speedAttack)
-    {
-        _hp = hp;
-        _damage = damage;
-        _speedAttack = speedAttack;
     }
 
     protected virtual void Move()

@@ -5,17 +5,10 @@ using UnityEngine;
 
 public class Skeleton : FastEnemy
 {
-    [Header("Set Stats Skeleton In Inspector")]
-    [SerializeField] private int _skeletonHp = 100;
-    [Space]
-    [SerializeField] private int _skeletonDamage = 5;
-    [Space]
-    [SerializeField] private int _skeletonSpeedAttack = 5;   
 
 
     protected override void Awake()
     {
-        Init(_skeletonHp, _skeletonDamage, _skeletonSpeedAttack);
         base.Awake();
     }
 
@@ -23,8 +16,8 @@ public class Skeleton : FastEnemy
     {
         if (base._playerIDamagable != null && !base.isAttacking)
         {
-            base._playerIDamagable.TakeDamage(_skeletonDamage);
-            StartCoroutine(base.DelayAttack(_skeletonSpeedAttack));
+            base._playerIDamagable.TakeDamage(_damage);
+            StartCoroutine(base.DelayAttack(_speedAttack));
         }
     }
 
@@ -35,7 +28,7 @@ public class Skeleton : FastEnemy
         {
             Attack();
         }
-        if(_skeletonHp <= 0)
+        if(_hp <= 0)
         {
             base.Kill();
             FallDrop(transform.position, Drop.blue);
