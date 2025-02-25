@@ -15,7 +15,8 @@ public class ProjectileWeaponBehaviour : WeaponBehaviour
         base.OnTriggerEnter(other);
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Environment"))
         {
-            Destroy(gameObject);
+            PoolManager.ReturnObjectToPool(gameObject);
+            //Destroy(gameObject);
         }
     }
 }

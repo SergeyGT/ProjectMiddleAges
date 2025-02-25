@@ -12,7 +12,7 @@ public class KnifeBehaviour : ProjectileWeaponBehaviour
 
         _knifeController = FindObjectOfType<KnifeController>();
 
-        transform.position = _knifeController.transform.position;
+        //transform.position = _knifeController.transform.position;
         Direction = _knifeController.PlayerMovement.LastMovedVector.normalized * Speed;
     }
 

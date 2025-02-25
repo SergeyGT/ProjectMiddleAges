@@ -23,8 +23,9 @@ public class ActiveWeaponController : WeaponController
     protected override void Attack()
     {
         ShootDirection = transform.forward;
-        GameObject go = Instantiate(_weapon);
-        go.transform.position = transform.position;
-        go.transform.rotation = Quaternion.identity;
+        PoolManager.SpawnObject(_weapon, transform.position, transform.rotation, PoolManager.PoolType.Projectiles);
+        //GameObject go = Instantiate(_weapon);
+        //go.transform.position = transform.position;
+        //go.transform.rotation = Quaternion.identity;
     }
 }
