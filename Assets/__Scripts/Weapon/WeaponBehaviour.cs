@@ -19,8 +19,7 @@ public class WeaponBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Enemy") || other.CompareTag("Environment"))
         {
-            Enemy enemy = other.gameObject.GetComponent<Enemy>();
-
+            IDamagable enemy = other.gameObject.GetComponent<IDamagable>();
             enemy?.TakeDamage(Damage);
         }
     }
