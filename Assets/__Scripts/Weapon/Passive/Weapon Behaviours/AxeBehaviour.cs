@@ -17,8 +17,11 @@ public class AxeBehaviour : ProjectileWeaponBehaviour
     protected override void Start()
     {
         base.Start();
+    }
 
 
+    public void MakeAnimSequence()
+    {
         Vector3 fallSpot = new Vector3(Random.Range(-_maxX, _maxX), _highY, Random.Range(-_maxZ, _maxZ));
 
 
@@ -28,9 +31,7 @@ public class AxeBehaviour : ProjectileWeaponBehaviour
             .AppendInterval(2)
             .Append(transform.DORotate(new Vector3(90, 0, 0), 1))
             .Append(transform.DOMoveY(_underGroundY, 1).SetEase(Ease.InQuint));
-
     }
-
 
     protected override void OnTriggerEnter(Collider other)
     {
