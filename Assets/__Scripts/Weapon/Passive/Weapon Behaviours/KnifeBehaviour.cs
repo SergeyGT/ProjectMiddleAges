@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,12 +15,12 @@ public class KnifeBehaviour : ProjectileWeaponBehaviour
 
         //transform.position = _knifeController.transform.position;
         Direction = _knifeController.PlayerMovement.LastMovedVector.normalized * Speed;
+        transform.rotation = Quaternion.LookRotation(Direction);
     }
 
     protected void Update()
     {
         transform.position += Direction * Time.deltaTime;
-        transform.rotation = Quaternion.LookRotation(Direction);
     }
 
     protected override void OnTriggerEnter(Collider other)
