@@ -56,6 +56,6 @@ public class Level : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        EnemySpawner.SetEnemy("Skeleton");
+        EnemySpawner.SetEnemy("skeleton_1");
     }
 }

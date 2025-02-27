@@ -10555,7 +10555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 8884922081379807063, guid: 0f90ad3446caaa840a2d6721a0964eee, type: 3}
+  - {fileID: 5182288617302981511, guid: c699dc79191b983469331da2751a61fe, type: 3}
   - {fileID: 5672138324983214018, guid: 70dd584e7ce93cd4c85565cb3b053a59, type: 3}
   - {fileID: 7690301533877904944, guid: 2678fa9c6f11b7f4f99b1dd82656bf5f, type: 3}
   _countPrefabs: 10

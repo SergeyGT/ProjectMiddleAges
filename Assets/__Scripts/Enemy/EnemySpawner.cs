@@ -32,30 +32,40 @@ public class EnemySpawner : MonoBehaviour
         ES = this; 
         _enemies = new List<GameObject>();
         _enemiesAnchor = GameObject.Find("EnemiesAnchor").GetComponent<Transform>();
+
         _enemyPool = FindObjectOfType<EnemyPool>();
-
-        DontDestroyOnLoad(gameObject);
-    }
-
-    private void Start()
-    {
+        if (_enemyPool == null)
+        {
+            Debug.LogError("EnemyPool is null!");
+        }
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
             _playerTransform = player.transform;
             _playerDamagable = player.GetComponent<IDamagable>();
         }
+
+        DontDestroyOnLoad(gameObject);
     }
+
 
     //HACK: добавить логику генерации врага в класс, управляющий игрой
     static public void SetEnemy(string enemyType)
     {
-        if (ES._enemyPool == null) return;
-
+        if (ES._enemyPool == null)
+        {
+            Debug.LogError("EnemyPool is null!");
+            return;
+        }
+    
         for (int i = 0; i < ES._enemyCount; i++)
         {
             GameObject enemy = ES._enemyPool.GetEnemy(enemyType);
-            if (enemy == null) continue;
+            if (enemy == null)
+            {
+                Debug.LogError("Enemy is Null");
+                continue;
+            }
 
             ES._enemies.Add(enemy);
             enemy.transform.SetParent(ES._enemiesAnchor, false);

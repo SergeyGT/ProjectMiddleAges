@@ -34,6 +34,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
             _agent.SetDestination(_playerPosition.position);
         } else
         {
+            print("Stopped");
             _agent.isStopped = true;
         }
     }
