@@ -14,11 +14,12 @@ public abstract class Enemy : MonoBehaviour, IDamagable
     protected bool _collidedPlayer = false;
     protected IDamagable _playerIDamagable;
     protected bool isAttacking = false;
+    protected Animator _animator;
 
     protected virtual void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _playerPosition = GameObject.FindWithTag("Player").transform;
+        _animator = GetComponent<Animator>();
     }
 
     public void Init(Transform playerTransform, IDamagable playerDamagable)
@@ -31,10 +32,11 @@ public abstract class Enemy : MonoBehaviour, IDamagable
     {
         if (_playerPosition != null)
         {
+            _animator.SetBool("Walk", true);
             _agent.SetDestination(_playerPosition.position);
         } else
         {
-            print("Stopped");
+            _animator.SetBool("Walk", false);
             _agent.isStopped = true;
         }
     }
@@ -45,6 +47,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
 
         if (_hp <= 0)
         {
+            _animator.SetTrigger("Death");
             Kill();
             FallDrop(transform.position, Drop.blue);
         }

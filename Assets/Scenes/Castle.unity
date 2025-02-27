@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cfe85ffce2743d4cb32d504b1763f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHp: 100
+  _maxHp: 1000
 --- !u!54 &419305465
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2001,7 +2001,7 @@ MonoBehaviour:
   _rangeXPos: {x: 2, y: 4}
   _rangeYPos: {x: 2, y: 3}
   _rangeZPos: {x: 0, y: 8}
-  _enemyCount: 12
+  _enemyCount: 30
 --- !u!4 &1297301066
 Transform:
   m_ObjectHideFlags: 0
@@ -10558,7 +10558,7 @@ MonoBehaviour:
   - {fileID: 5182288617302981511, guid: c699dc79191b983469331da2751a61fe, type: 3}
   - {fileID: 5672138324983214018, guid: 70dd584e7ce93cd4c85565cb3b053a59, type: 3}
   - {fileID: 7690301533877904944, guid: 2678fa9c6f11b7f4f99b1dd82656bf5f, type: 3}
-  _countPrefabs: 10
+  _countPrefabs: 30
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

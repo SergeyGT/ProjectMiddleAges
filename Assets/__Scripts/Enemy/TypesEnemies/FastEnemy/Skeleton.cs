@@ -16,6 +16,7 @@ public class Skeleton : FastEnemy
     {
         if (base._playerIDamagable != null && !base.isAttacking)
         {
+            _animator.SetBool("Attack", true);
             base._playerIDamagable.TakeDamage(_damage);
             StartCoroutine(base.DelayAttack(_speedAttack));
         }
@@ -28,6 +29,8 @@ public class Skeleton : FastEnemy
         {
             Attack();
         }
+        else _animator.SetBool("Attack", false);
+
         if(_hp <= 0)
         {
             base.Kill();
