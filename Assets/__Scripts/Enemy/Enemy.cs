@@ -47,7 +47,6 @@ public abstract class Enemy : MonoBehaviour, IDamagable
 
         if (_hp <= 0)
         {
-            _animator.SetTrigger("Death");
             Kill();
             FallDrop(transform.position, Drop.blue);
         }
@@ -57,6 +56,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
 
     protected void Kill()
     {
+        _animator.SetTrigger("Death");
         Destroy(this.gameObject);
     }
 

@@ -341,7 +341,7 @@ Rigidbody:
   m_GameObject: {fileID: 419305458}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -1998,9 +1998,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f97787e1c0e274b8d2bc729b8613c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rangeXPos: {x: 2, y: 4}
+  _rangeXPos: {x: 2, y: 8.42}
   _rangeYPos: {x: 2, y: 3}
-  _rangeZPos: {x: 0, y: 8}
+  _rangeZPos: {x: 0, y: 12.57}
   _enemyCount: 6
 --- !u!4 &1297301066
 Transform:
@@ -10520,6 +10520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2004740772}
   - component: {fileID: 2004740773}
+  - component: {fileID: 2004740774}
   m_Layer: 0
   m_Name: EnemiesPool
   m_TagString: Untagged
@@ -10559,6 +10560,22 @@ MonoBehaviour:
   - {fileID: 5672138324983214018, guid: 70dd584e7ce93cd4c85565cb3b053a59, type: 3}
   - {fileID: 7690301533877904944, guid: 2678fa9c6f11b7f4f99b1dd82656bf5f, type: 3}
   _countPrefabs: 20
+--- !u!114 &2004740774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004740771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61aaec2fa68862f4d9f936a9192b665c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dropPrefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

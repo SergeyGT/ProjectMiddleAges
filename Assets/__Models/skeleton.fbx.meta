@@ -36,8 +36,8 @@ ModelImporter:
       name: skeleton_armature|skeleton_attack
       takeName: skeleton_armature|skeleton_attack
       internalID: 4965761863738926088
-      firstFrame: 0
-      lastFrame: 79
+      firstFrame: 6
+      lastFrame: 58
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -65,8 +65,8 @@ ModelImporter:
       name: skeleton_armature|skeleton_death
       takeName: skeleton_armature|skeleton_death
       internalID: 8107681577677296259
-      firstFrame: 0
-      lastFrame: 108
+      firstFrame: 18
+      lastFrame: 56
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -124,7 +124,7 @@ ModelImporter:
       takeName: skeleton_armature|skeleton_walking
       internalID: 787238725957812841
       firstFrame: 0
-      lastFrame: 20
+      lastFrame: 42
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

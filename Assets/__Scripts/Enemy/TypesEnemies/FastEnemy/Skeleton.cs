@@ -16,6 +16,8 @@ public class Skeleton : FastEnemy
     {
         if (base._playerIDamagable != null && !base.isAttacking)
         {
+            _agent.isStopped = true;
+            _animator.SetBool("Walk", false);
             _animator.SetBool("Attack", true);
             base._playerIDamagable.TakeDamage(_damage);
             StartCoroutine(base.DelayAttack(_speedAttack));
@@ -28,8 +30,12 @@ public class Skeleton : FastEnemy
         if (_collidedPlayer)
         {
             Attack();
+            _animator.SetBool("Walk", false);
         }
-        else _animator.SetBool("Attack", false);
+        else
+        { _animator.SetBool("Attack", false);
+            _agent.isStopped = false;
+        }
 
         if(_hp <= 0)
         {
