@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4005353513098533223}
   - component: {fileID: 3181488085229681842}
   - component: {fileID: 3509005501405481081}
+  - component: {fileID: 1762953712910992998}
   m_Layer: 0
   m_Name: Ogr
   m_TagString: Untagged
@@ -143,6 +144,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3699f466249c340807a601fe5cebd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ogrHp: 50
-  _ogrDamage: 10
-  _ogrSpeedAttack: 3
+  _hp: 100
+  _damage: 10
+  _speedAttack: 3
+--- !u!95 &1762953712910992998
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5672138324983214018}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
