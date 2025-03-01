@@ -37,11 +37,6 @@ public class Skeleton : FastEnemy
             _agent.isStopped = false;
         }
 
-        if(_hp <= 0)
-        {
-            base.Kill();
-            FallDrop(transform.position, Drop.blue);
-        }
     }
     protected override void FallDrop(Vector3 pos, Drop _drop)
     {

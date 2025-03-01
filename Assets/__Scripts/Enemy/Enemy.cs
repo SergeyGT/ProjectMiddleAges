@@ -56,8 +56,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
 
     protected void Kill()
     {
-        _animator.SetTrigger("Death");
-        Destroy(this.gameObject);
+        StartCoroutine(DelayDeath());
     }
 
     protected virtual void FallDrop(Vector3 pos, Drop _drop)
@@ -90,5 +89,12 @@ public abstract class Enemy : MonoBehaviour, IDamagable
         isAttacking = true;
         yield return new WaitForSeconds(_delayAttack);
         isAttacking = false;
+    }
+
+    protected IEnumerator DelayDeath()
+    {
+        _animator.SetTrigger("Death");
+        yield return new WaitForSeconds(3f);
+        Destroy(this.gameObject);
     }
 }
