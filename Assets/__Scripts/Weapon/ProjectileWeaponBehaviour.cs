@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ProjectileWeaponBehaviour : WeaponBehaviour
 {
-
+    public Vector3 Direction { get; protected set; }
+    [field: SerializeField] public float Speed { get; private set; }
     protected override void Start()
     {
         base.Start();

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class WeaponController : MonoBehaviour
 {
-    [Header("Weapon Stats")]
     [SerializeField] protected GameObject _weapon;
     public PlayerMovement PlayerMovement { get; private set; }
     protected virtual void Start()

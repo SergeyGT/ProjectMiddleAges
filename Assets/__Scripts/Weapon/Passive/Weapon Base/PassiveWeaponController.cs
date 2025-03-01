@@ -6,7 +6,7 @@ public class PassiveWeaponController : WeaponController
 {
     [field: SerializeField] public float CooldownDuration { get; private set; }
 
-    [SerializeField] private float _currentCooldown;
+    private float _currentCooldown;
 
     protected override void Start()
     {

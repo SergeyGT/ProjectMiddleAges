@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class WeaponBehaviour : MonoBehaviour
 {
-    public Vector3 Direction { get; protected set; }
     [field: SerializeField] public int Damage { get; private set; }
-    [field: SerializeField] public float Speed { get; private set; }
 
     [SerializeField] private float _destroyAfterSeconds;
 
