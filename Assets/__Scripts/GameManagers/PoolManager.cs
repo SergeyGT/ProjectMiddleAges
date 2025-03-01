@@ -134,8 +134,7 @@ public class PoolManager : MonoBehaviour
     {
         Debug.Log(obj.name + "  " + obj.name.Length);
 
-        string goName = obj.name;
-        if (obj.name.Contains("clone")) goName = obj.name.Substring(0, obj.name.Length - 7); //Удаляем приставку (clone) у имени объекта
+        string goName = obj.name.Substring(0, obj.name.Length - 7); //Удаляем приставку (clone) у имени объекта
 
         PooledObjectInfo info = ObjectPools.Find(p => p.LookupString == goName);
 

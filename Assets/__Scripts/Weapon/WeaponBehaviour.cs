@@ -35,6 +35,7 @@ public class WeaponBehaviour : MonoBehaviour
     //ЗАМЕНИТЬ НА UNITASK!!!!!
     private IEnumerator ReturnToPoolAfterTimer()
     {
+        Debug.Log("Пошло");
         float elapsedTime = 0f;
 
         while(elapsedTime<_destroyAfterSeconds)
@@ -42,7 +43,7 @@ public class WeaponBehaviour : MonoBehaviour
             elapsedTime+=Time.deltaTime;
             yield return null;
         }
-
+        Debug.Log("Возврат");
         PoolManager.ReturnObjectToPool(gameObject);
     }
 }

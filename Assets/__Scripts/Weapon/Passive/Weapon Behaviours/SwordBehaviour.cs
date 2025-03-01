@@ -18,16 +18,16 @@ public class SwordBehaviour : MeleeWeaponBehaviour
 
         Debug.Log("Rotation " + transform.rotation + " " + gameObject.name);
 
-        _attackAnim = DOTween.Sequence()
-            .Append(transform.DORotate(transform.up*90, _rotateDuration))
-            .Append(transform.DORotate(-transform.up*90 , _rotateDuration))
-            .SetLoops(_repetings)
-            .SetAutoKill(false);
+        //_attackAnim = DOTween.Sequence()
+        //    .Append(transform.DORotate(transform.up*90, _rotateDuration))
+        //    .Append(transform.DORotate(-transform.up*90 , _rotateDuration))
+        //    .SetLoops(_repetings)
+        //    .SetAutoKill(false);
     }
 
     public void StartAnim()
     {
-        _attackAnim.Restart();
+        //_attackAnim.Restart();
     }
 
     protected override void OnTriggerEnter(Collider other)
