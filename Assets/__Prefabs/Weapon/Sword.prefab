@@ -148,6 +148,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Damage>k__BackingField: 50
-  _destroyAfterSeconds: 5
-  _maxAngle: 9
+  _destroyAfterSeconds: 3
   _repetings: 2
