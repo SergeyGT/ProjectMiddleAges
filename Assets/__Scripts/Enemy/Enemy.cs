@@ -15,11 +15,15 @@ public abstract class Enemy : MonoBehaviour, IDamagable
     protected IDamagable _playerIDamagable;
     protected bool isAttacking = false;
     protected Animator _animator;
+   
+    private CapsuleCollider _capsuleCollider;
+    private bool _isDead = true;
 
     protected virtual void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
+        _capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
     public void Init(Transform playerTransform, IDamagable playerDamagable)
@@ -30,6 +34,8 @@ public abstract class Enemy : MonoBehaviour, IDamagable
 
     protected virtual void Move()
     {
+        if (!_isDead) return;
+        
         if (_playerPosition != null)
         {
             _animator.SetBool("Walk", true);
@@ -56,6 +62,10 @@ public abstract class Enemy : MonoBehaviour, IDamagable
 
     protected void Kill()
     {
+        _isDead = true;
+        _agent.isStopped = true;
+        _agent.enabled = false;
+        _capsuleCollider.enabled = false;
         StartCoroutine(DelayDeath());
     }
 
