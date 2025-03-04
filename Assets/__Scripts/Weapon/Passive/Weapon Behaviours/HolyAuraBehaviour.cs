@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class HolyAuraBehaviour : MeleeWeaponBehaviour
 {
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);

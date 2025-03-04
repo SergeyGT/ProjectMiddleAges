@@ -6,10 +6,6 @@ public class ProjectileWeaponBehaviour : WeaponBehaviour
 {
     public Vector3 Direction { get; protected set; }
     [field: SerializeField] public float Speed { get; private set; }
-    protected override void Start()
-    {
-        base.Start();
-    }
 
     protected override void OnTriggerEnter(Collider other)
     {
@@ -17,7 +13,6 @@ public class ProjectileWeaponBehaviour : WeaponBehaviour
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Environment"))
         {
             PoolManager.ReturnObjectToPool(gameObject);
-            //Destroy(gameObject);
         }
     }
 }

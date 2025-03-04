@@ -8,7 +8,5 @@ public class HolyAuraController : PassiveWeaponController
     {
         base.Attack();
         PoolManager.SpawnObject(_weapon, transform);
-        //GameObject go = Instantiate(_weapon);
-        //go.transform.SetParent(transform, false);
     }
 }

@@ -46,7 +46,7 @@ public class PoolManager : MonoBehaviour
         _diamondsSystemEmpty.transform.SetParent(_objectPoolEmptyHolder.transform);
     }
 
-    public static GameObject SpawnObject(GameObject objectToSpawn, Vector3 spawnPosition, Quaternion spawnRotation, PoolType poolType = PoolType.None)
+    public static GameObject SpawnObject(GameObject objectToSpawn, Transform initialState, PoolType poolType = PoolType.None)
     {
         PooledObjectInfo info = ObjectPools.Find(p => p.LookupString == objectToSpawn.name);
 
@@ -60,19 +60,18 @@ public class PoolManager : MonoBehaviour
 
         if (spawnableObject == null)
         {
-            GameObject parent = SetParentObject(poolType);
+            spawnableObject = Instantiate(objectToSpawn, initialState.position, initialState.rotation);
+            
+            Transform parent = SetParentObject(poolType);
 
-            spawnableObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
+            parent = parent == null ? initialState : parent;
 
-            if (parent != null)
-            {
-                spawnableObject.transform.SetParent(parent.transform);
-            }
+            spawnableObject.transform.SetParent(parent.transform);
         }
         else
         {
-            spawnableObject.transform.position = spawnPosition;
-            spawnableObject.transform.rotation = spawnRotation;
+            spawnableObject.transform.position = initialState.position;
+            spawnableObject.transform.rotation = initialState.rotation;
             info.InactiveObjects.Remove(spawnableObject);
             spawnableObject.SetActive(true);
         }
@@ -82,44 +81,44 @@ public class PoolManager : MonoBehaviour
 
 
 
-    public static GameObject SpawnObject(GameObject objectToSpawn, Transform parentTranform)
-    {
-        PooledObjectInfo info = ObjectPools.Find(p => p.LookupString == objectToSpawn.name);
+    //public static GameObject SpawnObject(GameObject objectToSpawn, Transform parentTranform)
+    //{
+    //    PooledObjectInfo info = ObjectPools.Find(p => p.LookupString == objectToSpawn.name);
 
-        if (info == null)
-        {
-            info = new PooledObjectInfo() { LookupString = objectToSpawn.name };
-            ObjectPools.Add(info);
-        }
+    //    if (info == null)
+    //    {
+    //        info = new PooledObjectInfo() { LookupString = objectToSpawn.name };
+    //        ObjectPools.Add(info);
+    //    }
 
-        GameObject spawnableObject = info.InactiveObjects.FirstOrDefault();
+    //    GameObject spawnableObject = info.InactiveObjects.FirstOrDefault();
 
-        if (spawnableObject == null)
-        {
-            spawnableObject = Instantiate(objectToSpawn, parentTranform);
-        }
-        else
-        {
-            info.InactiveObjects.Remove(spawnableObject);
-            spawnableObject.SetActive(true);
-        }
+    //    if (spawnableObject == null)
+    //    {
+    //        spawnableObject = Instantiate(objectToSpawn, parentTranform);
+    //    }
+    //    else
+    //    {
+    //        info.InactiveObjects.Remove(spawnableObject);
+    //        spawnableObject.SetActive(true);
+    //    }
 
-        return spawnableObject;
-    }
+    //    return spawnableObject;
+    //}
 
 
-    private static GameObject SetParentObject(PoolType poolType)
+    private static Transform SetParentObject(PoolType poolType)
     {
         switch (poolType)
         {
             case PoolType.Projectiles:
-                return _projectilesSystemEmpty;
+                return _projectilesSystemEmpty.transform;
 
             case PoolType.Enemies:
-                return _enemiesSystemEmpty;
+                return _enemiesSystemEmpty.transform;
 
             case PoolType.Diamonds:
-                return _diamondsSystemEmpty;
+                return _diamondsSystemEmpty.transform;
 
             case PoolType.None:
                 return null;
@@ -132,8 +131,6 @@ public class PoolManager : MonoBehaviour
 
     public static void ReturnObjectToPool(GameObject obj)
     {
-        Debug.Log(obj.name + "  " + obj.name.Length);
-
         string goName = obj.name.Substring(0, obj.name.Length - 7); //Удаляем приставку (clone) у имени объекта
 
         PooledObjectInfo info = ObjectPools.Find(p => p.LookupString == goName);

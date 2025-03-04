@@ -5,29 +5,17 @@ using UnityEngine;
 
 public class SwordBehaviour : MeleeWeaponBehaviour
 {   
-    [SerializeField] private int _repetings = 2;
+    [SerializeField]  private int _repetings = 1;
 
-    private float _rotateDuration = 0.5f;
-
-    private Sequence _attackAnim;
-
-    protected override void Start()
+    public void MakeAttack()
     {
-        base.Start();
-     
+        transform.forward = transform.right;
 
-        Debug.Log("Rotation " + transform.rotation + " " + gameObject.name);
-
-        //_attackAnim = DOTween.Sequence()
-        //    .Append(transform.DORotate(transform.up*90, _rotateDuration))
-        //    .Append(transform.DORotate(-transform.up*90 , _rotateDuration))
-        //    .SetLoops(_repetings)
-        //    .SetAutoKill(false);
-    }
-
-    public void StartAnim()
-    {
-        //_attackAnim.Restart();
+        float splashDuration = (float)(DestroyAfterSeconds / (_repetings * 2));
+        DOTween.Sequence()
+            .Append(transform.DORotate(transform.up * -180, splashDuration, RotateMode.LocalAxisAdd))
+            .SetLoops(_repetings * 2, LoopType.Yoyo)
+            .SetEase(Ease.InCubic);
     }
 
     protected override void OnTriggerEnter(Collider other)

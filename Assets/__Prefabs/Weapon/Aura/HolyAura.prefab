@@ -119,5 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Damage>k__BackingField: 50
-  <Speed>k__BackingField: 0
-  _destroyAfterSeconds: 2
+  <DestroyAfterSeconds>k__BackingField: 5

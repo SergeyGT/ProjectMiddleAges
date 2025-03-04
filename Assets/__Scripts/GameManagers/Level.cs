@@ -42,7 +42,6 @@ public class Level : MonoBehaviour
     public void LevelUp()
     {
         StartSpawning();
-        print(_numLevel);
     }
 
     private void StartSpawning()

@@ -7,18 +7,13 @@ public class ScythBehaviour : MeleeWeaponBehaviour
 {
     [SerializeField] private int _repetings = 2;
 
-    [SerializeField] private float _rotateDuration = 3f;
 
-    private Sequence _attackAnim;
-
-    protected override void Start()
+    public void MakeAttack()
     {
-        base.Start();
-    }
-
-    public void StartAnim()
-    {
-        transform.DORotate(transform.position, _rotateDuration, RotateMode.FastBeyond360).SetLoops(_repetings);
+        float splashDuration = (float)(DestroyAfterSeconds / (_repetings * 2));
+        transform.DORotate(new Vector3(0,360, 0), 5, RotateMode.LocalAxisAdd)
+            .SetLoops(_repetings)
+            .SetEase(Ease.Linear);
     }
 
     protected override void OnTriggerEnter(Collider other)

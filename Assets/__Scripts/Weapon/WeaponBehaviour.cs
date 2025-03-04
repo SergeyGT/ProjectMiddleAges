@@ -7,7 +7,7 @@ public class WeaponBehaviour : MonoBehaviour
 {
     [field: SerializeField] public int Damage { get; private set; }
 
-    [SerializeField] private float _destroyAfterSeconds;
+    [field:SerializeField] public float DestroyAfterSeconds { get; private set; }
 
 
     private Coroutine _destroyAfterTimerCoroutine;
@@ -15,12 +15,6 @@ public class WeaponBehaviour : MonoBehaviour
     private void OnEnable()
     {
         _destroyAfterTimerCoroutine = StartCoroutine(ReturnToPoolAfterTimer());
-    }
-
-
-    protected virtual void Start()
-    {
-        //Destroy(gameObject, _destroyAfterSeconds);
     }
 
     protected virtual void OnTriggerEnter(Collider other)
@@ -35,15 +29,17 @@ public class WeaponBehaviour : MonoBehaviour
     //«¿Ã≈Õ»“‹ Õ¿ UNITASK!!!!!
     private IEnumerator ReturnToPoolAfterTimer()
     {
-        Debug.Log("œÓ¯ÎÓ");
         float elapsedTime = 0f;
 
-        while(elapsedTime<_destroyAfterSeconds)
+        while(elapsedTime<DestroyAfterSeconds)
         {
             elapsedTime+=Time.deltaTime;
             yield return null;
         }
-        Debug.Log("¬ÓÁ‚‡Ú");
         PoolManager.ReturnObjectToPool(gameObject);
     }
+
+
+
+
 }

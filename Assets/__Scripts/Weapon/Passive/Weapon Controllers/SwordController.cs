@@ -10,7 +10,7 @@ public class SwordController : PassiveWeaponController
 
         PoolManager.SpawnObject(_weapon, transform)
             .GetComponent<SwordBehaviour>()
-            .StartAnim();
+            .MakeAttack();
 
     }
 }

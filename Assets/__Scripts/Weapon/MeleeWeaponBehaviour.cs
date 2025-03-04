@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class MeleeWeaponBehaviour : WeaponBehaviour
 {
-    protected override void Start()
-    {
-        base.Start();
-    }
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);

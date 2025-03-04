@@ -10,7 +10,7 @@ public class ScythController : PassiveWeaponController
 
         PoolManager.SpawnObject(_weapon, transform)
             .GetComponent<ScythBehaviour>()
-            .StartAnim();
+            .MakeAttack();
 
     }
 }

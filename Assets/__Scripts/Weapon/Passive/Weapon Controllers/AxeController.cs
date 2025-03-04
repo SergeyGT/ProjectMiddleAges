@@ -7,8 +7,8 @@ public class AxeController : PassiveWeaponController
     protected override void Attack()
     {
         base.Attack();
-        PoolManager.SpawnObject(_weapon, transform.position, _weapon.transform.rotation, PoolManager.PoolType.Projectiles)
+        PoolManager.SpawnObject(_weapon, transform, PoolManager.PoolType.Projectiles)
             .GetComponent<AxeBehaviour>()
-            .MakeAnimSequence();
+            .MakeAttack();
     }
 }

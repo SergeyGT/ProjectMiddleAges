@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private Camera _cam;
 
     private Vector3 _mousePoint;
-    public Vector3 LastMovedVector {  get; private set; }
+    public Vector3 LastRotationVector {  get; private set; }
     public Vector3 MovementVector { get; private set; }
 
     private void Start()
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
         _cam = Camera.main;
 
-        LastMovedVector = transform.forward;
+        LastRotationVector = transform.forward;
     }
 
     private void Update()
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
             transform.forward = direction.normalized;
 
-            LastMovedVector = transform.forward;
+            LastRotationVector = transform.forward;
         }
     }
 
