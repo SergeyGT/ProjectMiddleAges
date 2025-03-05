@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScythBehaviour : MeleeWeaponBehaviour
+public class ScytheBehaviour : MeleeWeaponBehaviour
 {
     [SerializeField] private int _repetings = 2;
 
@@ -11,7 +11,7 @@ public class ScythBehaviour : MeleeWeaponBehaviour
     public void MakeAttack()
     {
         float splashDuration = (float)(DestroyAfterSeconds / (_repetings * 2));
-        transform.DORotate(new Vector3(0,360, 0), 5, RotateMode.LocalAxisAdd)
+        transform.DORotate(new Vector3(0, 360, 0), 5, RotateMode.LocalAxisAdd)
             .SetLoops(_repetings)
             .SetEase(Ease.Linear);
     }
