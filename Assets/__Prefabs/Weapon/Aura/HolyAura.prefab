@@ -119,4 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Damage>k__BackingField: 50
-  <DestroyAfterSeconds>k__BackingField: 5
+  ANIM_DURATION: 3

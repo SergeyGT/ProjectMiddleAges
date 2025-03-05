@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class ProjectileWeaponBehaviour : WeaponBehaviour
 {
-    public Vector3 Direction { get; protected set; }
     [field: SerializeField] public float Speed { get; private set; }
+
+    [SerializeField] private float PROJECTILE_DURATION = 5;
+
+    private Coroutine _destroyAfterTimerCoroutine;
+
+    private void OnEnable()
+    {
+        _destroyAfterTimerCoroutine = StartCoroutine(ReturnToPoolAfterTimer());
+    }
 
     protected override void OnTriggerEnter(Collider other)
     {
@@ -14,5 +22,19 @@ public class ProjectileWeaponBehaviour : WeaponBehaviour
         {
             PoolManager.ReturnObjectToPool(gameObject);
         }
+    }
+
+
+    //«¿Ã≈Õ»“‹ Õ¿ UNITASK!!!!!
+    private IEnumerator ReturnToPoolAfterTimer()
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < PROJECTILE_DURATION)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        PoolManager.ReturnObjectToPool(gameObject);
     }
 }

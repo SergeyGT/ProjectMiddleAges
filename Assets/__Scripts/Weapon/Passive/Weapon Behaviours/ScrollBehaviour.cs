@@ -11,12 +11,16 @@ public class ScrollBehaviour : ProjectileWeaponBehaviour
     private void OnEnable()
     {
         _scrollController = FindObjectOfType<ScrollController>();
-        Debug.Log(_scrollController);
     }
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _scrollController.Target.position, Speed * Time.deltaTime);
+        if (_scrollController.Target == null) PoolManager.ReturnObjectToPool(gameObject);
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _scrollController.Target.position, Speed * Time.deltaTime);
+        }
+        
     }
 
     protected override void OnTriggerEnter(Collider other)
