@@ -19,4 +19,9 @@ public class ScrollBehaviour : ProjectileWeaponBehaviour
         transform.position = Vector3.MoveTowards(transform.position, _scrollController.Target.position, Speed * Time.deltaTime);
     }
 
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+    }
+
 }

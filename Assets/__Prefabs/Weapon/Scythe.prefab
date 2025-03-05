@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 23590991179431624}
   - component: {fileID: 5399066572421546703}
   - component: {fileID: 4448624658927642677}
-  - component: {fileID: 5528248883417694582}
+  - component: {fileID: 3559006163868004520}
   m_Layer: 0
-  m_Name: Sword_OH
+  m_Name: Scythe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,7 +135,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &5528248883417694582
+--- !u!114 &3559006163868004520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,9 +144,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1037715513984232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325945d6652086f4281bfb1ed448cc08, type: 3}
+  m_Script: {fileID: 11500000, guid: a65998fbaea81bb419929f52da9645db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Damage>k__BackingField: 50
-  <DestroyAfterSeconds>k__BackingField: 10
-  _repetings: 1
+  <DestroyAfterSeconds>k__BackingField: 3
+  _repetings: 2
