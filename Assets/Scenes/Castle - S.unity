@@ -2118,7 +2118,6 @@ MonoBehaviour:
   _rangeXPos: {x: 2, y: 8.42}
   _rangeYPos: {x: 2, y: 3}
   _rangeZPos: {x: 0, y: 12.57}
-  _enemyCount: 3
 --- !u!4 &1297301066
 Transform:
   m_ObjectHideFlags: 0
@@ -2986,6 +2985,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1195152422365399424, guid: b76d114d29bcd4a4798e7dd6cb58f3c7, type: 3}
+      propertyPath: _maxHp
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2641990197960442365, guid: b76d114d29bcd4a4798e7dd6cb58f3c7, type: 3}
       propertyPath: m_Speed
       value: 10
