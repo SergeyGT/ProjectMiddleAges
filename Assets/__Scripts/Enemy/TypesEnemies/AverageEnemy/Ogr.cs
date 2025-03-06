@@ -11,6 +11,8 @@ public class Ogr : AverageEnemy
     {
         if (base._playerIDamagable != null && !base.isAttacking)
         {
+            _animator.SetBool("Walk", false);
+            _animator.SetBool("Attack", true);
             base._playerIDamagable.TakeDamage(_damage);
             StartCoroutine(base.DelayAttack(_speedAttack));
         }
@@ -22,11 +24,12 @@ public class Ogr : AverageEnemy
         if (_collidedPlayer)
         {
             Attack();
+            _animator.SetBool("Walk", false);
         }
-        if (_hp <= 0)
+        else
         {
-            base.Kill();
-            FallDrop(transform.position, Drop.green);
+            _animator.SetBool("Attack", false);
+            _agent.isStopped = false;
         }
     }
     protected override void FallDrop(Vector3 pos, Drop _drop)
