@@ -57,8 +57,13 @@ public class Level : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Метод спавна врагов.
+    /// </summary>
+    /// <param name="nameEnemy">Имя врага (см. имя префаба).</param>
+    /// <param name="countEnemies">Количество врагов, которое необходимо заспавнить.</param>
     private void SpawnEnemy(string nameEnemy, int countEnemies)
     {
-        EnemySpawner.SetEnemy("Skeleton");
+        EnemySpawner.SetEnemy(nameEnemy, countEnemies);
     }
 }

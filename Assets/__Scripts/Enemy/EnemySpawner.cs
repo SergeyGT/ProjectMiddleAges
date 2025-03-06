@@ -9,7 +9,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Vector2 _rangeXPos = Vector2.zero;
     [SerializeField] private Vector2 _rangeYPos = Vector2.zero;
     [SerializeField] private Vector2 _rangeZPos = Vector2.zero;
-    [SerializeField] private int _enemyCount;
 
     [Header("Set Dynamically")]
     private List<GameObject> _enemies;
@@ -50,7 +49,7 @@ public class EnemySpawner : MonoBehaviour
 
 
     //HACK: добавить логику генерации врага в класс, управляющий игрой
-    static public void SetEnemy(string enemyType)
+    static public void SetEnemy(string enemyType, int countEnemies)
     {
         if (ES._enemyPool == null)
         {
@@ -58,7 +57,7 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
     
-        for (int i = 0; i < ES._enemyCount; i++)
+        for (int i = 0; i < countEnemies; i++)
         {
             GameObject enemy = ES._enemyPool.GetEnemy(enemyType);
             if (enemy == null)
