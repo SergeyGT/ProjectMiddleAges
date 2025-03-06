@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using static Cinemachine.DocumentationSortingAttribute;
+using System;
 
 public class XPBar : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class XPBar : MonoBehaviour
     [SerializeField] private Image fill;
     private Diamonds _diamond;
     private List<Diamonds> diamondsList = new List<Diamonds>();
+
+    public event Action newLevel;
 
     private void Start()
     {

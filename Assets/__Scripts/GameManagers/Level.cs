@@ -4,6 +4,10 @@ public class Level : MonoBehaviour
 {
 
     [Range(0,20)][SerializeField] private int _numLevel = 0;
+    [SerializeField] private AnimationCurve _skeleton;
+    [SerializeField] private AnimationCurve _shooter;
+    [SerializeField] private AnimationCurve _ogr;
+
 
     private bool isSpawning = false;
     public static Level L;
@@ -49,11 +53,11 @@ public class Level : MonoBehaviour
         if (!isSpawning)
         {
             isSpawning = true;
-            SpawnEnemy();
+            //SpawnEnemy();
         }
     }
 
-    private void SpawnEnemy()
+    private void SpawnEnemy(string nameEnemy, int countEnemies)
     {
         EnemySpawner.SetEnemy("Skeleton");
     }
