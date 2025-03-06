@@ -53,7 +53,7 @@ public class Level : MonoBehaviour
         if (!isSpawning)
         {
             isSpawning = true;
-            //SpawnEnemy();
+            SpawnEnemy("orc", 10);
         }
     }
 

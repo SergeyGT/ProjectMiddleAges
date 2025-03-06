@@ -17,7 +17,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
     protected Animator _animator;
    
     private CapsuleCollider _capsuleCollider;
-    private bool _isDead = true;
+    private bool _isDead = false;
 
     protected virtual void Awake()
     {
@@ -34,7 +34,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
 
     protected virtual void Move()
     {
-        if (!_isDead) return;
+        if (_isDead) return;
         
         if (_playerPosition != null)
         {
