@@ -8,7 +8,7 @@ public class Wave : MonoBehaviour
     [SerializeField] private AnimationCurve _shooter;
     [SerializeField] private AnimationCurve _orc;
 
-    private Dictionary<string,int> GenerateWave(int currentLevel)
+    public Dictionary<string,int> GenerateWave(int currentLevel)
     {
         return new Dictionary<string, int>
         {
