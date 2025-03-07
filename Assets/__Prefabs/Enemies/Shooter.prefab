@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8750550096658795973}
   - component: {fileID: 6531932116067454161}
   - component: {fileID: 5172656317932641426}
+  - component: {fileID: -454259336315672457}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Enemy
@@ -169,3 +170,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-454259336315672457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7690301533877904944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61aaec2fa68862f4d9f936a9192b665c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dropPrefabs:
+  - {fileID: 1948294129532512597, guid: 4687bc55b69e7494cb8f79d8a86ef8b9, type: 3}
+  - {fileID: 2802197936211634486, guid: 50468987014f7b946a4fc5f2f17564cd, type: 3}
+  - {fileID: 862158837893720390, guid: 1086d03e712b2f54b9243ac503f07937, type: 3}
