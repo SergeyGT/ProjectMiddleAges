@@ -332,6 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHp: 1000
+  _percentageUpgradeHp: 0
 --- !u!54 &419305465
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10711,6 +10712,14 @@ PrefabInstance:
     - target: {fileID: 3233385969688005693, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_Name
       value: knight
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828877970640562796, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: _maxHp
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828877970640562796, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: _percentageUpgradeHp
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6080055118634696700, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_IsActive

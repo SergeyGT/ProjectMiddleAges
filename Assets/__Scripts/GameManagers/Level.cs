@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class Level : MonoBehaviour
     private Wave _wave;
     private bool isSpawning = false;
     public static Level L;
+
+    public static Action UpgradeStats;
 
     public int numL
     {
@@ -44,6 +47,7 @@ public class Level : MonoBehaviour
 
     public void LevelUp()
     {
+        UpgradeStats?.Invoke();
         StartSpawning();
     }
 

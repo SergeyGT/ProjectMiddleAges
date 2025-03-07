@@ -6,7 +6,11 @@ using UnityEngine;
 public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField] private int _maxHp;
+    [Header("Percentage For Up Max Hp")]
+    [Range(1,100)][SerializeField] private int _percentageUpgradeHp;
+
     private int _currentHp;
+
     public event Action<int, int> OnHealthChanged;
 
     private void Start()
@@ -46,5 +50,21 @@ public class Player : MonoBehaviour, IDamagable
                 interact.Interact();
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        Level.UpgradeStats += ChangeMaxHp;
+    }
+
+    private void OnDisable()
+    {
+        Level.UpgradeStats -= ChangeMaxHp;
+    }
+
+    private void ChangeMaxHp()
+    {
+        _currentHp += _currentHp * _percentageUpgradeHp / 100;
+        OnHealthChanged?.Invoke(Mathf.RoundToInt(_currentHp), _maxHp);
     }
 }
