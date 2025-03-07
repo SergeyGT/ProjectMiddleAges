@@ -10613,7 +10613,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2004740772}
   - component: {fileID: 2004740773}
-  - component: {fileID: 2004740774}
   m_Layer: 0
   m_Name: EnemiesPool
   m_TagString: Untagged
@@ -10653,22 +10652,6 @@ MonoBehaviour:
   - {fileID: 7792453833114350289, guid: 684804357c2978e42a7f9b8fd1c72c82, type: 3}
   - {fileID: 7690301533877904944, guid: 2678fa9c6f11b7f4f99b1dd82656bf5f, type: 3}
   _countPrefabs: 20
---- !u!114 &2004740774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004740771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61aaec2fa68862f4d9f936a9192b665c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dropPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1001 &2042374118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10679,6 +10662,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 629374497872245707, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092883652716120621, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1344558148487066591, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
@@ -10724,6 +10711,26 @@ PrefabInstance:
     - target: {fileID: 3233385969688005693, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_Name
       value: knight
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080055118634696700, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527585886110655096, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6656414700229570069, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8177825467844069345, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052810114471529621, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
