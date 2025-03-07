@@ -54,7 +54,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
         if (_hp <= 0)
         {
             Kill();
-            FallDrop(transform.position, Drop.blue);
+            FallDrop();
         }
     }
 
@@ -69,11 +69,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
         StartCoroutine(DelayDeath());
     }
 
-    protected virtual void FallDrop(Vector3 pos, Drop _drop)
-    {
-        EnemyDrop drop = GetComponent<EnemyDrop>();
-        drop.FallDrop(pos, _drop);
-    }
+    protected abstract void FallDrop();
 
     protected void OnCollisionEnter(Collision collision)
     {

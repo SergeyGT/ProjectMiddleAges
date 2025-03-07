@@ -38,16 +38,11 @@ public class Shooter : TankEnemy
         {
             Attack();
         }
-        else
-        {
-            base.Kill(); 
-            FallDrop(transform.position, Drop.red);
-        }
-
     }
 
-    protected override void FallDrop(Vector3 pos, Drop _drop)
+    protected override void FallDrop()
     {
-        base.FallDrop(pos, _drop);
+        EnemyDrop drop = GetComponent<EnemyDrop>();
+        drop.FallDrop(transform.position, Drop.green);
     }
 }

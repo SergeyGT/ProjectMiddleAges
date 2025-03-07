@@ -38,9 +38,9 @@ public class Skeleton : FastEnemy
         }
 
     }
-    protected override void FallDrop(Vector3 pos, Drop _drop)
+    protected override void FallDrop()
     {
-        base.FallDrop(pos, _drop);
+        EnemyDrop drop = GetComponent<EnemyDrop>();
+        drop.FallDrop(transform.position, Drop.blue);
     }
-
 }

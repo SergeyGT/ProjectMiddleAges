@@ -4,4 +4,8 @@ public class FastEnemy : Enemy
     {
         
     }
+    protected override void FallDrop()
+    {
+
+    }
 }
