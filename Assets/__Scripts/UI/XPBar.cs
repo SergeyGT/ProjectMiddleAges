@@ -22,8 +22,6 @@ public class XPBar : MonoBehaviour
     private Diamonds _diamond;
     private List<Diamonds> diamondsList = new List<Diamonds>();
 
-    public event Action newLevel;
-
     private void Start()
     {
         currentLevel = Level.L.numL;
