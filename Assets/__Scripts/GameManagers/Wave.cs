@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wave
+public class Wave : MonoBehaviour
 {
     [SerializeField] private AnimationCurve _skeleton;
     [SerializeField] private AnimationCurve _shooter;
