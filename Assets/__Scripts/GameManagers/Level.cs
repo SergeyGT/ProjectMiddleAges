@@ -13,7 +13,6 @@ public class Level : MonoBehaviour
     public static Level L;
 
     public static Action UpgradeStats;
-    public static Action MaxLevel;
 
     public int numL
     {
@@ -50,10 +49,7 @@ public class Level : MonoBehaviour
     public void LevelUp()
     {
         UpgradeStats?.Invoke();
-        if (_numLevel == 50)
-        {
-            MaxLevel?.Invoke();
-        } //else StartSpawning();
+        //StartSpawning();
     }
 
     private void StartSpawning()
@@ -73,13 +69,5 @@ public class Level : MonoBehaviour
     private void SpawnEnemy(string nameEnemy, int countEnemies)
     {
         EnemySpawner.SetEnemy(nameEnemy, countEnemies);
-    }
-
-    private void Update()
-    {
-        if(Keyboard.current.ctrlKey.isPressed && Keyboard.current.lKey.isPressed)
-        {
-            LevelUp();
-        }
     }
 }

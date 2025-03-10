@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using static Cinemachine.DocumentationSortingAttribute;
 using System;
+using UnityEngine.InputSystem;
 
 public class XPBar : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class XPBar : MonoBehaviour
     [SerializeField] private Image fill;
     private Diamonds _diamond;
     private List<Diamonds> diamondsList = new List<Diamonds>();
+
+    public static Action MaxLevel;
 
     private void Start()
     {
@@ -76,9 +79,16 @@ public class XPBar : MonoBehaviour
         {
             if(totalXP >= nextLevelXP)
             {
-                Level.L.numL++;
-                currentLevel++;
-                UpdateLevel();
+                if (Level.L.numL == 50)
+                {
+                    MaxLevel?.Invoke();
+                }
+                else
+                {
+                    Level.L.numL++;
+                    currentLevel++;
+                    UpdateLevel();
+                }
             }
         }
     }
@@ -96,5 +106,17 @@ public class XPBar : MonoBehaviour
         int end = nextLevelXP - previousLevelXP;
         levelText.text = currentLevel.ToString();
         fill.fillAmount = (float)start/(float)end;
+    }
+
+
+    private void Update()
+    {
+        if (Keyboard.current.ctrlKey.isPressed && Keyboard.current.lKey.wasPressedThisFrame)
+        {
+            Level.L.numL++;
+            currentLevel++;
+            UpdateLevel();
+            UpdateInterface();
+        }
     }
 }

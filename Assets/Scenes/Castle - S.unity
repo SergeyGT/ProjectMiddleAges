@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHp: 1000
-  _percentageUpgradeHp: 0
+  _percentageUpgradeHp: 1
 --- !u!54 &419305465
 Rigidbody:
   m_ObjectHideFlags: 0
