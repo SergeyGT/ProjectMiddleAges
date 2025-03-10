@@ -8,6 +8,8 @@ public class ScrollBehaviour : ProjectileWeaponBehaviour
 
     private ScrollController _scrollController;
 
+    private Transform _targetTransform;
+
     private void OnEnable()
     {
         _scrollController = FindObjectOfType<ScrollController>();
@@ -15,13 +17,18 @@ public class ScrollBehaviour : ProjectileWeaponBehaviour
 
     private void Update()
     {
-        if (_scrollController.Target == null) PoolManager.ReturnObjectToPool(gameObject);
-        else
-        {
-            transform.position = Vector3.MoveTowards(transform.position, _scrollController.Target.position, Speed * Time.deltaTime);
-        }
-        
+        transform.position = Vector3.MoveTowards(transform.position, _targetTransform.position, Speed * Time.deltaTime);
     }
+
+
+    public void SetTargetTransform(Transform target)
+    {
+        if (_targetTransform==null)
+        {
+            _targetTransform = target;
+        }
+    }
+
 
     protected override void OnTriggerEnter(Collider other)
     {
