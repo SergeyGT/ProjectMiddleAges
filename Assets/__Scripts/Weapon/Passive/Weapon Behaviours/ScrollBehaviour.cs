@@ -17,7 +17,8 @@ public class ScrollBehaviour : ProjectileWeaponBehaviour
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _targetTransform.position, Speed * Time.deltaTime);
+        if (_targetTransform == null) PoolManager.ReturnObjectToPool(gameObject);
+        else transform.position = Vector3.MoveTowards(transform.position, _targetTransform.position, Speed * Time.deltaTime);
     }
 
 
