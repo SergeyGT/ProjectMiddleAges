@@ -12,6 +12,7 @@ public class HolyAuraBehaviour : MeleeWeaponBehaviour
     }
     protected override void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Holy ");
         base.OnTriggerEnter(other);
     }
 }
