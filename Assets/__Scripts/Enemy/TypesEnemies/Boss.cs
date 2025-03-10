@@ -6,12 +6,12 @@ public class Boss : Enemy
 {
     private void OnEnable()
     {
-        Level.MaxLevel += BossSpawn;
+        XPBar.MaxLevel += BossSpawn;
     }
 
     private void OnDisable()
     {
-        Level.MaxLevel -= BossSpawn;
+        XPBar.MaxLevel -= BossSpawn;
     }
 
     private void BossSpawn()
