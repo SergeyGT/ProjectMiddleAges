@@ -73,4 +73,9 @@ public class Level : MonoBehaviour
     {
         EnemySpawner.SetEnemy(nameEnemy, countEnemies);
     }
+
+    private void Update()
+    {
+        
+    }
 }

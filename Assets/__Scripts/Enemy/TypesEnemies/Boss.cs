@@ -16,6 +16,7 @@ public class Boss : Enemy
 
     private void BossSpawn()
     {
+        //Запуск анимации входа 
 
     }
 
@@ -27,5 +28,10 @@ public class Boss : Enemy
     protected override void FallDrop()
     {
         throw new System.NotImplementedException();
+    }
+
+    private void Update()
+    {
+        
     }
 }
