@@ -30,7 +30,8 @@ public class ScrollController : PassiveWeaponController
         {
             base.Attack();
             PoolManager.SpawnObject(_weapon, transform, PoolManager.PoolType.Projectiles)
-                .GetComponent<ScrollBehaviour>();
+                .GetComponent<ScrollBehaviour>()
+                .SetTargetTransform(Target);
         }
     }
 }
