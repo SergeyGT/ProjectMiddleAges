@@ -111,12 +111,25 @@ public class XPBar : MonoBehaviour
 
     private void Update()
     {
+        
         if (Keyboard.current.ctrlKey.isPressed && Keyboard.current.lKey.wasPressedThisFrame)
         {
-            Level.L.numL++;
-            currentLevel++;
-            UpdateLevel();
-            UpdateInterface();
+            print("Cheat-Code Activated");
+            print(Level.L.numL);
+            // HACK: На время теста пока будет тут
+            if (Level.L.numL == 10)
+            {
+                print("Level equals 10");
+                MaxLevel?.Invoke();
+            }
+            else
+            {
+                Level.L.numL++;
+                currentLevel++;
+                UpdateLevel();
+                UpdateInterface();
+            }
+            
         }
     }
 }
