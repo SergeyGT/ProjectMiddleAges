@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Level : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class Level : MonoBehaviour
         if (_numLevel == 50)
         {
             MaxLevel?.Invoke();
-        } else StartSpawning();
+        } //else StartSpawning();
     }
 
     private void StartSpawning()
@@ -76,6 +77,9 @@ public class Level : MonoBehaviour
 
     private void Update()
     {
-        
+        if(Keyboard.current.ctrlKey.isPressed && Keyboard.current.lKey.isPressed)
+        {
+            LevelUp();
+        }
     }
 }
