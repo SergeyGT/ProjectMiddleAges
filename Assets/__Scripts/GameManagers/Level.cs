@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Level : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Level : MonoBehaviour
     public static Level L;
 
     public static Action UpgradeStats;
+    public static Action MaxLevel;
 
     public int numL
     {
@@ -48,7 +50,10 @@ public class Level : MonoBehaviour
     public void LevelUp()
     {
         UpgradeStats?.Invoke();
-        StartSpawning();
+        if (_numLevel == 50)
+        {
+            MaxLevel?.Invoke();
+        } //else StartSpawning();
     }
 
     private void StartSpawning()
@@ -68,5 +73,13 @@ public class Level : MonoBehaviour
     private void SpawnEnemy(string nameEnemy, int countEnemies)
     {
         EnemySpawner.SetEnemy(nameEnemy, countEnemies);
+    }
+
+    private void Update()
+    {
+        if(Keyboard.current.ctrlKey.isPressed && Keyboard.current.lKey.isPressed)
+        {
+            LevelUp();
+        }
     }
 }
