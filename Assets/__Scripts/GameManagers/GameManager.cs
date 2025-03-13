@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,14 +14,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameState _currentState;
     private GameState _previousState;
 
-    [Header("UI")]
+    [Header("Screens")]
     [SerializeField]private GameObject _pauseScreen;
     [SerializeField] private GameObject _resultsScreen;
 
-    //Текущие значения
+    [Header("Current Stats Display")]
     public TextMeshProUGUI currentHealthDisplay;
     public TextMeshProUGUI currentLevelDisplay;
     public TextMeshProUGUI currentWeaponsDisplay;
+
+    [Header("Results Display")]
+    public TextMeshProUGUI levelReachedDisplay;
+    //public TextMeshProUGUI timeReachedDisplay;
+    public List<Image> chosenWeaponsDisplay = new List<Image>(); //Длина списка - макс кол-во оружия у персонажа
 
     public bool IsGameOver { get; private set; }
     public bool IsGamePaused { get; private set; }
@@ -135,5 +141,23 @@ public class GameManager : MonoBehaviour
     private void DisplayResults()
     {
         _resultsScreen.SetActive(true);
+    }
+
+    public void AssignLevelReachedUI(int levelReached)
+    {
+        levelReachedDisplay.text = levelReached.ToString(); 
+    }
+
+    public void AssignChosenWeapons(List<Image> chosenWeaponsData)
+    {
+        if (chosenWeaponsDisplay.Count==chosenWeaponsData.Count)
+        {
+            chosenWeaponsDisplay = chosenWeaponsData;
+        }
+    }
+
+    public void DisplayAssignedWeapon()
+    {
+        ///////[TODO]  получать список выбранного оружия от игрока
     }
 }

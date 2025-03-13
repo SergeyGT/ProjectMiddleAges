@@ -50,6 +50,7 @@ public class Player : MonoBehaviour, IDamagable
     {
         if (!GameManager.Instance.IsGameOver)
         {
+            GameManager.Instance.AssignLevelReachedUI(Level.L.numL);
             GameManager.Instance.GameOver();
         }
         Destroy(this.gameObject);
