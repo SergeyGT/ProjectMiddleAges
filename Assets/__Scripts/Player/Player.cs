@@ -48,6 +48,10 @@ public class Player : MonoBehaviour, IDamagable
 
     private void Kill()
     {
+        if (!GameManager.Instance.IsGameOver)
+        {
+            GameManager.Instance.GameOver();
+        }
         Destroy(this.gameObject);
     }
 

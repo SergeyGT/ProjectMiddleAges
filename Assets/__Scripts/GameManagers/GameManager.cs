@@ -15,15 +15,17 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField]private GameObject _pauseScreen;
+    [SerializeField] private GameObject _resultsScreen;
 
     //Текущие значения
     public TextMeshProUGUI currentHealthDisplay;
     public TextMeshProUGUI currentLevelDisplay;
     public TextMeshProUGUI currentWeaponsDisplay;
 
-
+    public bool IsGameOver { get; private set; }
+    public bool IsGamePaused { get; private set; }
     //Состояния игры
-    private enum GameState
+    public enum GameState
     {
         Gameplay,
         Paused,
@@ -56,7 +58,13 @@ public class GameManager : MonoBehaviour
                 CheckForPauseAndResume();
                 break;
             case GameState.GameOver:
-                ///
+                if (!IsGameOver)
+                {
+                    IsGameOver=true;
+                    Time.timeScale = 0f; 
+                    Debug.Log("Game Over");
+                    DisplayResults();
+                }
                 break;
             default:
                 Debug.LogWarning("Недопустимое игровое состояние! " + _currentState);
@@ -89,6 +97,7 @@ public class GameManager : MonoBehaviour
             _previousState = _currentState;
             ChangeState(GameState.Paused);
             Time.timeScale = 0f; //Остановка игры
+            IsGamePaused = true;
             _pauseScreen.SetActive(true);
             Debug.Log("Игра встала на паузу");
         }
@@ -106,6 +115,7 @@ public class GameManager : MonoBehaviour
             ChangeState(_previousState);
             Time.timeScale = 1f; //Возобновление игры
             _pauseScreen.SetActive(false);
+            IsGamePaused=false;
             Debug.Log("Игра вышла из паузы");
         }
     }
@@ -114,6 +124,16 @@ public class GameManager : MonoBehaviour
     private void DisableScreens()
     {
         _pauseScreen.SetActive(false);
+        _resultsScreen.SetActive(false);
     }
 
+    public void GameOver()
+    {
+        ChangeState(GameState.GameOver);
+    }
+
+    private void DisplayResults()
+    {
+        _resultsScreen.SetActive(true);
+    }
 }
