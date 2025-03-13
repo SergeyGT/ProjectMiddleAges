@@ -1,17 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 //Finite-State Machine Manager
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
 
     [SerializeField] private GameState _currentState;
     private GameState _previousState;
 
     [Header("UI")]
     [SerializeField]private GameObject _pauseScreen;
+
+    //Текущие значения
+    public TextMeshProUGUI currentHealthDisplay;
+    public TextMeshProUGUI currentLevelDisplay;
+    public TextMeshProUGUI currentWeaponsDisplay;
+
 
     //Состояния игры
     private enum GameState
@@ -23,6 +32,16 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance==null)
+        {
+            Instance = this;
+        }
+        else
+        { 
+            Debug.LogWarning("Extra " + this + "deleted");
+            Destroy(this);
+        }
+
         DisableScreens();
     }
 

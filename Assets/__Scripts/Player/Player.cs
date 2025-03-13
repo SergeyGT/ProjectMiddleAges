@@ -11,19 +11,36 @@ public class Player : MonoBehaviour, IDamagable
 
     private int _currentHp;
 
+    // Свойство для вывод статистики
+    public int CurrentHp
+    {
+        get { return _currentHp; }
+        private set
+        {
+            if (_currentHp != value)
+            {
+                _currentHp = value;
+                if (GameManager.Instance!=null)
+                {
+                    GameManager.Instance.currentHealthDisplay.text = "Health: " + _currentHp;
+                }
+            }
+        }
+    }
+
     public event Action<int, int> OnHealthChanged;
 
     private void Start()
     {
-        _currentHp = _maxHp;
-        OnHealthChanged?.Invoke(_currentHp, _maxHp);
+        CurrentHp = _maxHp;
+        OnHealthChanged?.Invoke(CurrentHp, _maxHp);
     }
 
     public void TakeDamage(int damage)
     {
-        _currentHp = Mathf.Max(0, _currentHp - damage);
-        OnHealthChanged?.Invoke(_currentHp, _maxHp);
-        if (_currentHp == 0)
+        CurrentHp = Mathf.Max(0, CurrentHp - damage);
+        OnHealthChanged?.Invoke(CurrentHp, _maxHp);
+        if (CurrentHp == 0)
         {
             Kill();
         }
@@ -64,7 +81,7 @@ public class Player : MonoBehaviour, IDamagable
 
     private void ChangeMaxHp()
     {
-        _currentHp += _currentHp * _percentageUpgradeHp / 100;
-        OnHealthChanged?.Invoke(Mathf.RoundToInt(_currentHp), _maxHp);
+        CurrentHp += CurrentHp * _percentageUpgradeHp / 100;
+        OnHealthChanged?.Invoke(Mathf.RoundToInt(CurrentHp), _maxHp);
     }
 }

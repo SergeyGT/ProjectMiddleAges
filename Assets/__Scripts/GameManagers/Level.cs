@@ -23,6 +23,10 @@ public class Level : MonoBehaviour
         set
         {
             _numLevel = value;
+            if (GameManager.Instance!=null)
+            {
+                GameManager.Instance.currentLevelDisplay.text = "Level: " + _numLevel;
+            }
             LevelUp();
         }
 
@@ -38,6 +42,10 @@ public class Level : MonoBehaviour
         }
 
         L = this;
+        if (GameManager.Instance!=null)
+        {
+            GameManager.Instance.currentLevelDisplay.text = "Level: " + _numLevel;
+        }
     }
 
     private void Start()
