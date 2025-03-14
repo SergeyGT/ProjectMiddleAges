@@ -5,15 +5,19 @@ using UnityEngine;
 
 public class ScytheBehaviour : MeleeWeaponBehaviour
 {
-    [SerializeField] private int _repetings = 2;
 
+    private float INITIAL_ROTATE_DURATION = 0.1f;
+
+    [SerializeField] private int _repetings = 2;
 
     public override void MakeAttack()
     {
-        transform.DORotate(new Vector3(0, 360, 0), ANIM_DURATION, RotateMode.LocalAxisAdd)
+        DOTween.Sequence()
+            .Append(transform.DORotate(new Vector3(0, 0, 90), INITIAL_ROTATE_DURATION))
+            .Append(transform.DORotate(new Vector3(360, 0, 0), ANIM_DURATION, RotateMode.LocalAxisAdd)
             .SetLoops(_repetings)
             .SetEase(Ease.Linear)
-            .OnComplete(() => PoolManager.ReturnObjectToPool(gameObject));
+            .OnComplete(() => PoolManager.ReturnObjectToPool(gameObject)));
     }
 
     protected override void OnTriggerEnter(Collider other)

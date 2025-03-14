@@ -13954,12 +13954,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 976622084587758498, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 6923256723934819658, guid: 86bc487a857397b449c5b1d2676a064b, type: 3}
+    - target: {fileID: 976622084587758498, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: <CooldownDuration>k__BackingField
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1092883652716120621, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1344558148487066591, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_LocalPosition.x
