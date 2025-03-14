@@ -46,8 +46,10 @@ public abstract class Enemy : MonoBehaviour, IDamagable
         
         if (_playerPosition != null)
         {
+            SoundManager.Instance.PlayLocalSound(_enemySource, _walk);
             _animator.SetBool("Walk", true);
             _agent.SetDestination(_playerPosition.position);
+            transform.LookAt(_playerPosition);
         } else
         {
             _animator.SetBool("Walk", false);
@@ -61,6 +63,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
 
         if (_hp <= 0)
         {
+            SoundManager.Instance.PlayLocalSound(_enemySource, _death);
             Kill();
             FallDrop();
         }
