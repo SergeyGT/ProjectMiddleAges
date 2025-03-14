@@ -5587,6 +5587,7 @@ MonoBehaviour:
   currentLevelDisplay: {fileID: 1182270886}
   currentWeaponsDisplay: {fileID: 2048362900}
   levelReachedDisplay: {fileID: 699667345}
+  timeSurvivedDisplay: {fileID: 1302641182}
   chosenWeaponsDisplay: []
   stopwatchTimeDisplay: {fileID: 260982524}
 --- !u!4 &1640380780

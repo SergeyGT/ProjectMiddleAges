@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Results Display")]
     public TextMeshProUGUI levelReachedDisplay;
-    //public TextMeshProUGUI timeReachedDisplay;
+    public TextMeshProUGUI timeSurvivedDisplay;
     public List<Image> chosenWeaponsDisplay = new List<Image>(); //Длина списка - макс кол-во оружия у персонажа
 
     [Header("Stopwatch")]
@@ -140,6 +140,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        timeSurvivedDisplay.text = stopwatchTimeDisplay.text;
         ChangeState(GameState.GameOver);
     }
 
