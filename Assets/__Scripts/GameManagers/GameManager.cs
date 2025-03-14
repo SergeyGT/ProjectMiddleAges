@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [Header("Screens")]
     [SerializeField]private GameObject _pauseScreen;
     [SerializeField] private GameObject _resultsScreen;
+    [SerializeField] private GameObject _levelUpScreen;
 
     [Header("Current Stats Display")]
     public TextMeshProUGUI currentHealthDisplay;
@@ -34,12 +35,15 @@ public class GameManager : MonoBehaviour
 
     public bool IsGameOver { get; private set; }
     public bool IsGamePaused { get; private set; }
+
+    public bool isChoosingUpgrade {  get; private set; }
     //Состояния игры
     public enum GameState
     {
         Gameplay,
         Paused,
-        GameOver
+        GameOver,
+        LevelUp
     }
 
     private void Awake()
@@ -75,6 +79,15 @@ public class GameManager : MonoBehaviour
                     Time.timeScale = 0f; 
                     Debug.Log("Game Over");
                     DisplayResults();
+                }
+                break;
+            case GameState.LevelUp:
+                if (!isChoosingUpgrade)
+                {
+                    isChoosingUpgrade=true;
+                    Time.timeScale = 0f;
+                    Debug.Log("Upgrade state");
+                    _levelUpScreen.SetActive(true);
                 }
                 break;
             default:
@@ -136,6 +149,7 @@ public class GameManager : MonoBehaviour
     {
         _pauseScreen.SetActive(false);
         _resultsScreen.SetActive(false);
+        _levelUpScreen.SetActive(false);
     }
 
     public void GameOver()
@@ -181,5 +195,18 @@ public class GameManager : MonoBehaviour
         int seconds = Mathf.FloorToInt(_stopwatchTime%60);
 
         stopwatchTimeDisplay.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public void StartLevelUp()
+    {
+        ChangeState(GameState.LevelUp);
+    }
+
+    public void EndLevelUp()
+    {
+        isChoosingUpgrade = false;
+        Time.timeScale = 1.0f;
+        _levelUpScreen.SetActive(false);
+        ChangeState(GameState.Gameplay);
     }
 }

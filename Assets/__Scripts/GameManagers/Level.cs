@@ -57,6 +57,7 @@ public class Level : MonoBehaviour
     public void LevelUp()
     {
         UpgradeStats?.Invoke();
+        GameManager.Instance.StartLevelUp();
         //StartSpawning();
     }
 
