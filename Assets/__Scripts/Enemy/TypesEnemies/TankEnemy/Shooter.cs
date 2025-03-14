@@ -25,6 +25,7 @@ public class Shooter : TankEnemy
     {
         if (base._playerIDamagable != null && !base.isAttacking && _agent.isStopped)
         {
+            base.Attack();
             base._playerIDamagable.TakeDamage(_damage);
             StartCoroutine(base.DelayAttack(_speedAttack));
         }

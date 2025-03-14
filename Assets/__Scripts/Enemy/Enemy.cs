@@ -43,10 +43,16 @@ public abstract class Enemy : MonoBehaviour, IDamagable
     protected virtual void Move()
     {
         if (_isDead) return;
+
         
+
         if (_playerPosition != null)
         {
-            SoundManager.Instance.PlayLocalSound(_enemySource, _walk);
+            if (!_enemySource.isPlaying)
+            {
+                _enemySource.pitch = 3f;
+                SoundManager.Instance.PlayLocalSound(_enemySource, _walk);
+            }
             _animator.SetBool("Walk", true);
             _agent.SetDestination(_playerPosition.position);
             transform.LookAt(_playerPosition);
@@ -69,7 +75,16 @@ public abstract class Enemy : MonoBehaviour, IDamagable
         }
     }
 
-    protected abstract void Attack();
+    protected virtual void Attack()
+    {
+        if (!_enemySource.isPlaying)
+        {
+            print("Attack sound");
+            _enemySource.pitch = 1f;
+            _enemySource.volume = 1f;
+            SoundManager.Instance.PlayLocalSound(_enemySource, _attack);
+        }
+    }
 
     protected void Kill()
     {

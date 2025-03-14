@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Skeleton : FastEnemy
 {
-
-
     protected override void Awake()
     {
         base.Awake();
@@ -16,6 +14,7 @@ public class Skeleton : FastEnemy
     {
         if (base._playerIDamagable != null && !base.isAttacking)
         {
+            base.Attack();
             _agent.isStopped = true;
             _animator.SetBool("Walk", false);
             _animator.SetBool("Attack", true);

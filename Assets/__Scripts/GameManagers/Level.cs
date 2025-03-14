@@ -58,7 +58,7 @@ public class Level : MonoBehaviour
     {
         UpgradeStats?.Invoke();
         GameManager.Instance.StartLevelUp();
-        //StartSpawning();
+        StartSpawning();
     }
 
     private void StartSpawning()
@@ -66,6 +66,7 @@ public class Level : MonoBehaviour
         Dictionary<string, int> _waveData = _wave.GenerateWave(_numLevel);
         foreach(var enemy in  _waveData)
         {
+            print("Spawn");
             SpawnEnemy(enemy.Key, enemy.Value);
         }
     }
