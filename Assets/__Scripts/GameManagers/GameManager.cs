@@ -28,6 +28,10 @@ public class GameManager : MonoBehaviour
     //public TextMeshProUGUI timeReachedDisplay;
     public List<Image> chosenWeaponsDisplay = new List<Image>(); //ƒлина списка - макс кол-во оружи€ у персонажа
 
+    [Header("Stopwatch")]
+    private float _stopwatchTime;
+    public TextMeshProUGUI stopwatchTimeDisplay;
+
     public bool IsGameOver { get; private set; }
     public bool IsGamePaused { get; private set; }
     //—осто€ни€ игры
@@ -59,6 +63,7 @@ public class GameManager : MonoBehaviour
         {
             case GameState.Gameplay:
                 CheckForPauseAndResume();
+                UpdateStopwatch();
                 break;
             case GameState.Paused:
                 CheckForPauseAndResume();
@@ -159,5 +164,21 @@ public class GameManager : MonoBehaviour
     public void DisplayAssignedWeapon()
     {
         ///////[TODO]  получать список выбранного оружи€ от игрока
+    }
+
+    private void UpdateStopwatch()
+    {
+        _stopwatchTime += Time.deltaTime;
+
+        UpdateStopwatchDisplay();
+    }
+
+
+    private void UpdateStopwatchDisplay()
+    {
+        int minutes = Mathf.FloorToInt(_stopwatchTime/60);
+        int seconds = Mathf.FloorToInt(_stopwatchTime%60);
+
+        stopwatchTimeDisplay.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
