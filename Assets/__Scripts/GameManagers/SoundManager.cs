@@ -9,12 +9,16 @@ public abstract class SoundManager : MonoBehaviour
     
     private AudioSource _audioSource;
 
+    public static SoundManager Instance;
+
     private void Awake()
     {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
         _audioSource = GetComponent<AudioSource>();
     }
 
-    protected virtual PlaySound()
+    protected virtual void PlaySound()
     {
         if( _audioSource != null && _audioClip != null)
         {
