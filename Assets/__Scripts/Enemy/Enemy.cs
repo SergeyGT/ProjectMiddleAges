@@ -5,9 +5,17 @@ using UnityEngine.AI;
 
 public abstract class Enemy : MonoBehaviour, IDamagable
 {
+    [Header("Stats Enemy")]
     [SerializeField] protected int _hp = 100;
     [SerializeField] protected int _damage  = 10;
     [SerializeField] protected float _speedAttack = 3;
+    [Space]
+    [Header("Source Enemy")]
+    [SerializeField] AudioSource _enemySource;
+    [Header("Audio Clips Enemy")]
+    [SerializeField] AudioClip _attack;
+    [SerializeField] AudioClip _walk;
+    [SerializeField] AudioClip _death;
     protected GameObject _weapon;
     protected Transform _playerPosition;
     protected NavMeshAgent _agent;
