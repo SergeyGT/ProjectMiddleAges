@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private GameState _previousState;
 
     [Header("Screens")]
-    [SerializeField]private GameObject _pauseScreen;
+    [SerializeField] private GameObject _pauseScreen;
     [SerializeField] private GameObject _resultsScreen;
     [SerializeField] private GameObject _levelUpScreen;
 
@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
     [Header("Stopwatch")]
     private float _stopwatchTime;
     public TextMeshProUGUI stopwatchTimeDisplay;
+
+    [Header("Audio In Game")]
+    [SerializeField] private List<AudioClip> _audioClipList;
 
     public bool IsGameOver { get; private set; }
     public bool IsGamePaused { get; private set; }
@@ -59,6 +62,12 @@ public class GameManager : MonoBehaviour
         }
 
         DisableScreens();
+    }
+
+    private void Start()
+    {
+        //Пока без переключения треков
+        SoundManager.Instance.PlayMusic(_audioClipList[0]);
     }
 
     private void Update()
