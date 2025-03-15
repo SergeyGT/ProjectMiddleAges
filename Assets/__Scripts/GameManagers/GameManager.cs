@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //Пока без переключения треков
-        SoundManager.Instance.PlayMusic(_audioClipList[0]);
+        //SoundManager.Instance.PlayMusic(_audioClipList[0]);
     }
 
     private void Update()
@@ -107,13 +107,10 @@ public class GameManager : MonoBehaviour
 
     private void CheckForPauseAndResume()
     {
-        Debug.Log("Check");
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Esc pressed");
             if (_currentState==GameState.Paused)
             {
-                Debug.Log("Resume");
                 ResumeGame();
             }
             else
