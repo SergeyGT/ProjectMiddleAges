@@ -64,10 +64,7 @@ public class XPBar : MonoBehaviour
 
     private void AddExp(int amount)
     {
-        print(amount);
-        totalXP += amount;
-        print(totalXP);
-        
+        totalXP += amount;       
 
         CheckForLevelUp();
         UpdateInterface();
