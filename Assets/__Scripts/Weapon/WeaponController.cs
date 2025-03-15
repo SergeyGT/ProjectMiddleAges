@@ -9,7 +9,12 @@ public abstract class WeaponController : MonoBehaviour
 
     private WeaponBehaviour _weaponBehaviour;
     public PlayerMovement PlayerMovement { get; private set; }
+    [field:SerializeField]public string Name { get; private set; }
+    [field: SerializeField]public string Description { get; private set; }
+
     public int Level {  get; protected set; }
+
+
     protected virtual void Start()
     {
         Level = 1;

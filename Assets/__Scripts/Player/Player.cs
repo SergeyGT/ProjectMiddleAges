@@ -101,7 +101,7 @@ public class Player : MonoBehaviour, IDamagable
         OnHealthChanged?.Invoke(Mathf.RoundToInt(CurrentHp), _maxHp);
     }
 
-    private void SpawnWeapon(GameObject weapon)
+    public void SpawnWeapon(GameObject weapon)
     {
         if (_weaponIndex >= (_inventory.WEAPONS_LIMIT-1))
         {

@@ -37,10 +37,13 @@ public class GameManager : MonoBehaviour
     [Header("Audio In Game")]
     [SerializeField] private List<AudioClip> _audioClipList;
 
+
+    [SerializeField] private GameObject _player;
+
     public bool IsGameOver { get; private set; }
     public bool IsGamePaused { get; private set; }
-
     public bool isChoosingUpgrade {  get; private set; }
+
     //Состояния игры
     public enum GameState
     {
@@ -105,6 +108,13 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
+
+    public GameState GetCurrentGameState()
+    {
+        return _currentState;
+    }
+
 
     private void CheckForPauseAndResume()
     {
@@ -208,6 +218,7 @@ public class GameManager : MonoBehaviour
     public void StartLevelUp()
     {
         ChangeState(GameState.LevelUp);
+        _player.SendMessage("RemoveAndApplyOptions");
     }
 
     public void EndLevelUp()

@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.Instance.IsGameOver && !GameManager.Instance.IsGamePaused)
+        if (GameManager.Instance.GetCurrentGameState()==GameManager.GameState.Gameplay)
         {
             InputLogic();
             Aim();
