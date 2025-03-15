@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] public float _speed = 0.3f;
 
-    [SerializeField] private GameObject pricel;
+    [SerializeField] private GameObject _pricel;
 
 
     private Rigidbody _rb;
@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        _pricel.SetActive(true);
+
         _rb = GetComponent<Rigidbody>();
         _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
@@ -78,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, _groundMask))
         {
             _mousePoint = hitInfo.point;
-            pricel.transform.position = _mousePoint;
+            _pricel.transform.position = _mousePoint;
             return true;
         }
         return false;

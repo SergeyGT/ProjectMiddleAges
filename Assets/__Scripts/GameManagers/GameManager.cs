@@ -15,9 +15,10 @@ public class GameManager : MonoBehaviour
     private GameState _previousState;
 
     [Header("Screens")]
+    [SerializeField] private GameObject _gameplayScreen;
     [SerializeField] private GameObject _pauseScreen;
-    [SerializeField] private GameObject _resultsScreen;
     [SerializeField] private GameObject _levelUpScreen;
+    [SerializeField] private GameObject _resultsScreen;
 
     [Header("Current Stats Display")]
     public TextMeshProUGUI currentHealthDisplay;
@@ -166,6 +167,7 @@ public class GameManager : MonoBehaviour
 
     private void DisplayResults()
     {
+        _gameplayScreen.SetActive(false);
         _resultsScreen.SetActive(true);
     }
 
