@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class WeaponBehaviour : MonoBehaviour
 {
-    [field: SerializeField] public int Damage { get; private set; }
+    [field: SerializeField] public int Damage { get; set; }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
@@ -15,5 +15,6 @@ public abstract class WeaponBehaviour : MonoBehaviour
             enemy?.TakeDamage(Damage);
         }
     }
+
 
 }
