@@ -9,15 +9,18 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("ћаска дл€ всего, во что может целитьс€ игрок")]
     [SerializeField] private LayerMask _groundMask;
 
-
+    [SerializeField] private Transform _activeShootAim;
 
     [SerializeField] public float _speed = 0.3f;
+
+    [SerializeField] private GameObject pricel;
+
 
     private Rigidbody _rb;
     private Camera _cam;
 
     private Vector3 _mousePoint;
-    public Vector3 LastMovedVector {  get; private set; }
+    public Vector3 LastRotationVector {  get; private set; }
     public Vector3 MovementVector { get; private set; }
 
     private void Start()
@@ -27,13 +30,16 @@ public class PlayerMovement : MonoBehaviour
 
         _cam = Camera.main;
 
-        LastMovedVector = transform.forward;
+        LastRotationVector = transform.forward;
     }
 
     private void Update()
     {
-        InputLogic();
-        Aim();
+        if (!GameManager.Instance.IsGameOver && !GameManager.Instance.IsGamePaused)
+        {
+            InputLogic();
+            Aim();
+        }
     }
     private void FixedUpdate()
     {
@@ -55,11 +61,14 @@ public class PlayerMovement : MonoBehaviour
         {
             var direction = _mousePoint - transform.position;
 
+            _activeShootAim.forward = direction;
+
+
             direction.y = 0;
 
             transform.forward = direction.normalized;
 
-            LastMovedVector = transform.forward;
+            LastRotationVector = transform.forward;
         }
     }
 
@@ -69,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, _groundMask))
         {
             _mousePoint = hitInfo.point;
+            pricel.transform.position = _mousePoint;
             return true;
         }
         return false;

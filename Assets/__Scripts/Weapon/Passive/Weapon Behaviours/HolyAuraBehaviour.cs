@@ -1,11 +1,17 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HolyAuraBehaviour : WeaponBehaviour
+public class HolyAuraBehaviour : MeleeWeaponBehaviour
 {
-    protected override void Start()
+    public override void MakeAttack()
     {
-        base.Start();
+        transform.DORotate(new Vector3(0,360, 0), ANIM_DURATION, RotateMode.LocalAxisAdd)
+            .OnComplete(() => PoolManager.ReturnObjectToPool(gameObject));
+    }
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
     }
 }

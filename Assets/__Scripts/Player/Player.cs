@@ -2,24 +2,56 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
+[RequireComponent(typeof(InventoryManager))]
 public class Player : MonoBehaviour, IDamagable
 {
     [SerializeField] private int _maxHp;
+    [Header("Percentage For Up Max Hp")]
+    [Range(1,100)][SerializeField] private int _percentageUpgradeHp;
+
+    private InventoryManager _inventory;
+    private int _weaponIndex;
+
     private int _currentHp;
+
+    // Свойство для вывод статистики
+    public int CurrentHp
+    {
+        get { return _currentHp; }
+        private set
+        {
+            if (_currentHp != value)
+            {
+                _currentHp = value;
+                if (GameManager.Instance!=null)
+                {
+                    GameManager.Instance.currentHealthDisplay.text = "Health: " + _currentHp;
+                }
+            }
+        }
+    }
+
     public event Action<int, int> OnHealthChanged;
+
+    private void Awake()
+    {
+        _inventory = GetComponent<InventoryManager>();
+    }
+
 
     private void Start()
     {
-        _currentHp = _maxHp;
-        OnHealthChanged?.Invoke(_currentHp, _maxHp);
+        CurrentHp = _maxHp;
+        OnHealthChanged?.Invoke(CurrentHp, _maxHp);
     }
 
     public void TakeDamage(int damage)
     {
-        _currentHp = Mathf.Max(0, _currentHp - damage);
-        OnHealthChanged?.Invoke(_currentHp, _maxHp);
-        if (_currentHp == 0)
+        CurrentHp = Mathf.Max(0, CurrentHp - damage);
+        OnHealthChanged?.Invoke(CurrentHp, _maxHp);
+        if (CurrentHp == 0)
         {
             Kill();
         }
@@ -27,6 +59,11 @@ public class Player : MonoBehaviour, IDamagable
 
     private void Kill()
     {
+        if (!GameManager.Instance.IsGameOver)
+        {
+            GameManager.Instance.AssignLevelReachedUI(Level.L.numL);
+            GameManager.Instance.GameOver();
+        }
         Destroy(this.gameObject);
     }
 
@@ -46,5 +83,34 @@ public class Player : MonoBehaviour, IDamagable
                 interact.Interact();
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        Level.UpgradeStats += ChangeMaxHp;
+    }
+
+    private void OnDisable()
+    {
+        Level.UpgradeStats -= ChangeMaxHp;
+    }
+
+    private void ChangeMaxHp()
+    {
+        CurrentHp += CurrentHp * _percentageUpgradeHp / 100;
+        OnHealthChanged?.Invoke(Mathf.RoundToInt(CurrentHp), _maxHp);
+    }
+
+    private void SpawnWeapon(GameObject weapon)
+    {
+        if (_weaponIndex >= (_inventory.WEAPONS_LIMIT-1))
+        {
+            Debug.LogError("Inventory is already full");
+            return;
+        }
+
+        weapon.SetActive(true);
+        _inventory.AddWeapon(_weaponIndex, weapon.GetComponent<WeaponController>());
+        _weaponIndex++;
     }
 }

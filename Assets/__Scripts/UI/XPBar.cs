@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using static Cinemachine.DocumentationSortingAttribute;
+using System;
+using UnityEngine.InputSystem;
 
 public class XPBar : MonoBehaviour
 {
@@ -19,30 +21,51 @@ public class XPBar : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private Image fill;
     private Diamonds _diamond;
+    private List<Diamonds> diamondsList = new List<Diamonds>();
+
+    public static Action MaxLevel;
 
     private void Start()
     {
-        _diamond = FindAnyObjectByType<Diamonds>();
-        if(_diamond != null)
-        {
-            _diamond.XpChanged += AddExp;
-        }
         currentLevel = Level.L.numL;
         previousLevelXP = (int)curve.Evaluate(currentLevel);
         nextLevelXP = (int)curve.Evaluate(currentLevel + 1);
     }
 
-    private void OnDestroy()
+
+    private void OnEnable()
     {
-        if(_diamond != null)
+        Diamonds.OnDiamondSpawned += SubscribeToDiamonds;
+    }
+
+    private void OnDisable()
+    {
+        Diamonds.OnDiamondSpawned -= SubscribeToDiamonds;
+
+        // Отписываемся от всех оставшихся алмазов
+        foreach (var diamond in diamondsList)
         {
-            _diamond.XpChanged -= AddExp;
+            if (diamond != null)
+            {
+                diamond.XpChanged -= AddExp;
+            }
+        }
+        diamondsList.Clear();
+    }
+
+    private void SubscribeToDiamonds(Diamonds diamond)
+    {
+        if (!diamondsList.Contains(diamond))
+        {
+            diamondsList.Add(diamond);
+            diamond.XpChanged += AddExp;
         }
     }
+
     private void AddExp(int amount)
     {
-        print(amount);
-        totalXP += amount;
+        totalXP += amount;       
+
         CheckForLevelUp();
         UpdateInterface();
     }
@@ -53,9 +76,16 @@ public class XPBar : MonoBehaviour
         {
             if(totalXP >= nextLevelXP)
             {
-                Level.L.numL++;
-                currentLevel++;
-                UpdateLevel();
+                if (Level.L.numL == 50)
+                {
+                    MaxLevel?.Invoke();
+                }
+                else
+                {
+                    Level.L.numL++;
+                    currentLevel++;
+                    UpdateLevel();
+                }
             }
         }
     }
@@ -73,5 +103,30 @@ public class XPBar : MonoBehaviour
         int end = nextLevelXP - previousLevelXP;
         levelText.text = currentLevel.ToString();
         fill.fillAmount = (float)start/(float)end;
+    }
+
+
+    private void Update()
+    {
+        
+        if (Keyboard.current.ctrlKey.isPressed && Keyboard.current.lKey.wasPressedThisFrame)
+        {
+            print("Cheat-Code Activated");
+            print(Level.L.numL);
+            // HACK: На время теста пока будет тут
+            if (Level.L.numL == 10)
+            {
+                print("Level equals 10");
+                MaxLevel?.Invoke();
+            }
+            else
+            {
+                Level.L.numL++;
+                currentLevel++;
+                UpdateLevel();
+                UpdateInterface();
+            }
+            
+        }
     }
 }

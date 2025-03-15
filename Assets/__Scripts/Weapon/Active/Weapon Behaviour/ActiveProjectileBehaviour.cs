@@ -3,26 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ActiveProjectileBehaviour : WeaponBehaviour
+public class ActiveProjectileBehaviour : ProjectileWeaponBehaviour
 {
-    private ActiveWeaponController _controller;
-
-    private Rigidbody _rb;
-    protected override void Start()
-    {
-        base.Start();
-
-        _rb = GetComponent<Rigidbody>();    
-
-        _controller = FindObjectOfType<ActiveWeaponController>();
-        Direction = _controller.ShootDirection * _controller.Speed;
-    }
-
-    // Update is called once per frame
     protected void Update()
     {
-        transform.position += Direction * Time.deltaTime;
-        transform.rotation = Quaternion.LookRotation(Direction);
+        transform.position += transform.forward * Time.deltaTime * Speed;
+    }
+
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
     }
 }
 

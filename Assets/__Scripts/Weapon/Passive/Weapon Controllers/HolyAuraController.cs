@@ -7,7 +7,8 @@ public class HolyAuraController : PassiveWeaponController
     protected override void Attack()
     {
         base.Attack();
-        GameObject go = Instantiate(_weapon);
-        go.transform.SetParent(transform, false);
+        PoolManager.SpawnObject(_weapon, transform)
+            .GetComponent<HolyAuraBehaviour>()
+            .MakeAttack();
     }
 }

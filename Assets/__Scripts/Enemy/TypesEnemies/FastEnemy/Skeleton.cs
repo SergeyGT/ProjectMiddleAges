@@ -5,59 +5,21 @@ using UnityEngine;
 
 public class Skeleton : FastEnemy
 {
-    [Header("Set Stats Skeleton In Inspector")]
-    [SerializeField] private int _skeletonHp = 100;
-    [Space]
-    [SerializeField] private int _skeletonDamage = 5;
-    [Space]
-    [SerializeField] private int _skeletonSpeedAttack = 5;
-
-    [SerializeField] private bool _collidedPlayer = false;
-    private IDamagable _playerIDamagable;
-    private bool isAttacking = false;
-
-
     protected override void Awake()
     {
-        Init(_skeletonHp, _skeletonDamage, _skeletonSpeedAttack);
         base.Awake();
     }
 
-    private void Start()
-    {
-        transform.localRotation = Quaternion.Euler(90,0,0);
-    }
     protected override void Attack()
     {
-        if (_playerIDamagable != null && !isAttacking)
+        if (base._playerIDamagable != null && !base.isAttacking)
         {
-            _playerIDamagable.TakeDamage(_skeletonDamage);
-            StartCoroutine(DelayAttack(_skeletonSpeedAttack));
-        }
-    }
-
-    private IEnumerator DelayAttack (float _delayAttack)
-    {
-        isAttacking = true;
-        yield return new WaitForSeconds(_delayAttack);
-        isAttacking = false;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            _collidedPlayer = true;
-            _playerIDamagable = collision.gameObject.GetComponent<IDamagable>();
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            _collidedPlayer = false;
-            _playerIDamagable = null;
+            base.Attack();
+            _agent.isStopped = true;
+            _animator.SetBool("Walk", false);
+            _animator.SetBool("Attack", true);
+            base._playerIDamagable.TakeDamage(_damage);
+            StartCoroutine(base.DelayAttack(_speedAttack));
         }
     }
 
@@ -67,16 +29,17 @@ public class Skeleton : FastEnemy
         if (_collidedPlayer)
         {
             Attack();
+            _animator.SetBool("Walk", false);
         }
-        if(_skeletonHp == 0)
-        {
-            base.Kill();
-            FallDrop(transform.position, Drop.blue);
+        else
+        { _animator.SetBool("Attack", false);
+            _agent.isStopped = false;
         }
-    }
-    protected override void FallDrop(Vector3 pos, Drop _drop)
-    {
-        base.FallDrop(pos, Drop.blue);
-    }
 
+    }
+    protected override void FallDrop()
+    {
+        EnemyDrop drop = GetComponent<EnemyDrop>();
+        drop.FallDrop(transform.position, Drop.blue);
+    }
 }

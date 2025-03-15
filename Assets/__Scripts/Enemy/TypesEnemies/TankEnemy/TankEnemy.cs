@@ -4,4 +4,9 @@ public class TankEnemy : Enemy
     {
       
     }
+
+    protected override void FallDrop()
+    {
+       
+    }
 }

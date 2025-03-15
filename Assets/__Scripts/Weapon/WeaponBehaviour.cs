@@ -3,21 +3,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class WeaponBehaviour : MonoBehaviour
+public abstract class WeaponBehaviour : MonoBehaviour
 {
-    public Vector3 Direction { get; protected set; }
+    [field: SerializeField] public int Damage { get; set; }
 
-
-    [SerializeField] private float _destroyAfterSeconds;
-    protected virtual void Start()
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject, _destroyAfterSeconds);
-        Direction = Vector3.zero;
+        if (other.CompareTag("Enemy") || other.CompareTag("Environment"))
+        {
+            IDamagable enemy = other.gameObject.GetComponent<IDamagable>();
+            enemy?.TakeDamage(Damage);
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //other.transform.GetComponent<Enemy>().Die....
-        //Destroy(gameObject);
-    }
+
 }

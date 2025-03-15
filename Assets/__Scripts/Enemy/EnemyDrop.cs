@@ -24,6 +24,7 @@ public class EnemyDrop : MonoBehaviour
     public void FallDrop(Vector3 positionDrop, Drop dropColor)
     {
         GameObject drop = null;
+        //HACK поменять Instantiate на POOL
         switch (dropColor)
         {
             case Drop.red:
