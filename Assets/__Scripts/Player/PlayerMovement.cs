@@ -9,9 +9,12 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("ћаска дл€ всего, во что может целитьс€ игрок")]
     [SerializeField] private LayerMask _groundMask;
 
-
+    [SerializeField] private Transform _activeShootAim;
 
     [SerializeField] public float _speed = 0.3f;
+
+    [SerializeField] private GameObject pricel;
+
 
     private Rigidbody _rb;
     private Camera _cam;
@@ -58,6 +61,9 @@ public class PlayerMovement : MonoBehaviour
         {
             var direction = _mousePoint - transform.position;
 
+            _activeShootAim.forward = direction;
+
+
             direction.y = 0;
 
             transform.forward = direction.normalized;
@@ -72,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, _groundMask))
         {
             _mousePoint = hitInfo.point;
+            pricel.transform.position = _mousePoint;
             return true;
         }
         return false;

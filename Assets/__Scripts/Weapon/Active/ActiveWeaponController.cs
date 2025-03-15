@@ -5,8 +5,6 @@ using UnityEngine.UIElements;
 
 public class ActiveWeaponController : WeaponController
 {
-    public Vector3 ShootDirection { get; private set; }
-
     protected override void Start()
     {
         base.Start();
@@ -22,7 +20,6 @@ public class ActiveWeaponController : WeaponController
 
     protected override void Attack()
     {
-        ShootDirection = transform.forward;
         PoolManager.SpawnObject(_weapon, transform, PoolManager.PoolType.Projectiles);
     }
 }
