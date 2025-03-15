@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 30
   _damage: 10
-  _speedAttack: 3
+  _speedAttack: 7
   _enemySource: {fileID: 5252431360071498601}
   _attack: {fileID: 8300000, guid: 8242c4f2289743e428a2ddb7af6d42dc, type: 3}
   _walk: {fileID: 0}
