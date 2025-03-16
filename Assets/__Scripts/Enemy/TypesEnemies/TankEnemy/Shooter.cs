@@ -18,7 +18,7 @@ public class Shooter : TankEnemy
 
         _distanceBetweenPlayer = (transform.position - _playerPosition.position).magnitude;
 
-        if (!base._agent.enabled || !base._agent.isOnNavMesh)
+            if (!base._agent.enabled || !base._agent.isOnNavMesh)
         {
             Debug.LogWarning("NavMeshAgent отключен или не на NavMesh!");
             return;

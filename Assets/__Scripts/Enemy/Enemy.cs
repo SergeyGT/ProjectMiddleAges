@@ -26,6 +26,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
    
     private CapsuleCollider _capsuleCollider;
     private bool _isDead = false;
+    private Color[] _originalColors;
 
     protected virtual void Awake()
     {
@@ -63,12 +64,52 @@ public abstract class Enemy : MonoBehaviour, IDamagable
     public void TakeDamage(int damage)
     {
         _hp -= damage;
+        StartCoroutine(Discarding());
+        StartCoroutine(ChangeColorHit());
 
         if (_hp <= 0)
         {
             SoundManager.Instance.PlayLocalSound(_enemySource, _death);
             Kill();
             FallDrop();
+        }
+    }
+
+    private IEnumerator Discarding()
+    {
+        _agent.isStopped = true;
+
+        yield return new WaitForSeconds(1.5f);
+
+        _agent.isStopped = false;
+    }
+
+    private IEnumerator ChangeColorHit()
+    {
+        SkinnedMeshRenderer renderer = transform.gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
+
+        if (renderer != null)
+        {
+            if (_originalColors == null)
+            {
+                _originalColors = new Color[renderer.materials.Length];
+                for (int i = 0; i < renderer.materials.Length; i++)
+                {
+                    _originalColors[i] = renderer.materials[i].color;
+                }
+            }
+            
+            foreach (Material mat in renderer.materials)
+            {
+                mat.color = Color.red;
+            }
+            
+            yield return new WaitForSeconds(0.2f);
+            
+            for (int i = 0; i < renderer.materials.Length; i++)
+            {
+                renderer.materials[i].color = _originalColors[i];
+            }
         }
     }
 
