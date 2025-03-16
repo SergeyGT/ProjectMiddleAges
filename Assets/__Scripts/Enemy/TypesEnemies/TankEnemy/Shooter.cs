@@ -6,6 +6,8 @@ public class Shooter : TankEnemy
     
     [SerializeField] private int _shooterRadiusAttack;
 
+    private bool isWalk = false;
+
     private float _distanceBetweenPlayer;
     protected override void Awake()
     {
@@ -18,7 +20,7 @@ public class Shooter : TankEnemy
 
         _distanceBetweenPlayer = (transform.position - _playerPosition.position).magnitude;
 
-            if (!base._agent.enabled || !base._agent.isOnNavMesh)
+        if (!base._agent.enabled || !base._agent.isOnNavMesh)
         {
             Debug.LogWarning("NavMeshAgent отключен или не на NavMesh!");
             return;
@@ -26,12 +28,15 @@ public class Shooter : TankEnemy
 
         if (_distanceBetweenPlayer > _shooterRadiusAttack)
         {
+            isWalk = true;
             base.Move();
             base._agent.isStopped = false;
         }
         else
-        {
+        {            
+            isWalk = false;
             base._agent.isStopped = true;
+            Attack();
         }
     }
 
@@ -41,6 +46,9 @@ public class Shooter : TankEnemy
         if (base._playerIDamagable != null && !base.isAttacking && _agent.isStopped)
         {
             base.Attack();
+            _animator.SetBool("Walk", false);
+            _animator.SetBool("Attack", true);
+            print("Shooter Attack");
             base._playerIDamagable.TakeDamage(_damage);
             StartCoroutine(base.DelayAttack(_speedAttack));
         }
@@ -50,10 +58,6 @@ public class Shooter : TankEnemy
     private void FixedUpdate()
     {
         Move();
-        if (base._hp > 0)
-        {
-            Attack();
-        }
     }
 
     protected override void FallDrop()

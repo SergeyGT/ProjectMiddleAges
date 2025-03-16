@@ -58,6 +58,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
                 _enemySource.pitch = 3f;
                 SoundManager.Instance.PlayLocalSound(_enemySource, _walk);
             }
+            _animator.SetBool("Attack", false);
             _animator.SetBool("Walk", true);
             _agent.SetDestination(_playerPosition.position);
         } else

@@ -4333,7 +4333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &881108535
 Transform:
   m_ObjectHideFlags: 0
@@ -5267,7 +5267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &998988324
 Transform:
   m_ObjectHideFlags: 0
@@ -6594,7 +6594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1209459372
 Transform:
   m_ObjectHideFlags: 0
@@ -6845,7 +6845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1241055886
 Transform:
   m_ObjectHideFlags: 0
@@ -6895,9 +6895,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f97787e1c0e274b8d2bc729b8613c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rangeXPos: {x: 2, y: 8.42}
+  _rangeXPos: {x: -3, y: 17}
   _rangeYPos: {x: 2, y: 3}
-  _rangeZPos: {x: 0, y: 12.57}
+  _rangeZPos: {x: 0, y: 25}
 --- !u!4 &1297301066
 Transform:
   m_ObjectHideFlags: 0
@@ -6907,7 +6907,7 @@ Transform:
   m_GameObject: {fileID: 1297301064}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.779843, y: 8.000933, z: 10.416948}
+  m_LocalPosition: {x: 19, y: 8.000933, z: 25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17395,7 +17395,7 @@ MonoBehaviour:
   _enemyPrefabs:
   - {fileID: 5182288617302981511, guid: c699dc79191b983469331da2751a61fe, type: 3}
   - {fileID: 7792453833114350289, guid: 684804357c2978e42a7f9b8fd1c72c82, type: 3}
-  - {fileID: 7690301533877904944, guid: 2678fa9c6f11b7f4f99b1dd82656bf5f, type: 3}
+  - {fileID: 6867830910478597327, guid: 5f5709d1d19dd6547a1144a412c7daae, type: 3}
   _countPrefabs: 3
 --- !u!1 &2008318922
 GameObject:

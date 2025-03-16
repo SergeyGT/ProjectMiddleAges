@@ -12,8 +12,6 @@ public class Ogr : AverageEnemy
         if (base._playerIDamagable != null && !base.isAttacking)
         {
             base.Attack();
-            _animator.SetBool("Walk", false);
-            _animator.SetBool("Attack", true);
             base._playerIDamagable.TakeDamage(_damage);
             StartCoroutine(base.DelayAttack(_speedAttack));
         }
@@ -25,7 +23,6 @@ public class Ogr : AverageEnemy
         if (_collidedPlayer)
         {
             Attack();
-            _animator.SetBool("Walk", false);
         }
 
     }
