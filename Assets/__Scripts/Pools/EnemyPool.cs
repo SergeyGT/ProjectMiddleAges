@@ -51,6 +51,7 @@ public class EnemyPool : MonoBehaviour
 
     public GameObject GetEnemy(string type)
     {
+        Debug.Log(type);
         if (!_pools.ContainsKey(type))
         {
             Debug.LogError($"No pool found for enemy type: {type}");
