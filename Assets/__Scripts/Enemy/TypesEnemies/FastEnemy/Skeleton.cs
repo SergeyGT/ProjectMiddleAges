@@ -35,6 +35,11 @@ public class Skeleton : FastEnemy
         {
             Attack();
             _animator.SetBool("Walk", false);
+        } else
+        {
+            _agent.isStopped = false;
+            _animator.SetBool("Run", false);
+            _animator.SetBool("Walk", true);
         }
 
     }

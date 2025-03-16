@@ -42,9 +42,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
 
     protected virtual void Move()
     {
-        if (_isDead) return;
-
-        
+        if (_isDead) return;        
 
         if (_playerPosition != null)
         {
@@ -55,7 +53,6 @@ public abstract class Enemy : MonoBehaviour, IDamagable
             }
             _animator.SetBool("Walk", true);
             _agent.SetDestination(_playerPosition.position);
-            transform.LookAt(_playerPosition);
         } else
         {
             _animator.SetBool("Walk", false);
@@ -112,6 +109,12 @@ public abstract class Enemy : MonoBehaviour, IDamagable
         {
             _collidedPlayer = false;
             _playerIDamagable = null;
+            if (_agent.enabled && _agent.isOnNavMesh)
+            {
+                _agent.isStopped = false;
+                _animator.SetBool("Attack", false);  
+                _animator.SetBool("Walk", true);    
+            }
         }
     }
 
