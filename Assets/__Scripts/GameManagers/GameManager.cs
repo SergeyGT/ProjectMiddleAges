@@ -90,7 +90,6 @@ public class GameManager : MonoBehaviour
                 {
                     IsGameOver=true;
                     Time.timeScale = 0f; 
-                    Debug.Log("Game Over");
                     DisplayResults();
                 }
                 break;
@@ -99,7 +98,6 @@ public class GameManager : MonoBehaviour
                 {
                     isChoosingUpgrade=true;
                     Time.timeScale = 0f;
-                    Debug.Log("Upgrade state");
                     _levelUpScreen.SetActive(true);
                 }
                 break;

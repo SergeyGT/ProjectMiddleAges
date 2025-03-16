@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Knife Weapon
   m_EditorClassIdentifier: 
   weapon: {fileID: 1381989502469514, guid: d2959226abee63e42afe64c17736919a, type: 3}
-  <Damage>k__BackingField: 10
-  <CooldownDuration>k__BackingField: 5
-  <Speed>k__BackingField: 15
-  <Duration>k__BackingField: 5
+  _damage: 10
+  _cooldownDuration: 5
+  _speed: 5
+  _duration: 5
+  _level: 1
+  _repetings: 0
   <Icon>k__BackingField: {fileID: 21300000, guid: a3f126afb65f4954384c287d014f1cb2, type: 3}
   <Name>k__BackingField: "\u041D\u043E\u0436"
   <Description>k__BackingField: "\u041B\u0435\u0442\u0438\u0442 \u043F\u043E \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044E
     \u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F \u0438\u0433\u0440\u043E\u043A\u0430"
-  <Level>k__BackingField: 1
-  <Repetings>k__BackingField: 1
+  _upgradeData: {fileID: 11400000, guid: 86839d4cff25cbb4ca48e48e74c38b2a, type: 2}

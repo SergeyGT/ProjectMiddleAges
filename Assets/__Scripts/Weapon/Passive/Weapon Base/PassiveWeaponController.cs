@@ -6,9 +6,8 @@ public class PassiveWeaponController : WeaponController
 {
     private float _currentCooldown;
 
-    protected override void Start()
+    protected virtual void Start()
     {
-        base.Start();
         _currentCooldown = weaponData.CooldownDuration; //В начале игры кд дефолтное
     }
 

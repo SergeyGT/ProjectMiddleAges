@@ -52,7 +52,6 @@ public class InventoryManager : MonoBehaviour
 
         _weaponLevels[slotIndex] = weapon.weaponData.Level;
 
-        Debug.Log("index " + slotIndex + "_weaponUISlot.Length "  + _weaponUISlots.Count);
         _weaponUISlots[slotIndex].enabled = true;
         _weaponUISlots[slotIndex].sprite = weapon.weaponData.Icon;
 
@@ -65,10 +64,12 @@ public class InventoryManager : MonoBehaviour
 
     public void LevelUpWeapon(int slotIndex)
     {
-        if (_weaponSlots.Count > slotIndex)
+        if (_weaponSlots.Count >= slotIndex)
         {
+            Debug.Log(_weaponSlots.Count + " " + slotIndex);
             WeaponController weapon = _weaponSlots[slotIndex];
-            weapon.LevelUpUpgrade();
+
+            weapon.weaponData.LevelUpgrade();
 
             if (GameManager.Instance != null && GameManager.Instance.isChoosingUpgrade)
             {
@@ -88,10 +89,12 @@ public class InventoryManager : MonoBehaviour
             bool isNewWeapon = true;
             for (int i =0; i< _weaponSlots.Count && isNewWeapon; i++)
             {
-                if (_weaponSlots[i]!=null && _weaponSlots[i]==chosenWeaponUpgrade.weaponData)
+                if (_weaponSlots[i]!=null && _weaponSlots[i].weaponData==chosenWeaponUpgrade.weaponData)
                 {
                     isNewWeapon = false;
-                    upgradeOption.upgradeButton.onClick.AddListener(() => LevelUpWeapon(i));
+
+                    Debug.Log("LevelUp Listener "  + i);
+                    upgradeOption.upgradeButton.onClick.AddListener(() => LevelUpWeapon(i-1));
 
                     upgradeOption.upgradeNameDisplay.text = chosenWeaponUpgrade.weaponData.name;
                     upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponUpgrade.weaponData.Description;
@@ -100,6 +103,7 @@ public class InventoryManager : MonoBehaviour
 
             if (isNewWeapon)
             {
+                Debug.Log("new weapon Listener");
                 upgradeOption.upgradeButton.onClick.AddListener( () => _player.SpawnWeapon(chosenWeaponUpgrade.InitialWeapon));
 
                 upgradeOption.upgradeNameDisplay.text = chosenWeaponUpgrade.weaponData.name;
