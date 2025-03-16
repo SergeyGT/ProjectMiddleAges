@@ -14,12 +14,27 @@ public class Shooter : TankEnemy
 
     protected override void Move()
     {
-        if (_playerPosition == null) return;
+        if (_playerPosition == null || base._agent == null) return;
 
         _distanceBetweenPlayer = (transform.position - _playerPosition.position).magnitude;
-        if (_distanceBetweenPlayer > _shooterRadiusAttack) { base.Move(); base._agent.isStopped = false; }
-        else base._agent.isStopped = true;        
+
+        if (!base._agent.enabled || !base._agent.isOnNavMesh)
+        {
+            Debug.LogWarning("NavMeshAgent отключен или не на NavMesh!");
+            return;
+        }
+
+        if (_distanceBetweenPlayer > _shooterRadiusAttack)
+        {
+            base.Move();
+            base._agent.isStopped = false;
+        }
+        else
+        {
+            base._agent.isStopped = true;
+        }
     }
+
 
     protected override void Attack()
     {
