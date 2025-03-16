@@ -11,6 +11,8 @@ public class Player : MonoBehaviour, IDamagable
     [Header("Percentage For Up Max Hp")]
     [Range(1,100)][SerializeField] private int _percentageUpgradeHp;
 
+    [SerializeField] private GameObject _activeWeapon;
+
     private InventoryManager _inventory;
     private int _weaponIndex;
 
@@ -45,6 +47,9 @@ public class Player : MonoBehaviour, IDamagable
     {
         CurrentHp = _maxHp;
         OnHealthChanged?.Invoke(CurrentHp, _maxHp);
+
+        _weaponIndex = 0;
+        SpawnWeapon(_activeWeapon);
     }
 
     public void TakeDamage(int damage)
@@ -103,9 +108,9 @@ public class Player : MonoBehaviour, IDamagable
 
     public void SpawnWeapon(GameObject weapon)
     {
-        if (_weaponIndex >= (_inventory.WEAPONS_LIMIT-1))
+        if (_weaponIndex > (_inventory.WEAPONS_LIMIT-1))
         {
-            Debug.LogError("Inventory is already full");
+            Debug.Log("Inventory is already full");
             return;
         }
 

@@ -10,10 +10,12 @@ public class InventoryManager : MonoBehaviour
     //public List<WeaponController> _allWeapons = new List<WeaponController>(6);
 
     [SerializeField] private List<WeaponController> _weaponSlots;
+
     [SerializeField] private List<Image> _weaponUISlots;
+
     [SerializeField] private int[] _weaponLevels;
 
-    public int WEAPONS_LIMIT {  get; private set; }
+    public int WEAPONS_LIMIT { get; private set; } = 4;
 
 
     [System.Serializable]
@@ -31,28 +33,26 @@ public class InventoryManager : MonoBehaviour
         public Image upgradeIcon;
         public Button upgradeButton;
     }
+
     [SerializeField]
     private List<WeaponUpgrade> _weaponUpgradeOptions = new List<WeaponUpgrade>();
+
     [SerializeField]
     private List<UpgradeUI> _uiUpgradeOptions = new List<UpgradeUI>();
 
     private Player _player;
 
     private void Awake()
-    {
-        WEAPONS_LIMIT = 3;
-        
-        _weaponSlots = new List<WeaponController>(WEAPONS_LIMIT);
-        _weaponUISlots = new List<Image>(WEAPONS_LIMIT);
-        _weaponLevels = new int[WEAPONS_LIMIT];
-
+    {        
         _player = GetComponent<Player>();
     }
     public void AddWeapon(int slotIndex, WeaponController weapon)
     {
-        Debug.Log(_weaponSlots.Count + " " + slotIndex + " " + weapon);
-        _weaponSlots[slotIndex] = weapon;
+        _weaponSlots.Add(weapon);
+
         _weaponLevels[slotIndex] = weapon.weaponData.Level;
+
+        Debug.Log("index " + slotIndex + "_weaponUISlot.Length "  + _weaponUISlots.Count);
         _weaponUISlots[slotIndex].enabled = true;
         _weaponUISlots[slotIndex].sprite = weapon.weaponData.Icon;
 
