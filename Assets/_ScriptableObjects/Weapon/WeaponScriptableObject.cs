@@ -52,7 +52,7 @@ public class WeaponScriptableObject : ScriptableObject
     {
         Damage = _damage;
         Speed = _speed;
-        CooldownDuration = _duration;
+        CooldownDuration = _cooldownDuration;
         Duration = _duration;
         Level = _level;
         Repetings = _repetings;
