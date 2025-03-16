@@ -97,9 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affb202802584554cacf723586b9035f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 50
-  ANIM_DURATION: 5
-  _repetings: 1
+  weaponData: {fileID: 11400000, guid: fe125334b30649c46980898690356084, type: 2}
 --- !u!65 &3774403518320915385
 BoxCollider:
   m_ObjectHideFlags: 0

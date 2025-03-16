@@ -120,9 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b87e3693f1a81438cfa61ae41abd34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 50
-  <Speed>k__BackingField: 20
-  PROJECTILE_DURATION: 3
+  weaponData: {fileID: 11400000, guid: 11e1f9458fdd8d4408313ae1b31d0e46, type: 2}
 --- !u!54 &1874227597704944859
 Rigidbody:
   m_ObjectHideFlags: 0

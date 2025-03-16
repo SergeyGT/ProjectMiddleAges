@@ -98,14 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ddaa7722c7047468ea66b4c7fb646c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 50
-  <Speed>k__BackingField: 0
-  _destroyAfterSeconds: 30
-  _highY: 10
-  _maxX: 10
-  _maxZ: 10
-  _goingUpDuration: 1
-  _goingDownDuration: 1
+  weaponData: {fileID: 11400000, guid: bea7bc8ed10a1ae4584247efb221ec3a, type: 2}
+  Max_X_Range: 10
+  max_Z_Range: 10
+  TOP_Y_VALUE: 20
 --- !u!64 &6824012982061788194
 MeshCollider:
   m_ObjectHideFlags: 0

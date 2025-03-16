@@ -8,14 +8,12 @@ public class ScytheBehaviour : MeleeWeaponBehaviour
 
     private float INITIAL_ROTATE_DURATION = 0.1f;
 
-    [SerializeField] private int _repetings = 2;
-
     public override void MakeAttack()
     {
         DOTween.Sequence()
             .Append(transform.DORotate(new Vector3(0, 0, 90), INITIAL_ROTATE_DURATION))
             .Append(transform.DORotate(new Vector3(360, 0, 0), weaponData.Duration, RotateMode.LocalAxisAdd)
-            .SetLoops(_repetings)
+            .SetLoops(weaponData.Repetings)
             .SetEase(Ease.Linear)
             .OnComplete(() => PoolManager.ReturnObjectToPool(gameObject)));
     }

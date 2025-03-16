@@ -135,9 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018e287ecdffa054383ed10f6a329f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 50
-  <Speed>k__BackingField: 3
-  PROJECTILE_DURATION: 5
+  weaponData: {fileID: 11400000, guid: d07e3c8b1cdb5604a88ccb3b9a4c13a3, type: 2}
 --- !u!65 &4239132960567156485
 BoxCollider:
   m_ObjectHideFlags: 0

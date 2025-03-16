@@ -5,14 +5,14 @@ using UnityEngine;
 
 public abstract class WeaponBehaviour : MonoBehaviour
 {
-    [field: SerializeField] public int Damage { get; set; }
+    public WeaponScriptableObject weaponData;
 
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy") || other.CompareTag("Environment"))
         {
             IDamagable enemy = other.gameObject.GetComponent<IDamagable>();
-            enemy?.TakeDamage(Damage);
+            enemy?.TakeDamage((int)weaponData.Damage);
         }
     }
 

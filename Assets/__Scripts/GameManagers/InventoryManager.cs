@@ -20,7 +20,7 @@ public class InventoryManager : MonoBehaviour
     private class WeaponUpgrade
     {
         [field:SerializeField] public GameObject InitialWeapon { get; private set; }
-        [field: SerializeField] public WeaponController WeaponController { get; private set; }
+        [field: SerializeField] public WeaponScriptableObject weaponData { get; private set; }
     }
 
     [System.Serializable]
@@ -50,6 +50,7 @@ public class InventoryManager : MonoBehaviour
     }
     public void AddWeapon(int slotIndex, WeaponController weapon)
     {
+        Debug.Log(_weaponSlots.Count + " " + slotIndex + " " + weapon);
         _weaponSlots[slotIndex] = weapon;
         _weaponLevels[slotIndex] = weapon.weaponData.Level;
         _weaponUISlots[slotIndex].enabled = true;
@@ -87,13 +88,13 @@ public class InventoryManager : MonoBehaviour
             bool isNewWeapon = true;
             for (int i =0; i< _weaponSlots.Count && isNewWeapon; i++)
             {
-                if (_weaponSlots[i]!=null && _weaponSlots[i]==chosenWeaponUpgrade.WeaponController)
+                if (_weaponSlots[i]!=null && _weaponSlots[i]==chosenWeaponUpgrade.weaponData)
                 {
                     isNewWeapon = false;
                     upgradeOption.upgradeButton.onClick.AddListener(() => LevelUpWeapon(i));
 
-                    upgradeOption.upgradeNameDisplay.text = chosenWeaponUpgrade.WeaponController.name;
-                    upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponUpgrade.WeaponController.weaponData.Description;
+                    upgradeOption.upgradeNameDisplay.text = chosenWeaponUpgrade.weaponData.name;
+                    upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponUpgrade.weaponData.Description;
                 }
             }
 
@@ -101,11 +102,11 @@ public class InventoryManager : MonoBehaviour
             {
                 upgradeOption.upgradeButton.onClick.AddListener( () => _player.SpawnWeapon(chosenWeaponUpgrade.InitialWeapon));
 
-                upgradeOption.upgradeNameDisplay.text = chosenWeaponUpgrade.WeaponController.name;
-                upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponUpgrade.WeaponController.weaponData.Description;
+                upgradeOption.upgradeNameDisplay.text = chosenWeaponUpgrade.weaponData.name;
+                upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponUpgrade.weaponData.Description;
             }
 
-            upgradeOption.upgradeIcon.sprite = chosenWeaponUpgrade.WeaponController.weaponData.Icon;
+            upgradeOption.upgradeIcon.sprite = chosenWeaponUpgrade.weaponData.Icon;
         }
     }
 

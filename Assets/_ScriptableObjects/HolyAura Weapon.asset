@@ -12,10 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06067f8064cf10c42811e763f1f35f4a, type: 3}
   m_Name: HolyAura Weapon
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  icon: {fileID: 0}
-  weaponBehaviour: {fileID: 0}
-  playerMovement: {fileID: 0}
-  name: 
-  description: 
-  level: 0
+  weapon: {fileID: 422655892589093220, guid: 96e2db3f601648f449a3837a2a02a41b, type: 3}
+  <Damage>k__BackingField: 2
+  <CooldownDuration>k__BackingField: 20
+  <Speed>k__BackingField: 0
+  <Duration>k__BackingField: 5
+  <Icon>k__BackingField: {fileID: 21300000, guid: a3f126afb65f4954384c287d014f1cb2, type: 3}
+  <Name>k__BackingField: "\u0421\u0432\u044F\u0442\u0430\u044F \u0410\u0443\u0440\u0430"
+  <Description>k__BackingField: "\u0421\u043E\u0437\u0434\u0430\u0435\u0442 \u0432\u043E\u043A\u0440\u0443\u0433
+    \u0438\u0433\u0440\u043E\u043A\u0430 \u0441\u0444\u0435\u0440\u0435\u0447\u0435\u0441\u043A\u0438\u0439
+    \u0431\u0430\u0440\u044C\u0435\u0440, \u043D\u0430\u043D\u043E\u0441\u044F\u0449\u0438\u0439
+    \u0432\u0440\u0430\u0433\u0430\u043C \u0443\u0440\u043E\u043D"
+  <Level>k__BackingField: 1
+  <Repetings>k__BackingField: 1

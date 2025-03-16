@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class ProjectileWeaponBehaviour : WeaponBehaviour
 {
-
-    public WeaponScriptableObject weaponData;
-
-    //[SerializeField] private float projectileDuration = 5;
-
     private CancellationTokenSource _cancellationTokenSource;
 
     private void Start()

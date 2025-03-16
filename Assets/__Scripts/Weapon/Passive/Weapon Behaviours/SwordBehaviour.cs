@@ -5,15 +5,13 @@ using UnityEngine;
 
 public class SwordBehaviour : MeleeWeaponBehaviour
 {   
-    [SerializeField]  private int _repetings = 1;
-
     public override void MakeAttack()
     {
         transform.forward = transform.right;
 
         DOTween.Sequence()
             .Append(transform.DORotate(transform.up * -180, weaponData.Duration, RotateMode.LocalAxisAdd))
-            .SetLoops(_repetings * 2, LoopType.Yoyo)
+            .SetLoops(weaponData.Repetings * 2, LoopType.Yoyo)
             .SetEase(Ease.InCubic)
             .OnComplete(()=> PoolManager.ReturnObjectToPool(gameObject));
     }

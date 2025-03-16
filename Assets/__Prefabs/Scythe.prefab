@@ -136,6 +136,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a65998fbaea81bb419929f52da9645db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 50
-  ANIM_DURATION: 5
-  _repetings: 2
+  weaponData: {fileID: 11400000, guid: 43f218a2e2a6b364fb3800bf8e54c660, type: 2}
