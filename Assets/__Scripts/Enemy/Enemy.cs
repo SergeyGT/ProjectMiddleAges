@@ -9,6 +9,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
     [SerializeField] protected int _hp = 100;
     [SerializeField] protected int _damage  = 10;
     [SerializeField] protected float _speedAttack = 3;
+    [SerializeField] protected int _speedMove = 3;
     [Space]
     [Header("Source Enemy")]
     [SerializeField] AudioSource _enemySource;
@@ -39,6 +40,11 @@ public abstract class Enemy : MonoBehaviour, IDamagable
     {
         _playerPosition = playerTransform;
         _playerIDamagable = playerDamagable;
+    }
+
+    private void Start()
+    {
+        _agent.speed = _speedMove;
     }
 
     protected virtual void Move()
@@ -77,11 +83,11 @@ public abstract class Enemy : MonoBehaviour, IDamagable
 
     private IEnumerator Discarding()
     {
-        _agent.isStopped = true;
+        _agent.speed = 0;
 
         yield return new WaitForSeconds(1.5f);
 
-        _agent.isStopped = false;
+        _agent.speed = _speedMove;
     }
 
     private IEnumerator ChangeColorHit()

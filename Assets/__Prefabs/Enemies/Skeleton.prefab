@@ -995,6 +995,7 @@ MonoBehaviour:
   _hp: 20
   _damage: 5
   _speedAttack: 2
+  _speedMove: 4
   _enemySource: {fileID: -7828909708203662991}
   _attack: {fileID: 8300000, guid: f9fed291367db5c439f9f59fa21962fb, type: 3}
   _walk: {fileID: 8300000, guid: 5e3c7a7fefa65a24a88607451bff4668, type: 3}
