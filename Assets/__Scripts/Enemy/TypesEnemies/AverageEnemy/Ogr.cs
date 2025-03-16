@@ -27,11 +27,7 @@ public class Ogr : AverageEnemy
             Attack();
             _animator.SetBool("Walk", false);
         }
-        else
-        {
-            _animator.SetBool("Attack", false);
-            _agent.isStopped = false;
-        }
+
     }
     protected override void FallDrop()
     {

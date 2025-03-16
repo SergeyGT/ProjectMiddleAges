@@ -15,6 +15,11 @@ public class Skeleton : FastEnemy
         if (base._playerIDamagable != null && !base.isAttacking)
         {
             base.Attack();
+            if (!base._agent.enabled || !base._agent.isOnNavMesh)
+            {
+                Debug.LogWarning("NavMeshAgent отключен или не на NavMesh!");
+                return;
+            }
             _agent.isStopped = true;
             _animator.SetBool("Walk", false);
             _animator.SetBool("Attack", true);
@@ -30,11 +35,6 @@ public class Skeleton : FastEnemy
         {
             Attack();
             _animator.SetBool("Walk", false);
-        }
-        else
-        { 
-            //_animator.SetBool("Attack", false);
-            //_agent.isStopped = false;
         }
 
     }
