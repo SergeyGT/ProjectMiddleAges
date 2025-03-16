@@ -8,7 +8,7 @@ public class SwordController : PassiveWeaponController
     {
         base.Attack();
 
-        PoolManager.SpawnObject(_weapon, transform)
+        PoolManager.SpawnObject(weaponData.weapon, transform)
             .GetComponent<SwordBehaviour>()
             .MakeAttack();
 

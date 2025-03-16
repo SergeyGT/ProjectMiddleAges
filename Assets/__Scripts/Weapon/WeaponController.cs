@@ -4,22 +4,12 @@ using UnityEngine;
 
 public abstract class WeaponController : MonoBehaviour
 {
-    [SerializeField] protected GameObject _weapon;
-    [field: SerializeField] public Sprite Icon { get; private set; }
 
-    private WeaponBehaviour _weaponBehaviour;
-    public PlayerMovement PlayerMovement { get; private set; }
-    [field:SerializeField]public string Name { get; private set; }
-    [field: SerializeField]public string Description { get; private set; }
-
-    public int Level {  get; protected set; }
-
+    public WeaponScriptableObject weaponData;
 
     protected virtual void Start()
     {
-        Level = 1;
-        PlayerMovement = FindObjectOfType<PlayerMovement>();
-        _weaponBehaviour = _weapon.GetComponent<WeaponBehaviour>();
+        //weaponData.Level = 1;
     }
 
     public void LevelUpUpgrade()
@@ -29,8 +19,8 @@ public abstract class WeaponController : MonoBehaviour
 
     protected virtual void Upgrade()
     {
-        Level++;
-        if (Level<=2) _weaponBehaviour.Damage *= Level;
+        //weaponData.Level++;
+        //if (weaponData.Level <=2) weaponData.Damage *= weaponData.Level;
     }
 
     protected abstract void Attack();

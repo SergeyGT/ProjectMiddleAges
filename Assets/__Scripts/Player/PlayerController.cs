@@ -1,9 +1,7 @@
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
     [Tooltip("ћаска дл€ всего, во что может целитьс€ игрок")]
@@ -20,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private Camera _cam;
 
     private Vector3 _mousePoint;
-    public Vector3 LastRotationVector {  get; private set; }
+    public Vector3 LastRotationVector { get; private set; }
     public Vector3 MovementVector { get; private set; }
 
     private void Start()
@@ -37,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.GetCurrentGameState()==GameManager.GameState.Gameplay)
+        if (GameManager.Instance.GetCurrentGameState() == GameManager.GameState.Gameplay)
         {
             InputLogic();
             Aim();

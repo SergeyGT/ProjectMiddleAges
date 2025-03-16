@@ -7,7 +7,7 @@ public class ActiveProjectileBehaviour : ProjectileWeaponBehaviour
 {
     protected void Update()
     {
-        transform.position += transform.forward * Time.deltaTime * Speed;
+        transform.position += transform.forward * Time.deltaTime * weaponData.Speed;
     }
 
     protected override void OnTriggerEnter(Collider other)

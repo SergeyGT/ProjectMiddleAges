@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class MeleeWeaponBehaviour : WeaponBehaviour
 {
-    [SerializeField] protected float ANIM_DURATION = 5;
+    public WeaponScriptableObject weaponData;
     public abstract void MakeAttack();
 
     protected override void OnTriggerEnter(Collider other)

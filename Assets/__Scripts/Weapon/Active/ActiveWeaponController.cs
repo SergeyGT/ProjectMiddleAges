@@ -20,6 +20,6 @@ public class ActiveWeaponController : WeaponController
 
     protected override void Attack()
     {
-        PoolManager.SpawnObject(_weapon, transform, PoolManager.PoolType.Projectiles);
+        PoolManager.SpawnObject(weaponData.weapon, transform, PoolManager.PoolType.Projectiles);
     }
 }

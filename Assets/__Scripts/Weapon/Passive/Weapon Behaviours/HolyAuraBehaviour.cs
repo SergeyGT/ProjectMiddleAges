@@ -7,7 +7,7 @@ public class HolyAuraBehaviour : MeleeWeaponBehaviour
 {
     public override void MakeAttack()
     {
-        transform.DORotate(new Vector3(0,360, 0), ANIM_DURATION, RotateMode.LocalAxisAdd)
+        transform.DORotate(new Vector3(0,360, 0), weaponData.Duration, RotateMode.LocalAxisAdd)
             .OnComplete(() => PoolManager.ReturnObjectToPool(gameObject));
     }
     protected override void OnTriggerEnter(Collider other)

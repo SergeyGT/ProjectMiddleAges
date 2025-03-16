@@ -14,7 +14,7 @@ public class ScytheBehaviour : MeleeWeaponBehaviour
     {
         DOTween.Sequence()
             .Append(transform.DORotate(new Vector3(0, 0, 90), INITIAL_ROTATE_DURATION))
-            .Append(transform.DORotate(new Vector3(360, 0, 0), ANIM_DURATION, RotateMode.LocalAxisAdd)
+            .Append(transform.DORotate(new Vector3(360, 0, 0), weaponData.Duration, RotateMode.LocalAxisAdd)
             .SetLoops(_repetings)
             .SetEase(Ease.Linear)
             .OnComplete(() => PoolManager.ReturnObjectToPool(gameObject)));

@@ -7,6 +7,6 @@ public class KnifeController : PassiveWeaponController
     protected override void Attack()
     {
         base.Attack();
-        PoolManager.SpawnObject(_weapon, transform, PoolManager.PoolType.Projectiles);
+        PoolManager.SpawnObject(weaponData.weapon, transform, PoolManager.PoolType.Projectiles);
     }
 }

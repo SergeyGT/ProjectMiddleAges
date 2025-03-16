@@ -12,7 +12,7 @@ public class SwordBehaviour : MeleeWeaponBehaviour
         transform.forward = transform.right;
 
         DOTween.Sequence()
-            .Append(transform.DORotate(transform.up * -180, ANIM_DURATION, RotateMode.LocalAxisAdd))
+            .Append(transform.DORotate(transform.up * -180, weaponData.Duration, RotateMode.LocalAxisAdd))
             .SetLoops(_repetings * 2, LoopType.Yoyo)
             .SetEase(Ease.InCubic)
             .OnComplete(()=> PoolManager.ReturnObjectToPool(gameObject));

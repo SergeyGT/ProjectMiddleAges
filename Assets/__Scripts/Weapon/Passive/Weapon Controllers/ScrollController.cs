@@ -1,16 +1,12 @@
-using System.Threading;
 using UnityEngine;
-using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 public class ScrollController : PassiveWeaponController
 {
 
-    [SerializeField]private float _detectionRadius = 10;
+    [SerializeField]private float DETECTION_RADIUS = 10;
 
-    private int _detectMilisecDelay = 500;
-
-    private CancellationTokenSource _cancellationTokenSource;
+    private int DETECT_MILISEC_DELAY = 500;
 
     [SerializeField] private List<Transform> _detectedEnemies = new List<Transform>();
 
@@ -18,42 +14,14 @@ public class ScrollController : PassiveWeaponController
 
     private bool isAttacking = false;
 
-    private void OnEnable()
-    {
-        _cancellationTokenSource = new CancellationTokenSource();
-    }
-
     protected override void Start()
     {
         base.Start();
-        DetectEnemies(_cancellationTokenSource.Token).Forget();
-    }
-
-    private async UniTaskVoid DetectEnemies(CancellationToken cancellationToken)
-    {
-        try
-        {
-            while (true)
-            {
-                cancellationToken.ThrowIfCancellationRequested(); // проверка, если операция была завершена
-
-                DetectEnemiesInRange();
-                await UniTask.Delay(_detectMilisecDelay, cancellationToken: cancellationToken); // задержка на проверку радиуса
-            }
-        }
-        catch (OperationCanceledException)
-        {
-            Debug.Log("Операция завершена");
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError($"Ошибка: {ex.Message}");
-        }
     }
 
     private void DetectEnemiesInRange()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _detectionRadius);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, DETECTION_RADIUS);
         _detectedEnemies.Clear();
 
         foreach (var hitCollider in hitColliders)
@@ -66,41 +34,38 @@ public class ScrollController : PassiveWeaponController
 
         if (_detectedEnemies.Count > 0 && !isAttacking)
         {
-            AttackEnemies();
+            GetRandomEnemy();
         }
     }
 
 
-    private async void AttackEnemies()
+    private void GetRandomEnemy()
     {
         isAttacking = true;
 
         List<Transform> copyEnemyList = new List<Transform>(_detectedEnemies);
 
-        foreach (Transform enemy in copyEnemyList)
-        {
-            if (enemy == null) continue; // пропуск, если моб умер или пропал
-            try
-            {
-                _enemyTarget = enemy;
-                Attack();
-                await UniTask.Delay((int)(CooldownDuration * 1000)); // задержка между атаками
-            }
-            catch (System.Exception ex)
-            {
-                Debug.LogError($"Ошибка при атаке моба: {ex.Message}");
-            }
-        }
+        Transform randomEnemy;
 
-        isAttacking = false;
+        if (copyEnemyList.Count!=0)
+        {
+            do
+            {
+                randomEnemy = copyEnemyList[UnityEngine.Random.Range(0, copyEnemyList.Count)];
+            } while (randomEnemy == null);
+        }
     }
 
     protected override void Attack()
     {
+        DetectEnemiesInRange();
+
+        GetRandomEnemy();
+
         if (_enemyTarget!=null)
         {
             base.Attack();
-            PoolManager.SpawnObject(_weapon, transform, PoolManager.PoolType.Projectiles)
+            PoolManager.SpawnObject(weaponData.weapon, transform, PoolManager.PoolType.Projectiles)
                 .GetComponent<ScrollBehaviour>()
                 .SetTargetTransform(_enemyTarget);
         }
@@ -110,13 +75,6 @@ public class ScrollController : PassiveWeaponController
     {
         // Визуализация радиуса обнаружения в редакторе
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _detectionRadius);
-    }
-
-
-    private void OnDestroy()
-    {
-        _cancellationTokenSource.Cancel();
-        _cancellationTokenSource.Dispose();
+        Gizmos.DrawWireSphere(transform.position, DETECTION_RADIUS);
     }
 }

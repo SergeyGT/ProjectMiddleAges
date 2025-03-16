@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class ProjectileWeaponBehaviour : WeaponBehaviour
 {
-    [field: SerializeField] public float Speed { get; private set; }
 
-    [SerializeField] private float projectileDuration = 5;
+    public WeaponScriptableObject weaponData;
+
+    //[SerializeField] private float projectileDuration = 5;
 
     private CancellationTokenSource _cancellationTokenSource;
 
@@ -41,7 +42,7 @@ public class ProjectileWeaponBehaviour : WeaponBehaviour
     {
         try
         {
-            await UniTask.Delay((int)(projectileDuration * 1000), cancellationToken: cancellationToken);
+            await UniTask.Delay((int)(weaponData.Duration * 1000), cancellationToken: cancellationToken);
             PoolManager.ReturnObjectToPool(gameObject);
         }
         catch (OperationCanceledException)

@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class PassiveWeaponController : WeaponController
 {
-    [field: SerializeField] public float CooldownDuration { get; private set; }
-
     private float _currentCooldown;
 
     protected override void Start()
     {
         base.Start();
-        _currentCooldown = CooldownDuration; //В начале игры кд дефолтное
+        _currentCooldown = weaponData.CooldownDuration; //В начале игры кд дефолтное
     }
 
 
@@ -27,6 +25,6 @@ public class PassiveWeaponController : WeaponController
 
     protected override void Attack()
     {
-        _currentCooldown = CooldownDuration;
+        _currentCooldown = weaponData.CooldownDuration;
     }
 }

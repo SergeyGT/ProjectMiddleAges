@@ -18,15 +18,15 @@ public class AxeBehaviour : MeleeWeaponBehaviour
     {
         Vector3 fallSpot = new Vector3(Random.Range(-Max_X_Range, Max_X_Range), TOP_Y_VALUE, Random.Range(-max_Z_Range, max_Z_Range));
 
-        float goingUpDuration = ANIM_DURATION * 0.3f;
+        float goingUpDuration = weaponData.Duration * 0.3f;
 
-        float rotationDuration = ANIM_DURATION * 0.1f;
+        float rotationDuration = weaponData.Duration * 0.1f;
         
-        float goingToSpotDuration = ANIM_DURATION * 0.1f;
+        float goingToSpotDuration = weaponData.Duration * 0.1f;
 
-        float intervalDuration = ANIM_DURATION * 0.3f;
+        float intervalDuration = weaponData.Duration * 0.3f;
         
-        float fallDuration = ANIM_DURATION * 0.2f;
+        float fallDuration = weaponData.Duration * 0.2f;
 
         DOTween.Sequence()
             .Append(transform.DOMoveY(TOP_Y_VALUE, goingUpDuration))

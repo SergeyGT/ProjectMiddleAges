@@ -51,9 +51,9 @@ public class InventoryManager : MonoBehaviour
     public void AddWeapon(int slotIndex, WeaponController weapon)
     {
         _weaponSlots[slotIndex] = weapon;
-        _weaponLevels[slotIndex] = weapon.Level;
+        _weaponLevels[slotIndex] = weapon.weaponData.Level;
         _weaponUISlots[slotIndex].enabled = true;
-        _weaponUISlots[slotIndex].sprite = weapon.Icon;
+        _weaponUISlots[slotIndex].sprite = weapon.weaponData.Icon;
 
 
         if (GameManager.Instance!=null && GameManager.Instance.isChoosingUpgrade)
@@ -92,8 +92,8 @@ public class InventoryManager : MonoBehaviour
                     isNewWeapon = false;
                     upgradeOption.upgradeButton.onClick.AddListener(() => LevelUpWeapon(i));
 
-                    upgradeOption.upgradeNameDisplay.text = chosenWeaponUpgrade.WeaponController.Name;
-                    upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponUpgrade.WeaponController.Description;
+                    upgradeOption.upgradeNameDisplay.text = chosenWeaponUpgrade.WeaponController.name;
+                    upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponUpgrade.WeaponController.weaponData.Description;
                 }
             }
 
@@ -101,11 +101,11 @@ public class InventoryManager : MonoBehaviour
             {
                 upgradeOption.upgradeButton.onClick.AddListener( () => _player.SpawnWeapon(chosenWeaponUpgrade.InitialWeapon));
 
-                upgradeOption.upgradeNameDisplay.text = chosenWeaponUpgrade.WeaponController.Name;
-                upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponUpgrade.WeaponController.Description;
+                upgradeOption.upgradeNameDisplay.text = chosenWeaponUpgrade.WeaponController.name;
+                upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponUpgrade.WeaponController.weaponData.Description;
             }
 
-            upgradeOption.upgradeIcon.sprite = chosenWeaponUpgrade.WeaponController.Icon;
+            upgradeOption.upgradeIcon.sprite = chosenWeaponUpgrade.WeaponController.weaponData.Icon;
         }
     }
 
