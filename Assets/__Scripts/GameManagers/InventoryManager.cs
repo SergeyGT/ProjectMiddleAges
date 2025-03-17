@@ -72,7 +72,6 @@ public class InventoryManager : MonoBehaviour
         {
             // Если добавлять пассивки, то рандомом выбирать пассивку или оружие добавляем
 
-            //GameObject chosenWeaponUpgrade = _weaponUpgradeOptions[Random.Range(0, _weaponUpgradeOptions.Count)];
             GameObject chosenWeaponUpgrade = GetRandomUniqueWeapon(addedWeaponOptions);
 
             WeaponController chosenWeaponController = chosenWeaponUpgrade.GetComponent<WeaponController>();
@@ -82,19 +81,14 @@ public class InventoryManager : MonoBehaviour
             if (_weaponSlots.Contains(chosenWeaponController))
             {
                 upgradeOption.upgradeButton.onClick.AddListener(() => LevelUpWeapon(chosenWeaponController));
-
-                upgradeOption.upgradeNameDisplay.text = chosenWeaponController.weaponData.name;
-                upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponController.weaponData.Description;
             }
-
             else
             {
                 upgradeOption.upgradeButton.onClick.AddListener(() => _player.SpawnWeapon(chosenWeaponUpgrade));
-
-                upgradeOption.upgradeNameDisplay.text = chosenWeaponController.weaponData.name;
-                upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponController.weaponData.Description;
             }
 
+            upgradeOption.upgradeNameDisplay.text = chosenWeaponController.weaponData.name;
+            upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponController.weaponData.Description;
             upgradeOption.upgradeIcon.sprite = chosenWeaponController.weaponData.Icon;
 
             addedWeaponOptions.Add(chosenWeaponController);
@@ -107,6 +101,7 @@ public class InventoryManager : MonoBehaviour
         do
         {
             randomUniqueWeapon = _weaponUpgradeOptions[Random.Range(0, _weaponUpgradeOptions.Count)];
+
         }while(lastAddedWeapons.Contains(randomUniqueWeapon.GetComponent<WeaponController>()));
 
         if (randomUniqueWeapon==null)
