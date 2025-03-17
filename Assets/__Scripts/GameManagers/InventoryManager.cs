@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -90,8 +91,8 @@ public class InventoryManager : MonoBehaviour
             {
                 upgradeOption.upgradeButton.onClick.AddListener(() => _player.SpawnWeapon(modifiedWeaponObject));
             }
-
-            upgradeOption.upgradeNameDisplay.text = modifiedWeaponController.weaponData.name;
+            
+            upgradeOption.upgradeNameDisplay.text = $"{modifiedWeaponController.weaponData.name} ({modifiedWeaponController.weaponData.Level+1} Уровень)";
             upgradeOption.upgradeDescriptionDisplay.text = modifiedWeaponController.weaponData.Description;
             upgradeOption.upgradeIcon.sprite = modifiedWeaponController.weaponData.Icon;
 
@@ -104,7 +105,7 @@ public class InventoryManager : MonoBehaviour
         GameObject randomUniqueWeapon;
         do
         {
-            randomUniqueWeapon = weaponColletion[Random.Range(0, weaponColletion.Count)];
+            randomUniqueWeapon = weaponColletion[UnityEngine.Random.Range(0, weaponColletion.Count)];
 
         }while(lastAddedWeapons.Contains(randomUniqueWeapon.GetComponent<WeaponController>()));
 
