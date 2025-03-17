@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,8 +8,6 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    //public List<WeaponController> _allWeapons = new List<WeaponController>(6);
-
     [SerializeField] private List<WeaponController> _weaponSlots;
 
     [SerializeField] private List<Image> _weaponUISlots;
@@ -16,14 +15,6 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private int[] _weaponLevels;
 
     public int WEAPONS_LIMIT { get; private set; } = 4;
-
-
-    [System.Serializable]
-    private class WeaponUpgrade
-    {
-        [field:SerializeField] public GameObject InitialWeapon { get; private set; }
-        [field: SerializeField] public WeaponScriptableObject weaponData { get; private set; }
-    }
 
     [System.Serializable]
     private class UpgradeUI
@@ -35,7 +26,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     [SerializeField]
-    private List<WeaponUpgrade> _weaponUpgradeOptions = new List<WeaponUpgrade>();
+    private List<GameObject> _weaponUpgradeOptions = new List<GameObject>();
 
     [SerializeField]
     private List<UpgradeUI> _uiUpgradeOptions = new List<UpgradeUI>();
@@ -62,57 +53,70 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void LevelUpWeapon(int slotIndex)
+    public void LevelUpWeapon(WeaponController weaponToUpgrade)
     {
-        if (_weaponSlots.Count >= slotIndex)
+
+        weaponToUpgrade.weaponData.LevelUpgrade();
+
+        if (GameManager.Instance != null && GameManager.Instance.isChoosingUpgrade)
         {
-            Debug.Log(_weaponSlots.Count + " " + slotIndex);
-            WeaponController weapon = _weaponSlots[slotIndex];
-
-            weapon.weaponData.LevelUpgrade();
-
-            if (GameManager.Instance != null && GameManager.Instance.isChoosingUpgrade)
-            {
-                GameManager.Instance.EndLevelUp();
-            }
+            GameManager.Instance.EndLevelUp();
         }
     }
 
     private void ApplyUpgradeOptions()
     {
+        List<WeaponController> addedWeaponOptions = new List<WeaponController>();
+
         foreach ( var upgradeOption in _uiUpgradeOptions )
         {
             // Если добавлять пассивки, то рандомом выбирать пассивку или оружие добавляем
 
-            WeaponUpgrade chosenWeaponUpgrade = _weaponUpgradeOptions[Random.Range(0, _weaponUpgradeOptions.Count)];
+            //GameObject chosenWeaponUpgrade = _weaponUpgradeOptions[Random.Range(0, _weaponUpgradeOptions.Count)];
+            GameObject chosenWeaponUpgrade = GetRandomUniqueWeapon(addedWeaponOptions);
 
-            bool isNewWeapon = true;
-            for (int i =0; i< _weaponSlots.Count && isNewWeapon; i++)
+            WeaponController chosenWeaponController = chosenWeaponUpgrade.GetComponent<WeaponController>();
+
+            Debug.Log(chosenWeaponController.weaponData.name);
+
+            if (_weaponSlots.Contains(chosenWeaponController))
             {
-                if (_weaponSlots[i]!=null && _weaponSlots[i].weaponData==chosenWeaponUpgrade.weaponData)
-                {
-                    isNewWeapon = false;
+                upgradeOption.upgradeButton.onClick.AddListener(() => LevelUpWeapon(chosenWeaponController));
 
-                    Debug.Log("LevelUp Listener "  + i);
-                    upgradeOption.upgradeButton.onClick.AddListener(() => LevelUpWeapon(i-1));
-
-                    upgradeOption.upgradeNameDisplay.text = chosenWeaponUpgrade.weaponData.name;
-                    upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponUpgrade.weaponData.Description;
-                }
+                upgradeOption.upgradeNameDisplay.text = chosenWeaponController.weaponData.name;
+                upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponController.weaponData.Description;
             }
 
-            if (isNewWeapon)
+            else
             {
-                Debug.Log("new weapon Listener");
-                upgradeOption.upgradeButton.onClick.AddListener( () => _player.SpawnWeapon(chosenWeaponUpgrade.InitialWeapon));
+                upgradeOption.upgradeButton.onClick.AddListener(() => _player.SpawnWeapon(chosenWeaponUpgrade));
 
-                upgradeOption.upgradeNameDisplay.text = chosenWeaponUpgrade.weaponData.name;
-                upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponUpgrade.weaponData.Description;
+                upgradeOption.upgradeNameDisplay.text = chosenWeaponController.weaponData.name;
+                upgradeOption.upgradeDescriptionDisplay.text = chosenWeaponController.weaponData.Description;
             }
 
-            upgradeOption.upgradeIcon.sprite = chosenWeaponUpgrade.weaponData.Icon;
+            upgradeOption.upgradeIcon.sprite = chosenWeaponController.weaponData.Icon;
+
+            addedWeaponOptions.Add(chosenWeaponController);
         }
     }
+
+    private GameObject GetRandomUniqueWeapon(List<WeaponController> lastAddedWeapons)
+    {
+        GameObject randomUniqueWeapon;
+        do
+        {
+            randomUniqueWeapon = _weaponUpgradeOptions[Random.Range(0, _weaponUpgradeOptions.Count)];
+        }while(lastAddedWeapons.Contains(randomUniqueWeapon.GetComponent<WeaponController>()));
+
+        if (randomUniqueWeapon==null)
+        {
+            Debug.LogError("RANDOM UNIQUE SWEAPON CANT BE NULL!!!!");
+        }
+
+        return randomUniqueWeapon;
+    }
+
 
     private void RemoveUpgradeOptions()
     {
