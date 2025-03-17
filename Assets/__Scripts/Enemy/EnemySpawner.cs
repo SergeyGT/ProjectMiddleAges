@@ -44,8 +44,10 @@ public class EnemySpawner : MonoBehaviour
             _playerDamagable = player.GetComponent<IDamagable>();
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
+
+
 
 
     //HACK: добавить логику генерации врага в класс, управляющий игрой
