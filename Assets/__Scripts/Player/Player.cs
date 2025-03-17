@@ -115,7 +115,7 @@ public class Player : MonoBehaviour, IDamagable
         }
 
         weapon.SetActive(true);
-        _inventory.AddWeapon(_weaponIndex, weapon.GetComponent<WeaponController>());
+        _inventory.AddWeapon(_weaponIndex, weapon);
         _weaponIndex++;
     }
 }
