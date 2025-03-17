@@ -7,7 +7,8 @@ public class ActiveWeaponController : WeaponController
 {
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (GameManager.Instance.GetCurrentGameState() == GameManager.GameState.Gameplay
+            && Input.GetMouseButtonDown(0))
         {
             Attack();
         }
