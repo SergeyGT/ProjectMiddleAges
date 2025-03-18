@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -51,7 +52,7 @@ public class Level : MonoBehaviour
     private void Start()
     {
         _wave = GetComponent<Wave>();
-        StartSpawning();
+        StartCoroutine(CoolDownSpawn());
     }
 
     public void LevelUp()
@@ -69,6 +70,12 @@ public class Level : MonoBehaviour
             print("Spawn");
             SpawnEnemy(enemy.Key, enemy.Value);
         }
+    }
+
+    private IEnumerator CoolDownSpawn()
+    {
+        yield return new WaitForSeconds(5f);
+        StartSpawning();
     }
 
     /// <summary>
