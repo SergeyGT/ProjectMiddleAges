@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -66,12 +65,6 @@ public class EnemySpawner : MonoBehaviour
     }
 
 
-
-
-    //HACK: добавить логику генерации врага в класс, управляющий игрой
-
-        DontDestroyOnLoad(gameObject);
-    }
 
     static public void SetEnemy(string enemyType, int countEnemies)
     {
