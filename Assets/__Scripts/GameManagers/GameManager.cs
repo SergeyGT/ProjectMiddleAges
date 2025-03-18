@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //Пока без переключения треков
-        //SoundManager.Instance.PlayMusic(_audioClipList[0]);
+        SoundManager.Instance.PlayMusic(_audioClipList[0]);
     }
 
     private void Update()
