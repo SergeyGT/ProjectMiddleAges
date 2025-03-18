@@ -10,6 +10,7 @@ public class Player : MonoBehaviour, IDamagable
     [Range(1,100)][SerializeField] private int _percentageUpgradeHp;
 
     private int _currentHp;
+    private Animator _animator;
 
     // Свойство для вывод статистики
     public int CurrentHp
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour, IDamagable
     {
         CurrentHp = _maxHp;
         OnHealthChanged?.Invoke(CurrentHp, _maxHp);
+        _animator = GetComponent<Animator>();
     }
 
     public void TakeDamage(int damage)
@@ -53,6 +55,13 @@ public class Player : MonoBehaviour, IDamagable
             GameManager.Instance.AssignLevelReachedUI(Level.L.numL);
             GameManager.Instance.GameOver();
         }
+        Destroy(this.gameObject);
+    }
+
+    protected IEnumerator DelayDeath()
+    {
+        _animator.SetBool("Death", true);
+        yield return new WaitForSeconds(3f);
         Destroy(this.gameObject);
     }
 
