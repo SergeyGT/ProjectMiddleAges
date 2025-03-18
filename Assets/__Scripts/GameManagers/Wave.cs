@@ -14,7 +14,7 @@ public class Wave : MonoBehaviour
         {
             { "Skeleton", Mathf.RoundToInt(_skeleton.Evaluate(currentLevel)) },
             { "Shooter", Mathf.RoundToInt(_shooter.Evaluate(currentLevel)) },
-            { "Orc", Mathf.RoundToInt(_orc.Evaluate(currentLevel)) }
+            { "orc", Mathf.RoundToInt(_orc.Evaluate(currentLevel)) }
         };
     }
 }
