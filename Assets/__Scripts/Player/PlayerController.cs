@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Маска для всего, во что может целиться игрок")]
     [SerializeField] private LayerMask _groundMask;
 
+    [Tooltip("Задает transform.forward контроллеру активки")]
     [SerializeField] private Transform _activeShootAim;
 
     [SerializeField] public float _speed = 0.3f;
