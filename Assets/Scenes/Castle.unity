@@ -7217,6 +7217,8 @@ MonoBehaviour:
   _rangeXPos: {x: -3, y: 17}
   _rangeYPos: {x: 2, y: 3}
   _rangeZPos: {x: 0, y: 25}
+  _spawnRadius: 1
+  _maxAttempts: 5
 --- !u!4 &1297301066
 Transform:
   m_ObjectHideFlags: 0
@@ -9659,6 +9661,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d2c71e47864514d946eb0fdc71bbbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioClip: {fileID: 0}
+  rotationSpeed: 10
 --- !u!82 &1640380782
 AudioSource:
   m_ObjectHideFlags: 0
