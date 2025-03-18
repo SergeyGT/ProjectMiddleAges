@@ -17,7 +17,7 @@ MonoBehaviour:
   _cooldownDuration: 15
   _speed: 5
   _duration: 5
-  _level: 1
+  _level: 0
   _repetings: 1
   <Icon>k__BackingField: {fileID: 21300000, guid: a3f126afb65f4954384c287d014f1cb2, type: 3}
   <Name>k__BackingField: "\u041C\u0435\u0447"

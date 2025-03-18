@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: bea7bc8ed10a1ae4584247efb221ec3a, type: 2}
-  Max_X_Range: 10
-  max_Z_Range: 10
+  Max_X_Range: 5
+  max_Z_Range: 5
   TOP_Y_VALUE: 20
 --- !u!64 &6824012982061788194
 MeshCollider:
