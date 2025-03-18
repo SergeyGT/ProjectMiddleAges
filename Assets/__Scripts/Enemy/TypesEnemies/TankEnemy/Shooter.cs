@@ -6,7 +6,7 @@ public class Shooter : TankEnemy
     
     [SerializeField] private int _shooterRadiusAttack;
 
-    private bool isWalk = false;
+    private bool _isAttackRadius = false;
 
     private float _distanceBetweenPlayer;
     protected override void Awake()
@@ -28,16 +28,11 @@ public class Shooter : TankEnemy
 
         if (_distanceBetweenPlayer > _shooterRadiusAttack)
         {
-            isWalk = true;
+            _isAttackRadius = false;
             base.Move();
-            base._agent.isStopped = false;
+            base._agent.speed = base._speedMove;
         }
-        else
-        {            
-            isWalk = false;
-            base._agent.isStopped = true;
-            Attack();
-        }
+        else _isAttackRadius = true;
     }
 
 
@@ -45,6 +40,7 @@ public class Shooter : TankEnemy
     {
         if (base._playerIDamagable != null && !base.isAttacking && _agent.isStopped)
         {
+            base._agent.speed = 0;
             base.Attack();
             _animator.SetBool("Walk", false);
             _animator.SetBool("Attack", true);
@@ -58,6 +54,10 @@ public class Shooter : TankEnemy
     private void FixedUpdate()
     {
         Move();
+        if (_isAttackRadius) 
+        { 
+            Attack();
+        }
     }
 
     protected override void FallDrop()
