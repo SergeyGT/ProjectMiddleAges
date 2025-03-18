@@ -39,29 +39,34 @@ public class ScrollController : PassiveWeaponController
     }
 
 
-    private void GetRandomEnemy()
+    private Transform GetRandomEnemy()
     {
         isAttacking = true;
 
         List<Transform> copyEnemyList = new List<Transform>(_detectedEnemies);
 
-        Transform randomEnemy;
 
         if (copyEnemyList.Count!=0)
         {
+            Transform randomEnemy;
+            
             do
             {
                 randomEnemy = copyEnemyList[UnityEngine.Random.Range(0, copyEnemyList.Count)];
             } while (randomEnemy == null);
+            
+            return randomEnemy;
         }
+        return null;
     }
 
     protected override void Attack()
     {
         DetectEnemiesInRange();
 
-        GetRandomEnemy();
+        _enemyTarget = GetRandomEnemy();
 
+        Debug.Log("Attack!!!!   " + _enemyTarget);
         if (_enemyTarget!=null)
         {
             base.Attack();

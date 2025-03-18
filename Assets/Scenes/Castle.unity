@@ -18154,7 +18154,7 @@ PrefabInstance:
     - target: {fileID: 3828877970640562796, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _activeWeapon
       value: 
-      objectReference: {fileID: 621208451}
+      objectReference: {fileID: 1274008416}
     - target: {fileID: 3828877970640562796, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _percentageUpgradeHp
       value: 1

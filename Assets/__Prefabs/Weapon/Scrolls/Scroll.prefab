@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: d07e3c8b1cdb5604a88ccb3b9a4c13a3, type: 2}
+  ATTACK_HIGH_OFFSET: 1
 --- !u!65 &4239132960567156485
 BoxCollider:
   m_ObjectHideFlags: 0

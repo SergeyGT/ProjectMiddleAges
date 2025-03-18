@@ -5,22 +5,12 @@ using UnityEngine;
 
 public class ScrollBehaviour : ProjectileWeaponBehaviour
 {
+    
+    [SerializeField]private float ATTACK_HIGH_OFFSET = 0.75f;
 
     private ScrollController _scrollController;
 
     private Transform _targetTransform;
-
-    private void OnEnable()
-    {
-        _scrollController = FindObjectOfType<ScrollController>();
-    }
-
-    private void Update()
-    {
-        if (_targetTransform == null) PoolManager.ReturnObjectToPool(gameObject);
-        else transform.position = Vector3.MoveTowards(transform.position, _targetTransform.position, weaponData.Speed * Time.deltaTime);
-    }
-
 
     public void SetTargetTransform(Transform target)
     {
@@ -30,6 +20,18 @@ public class ScrollBehaviour : ProjectileWeaponBehaviour
         }
     }
 
+
+    private void Update()
+    {
+        if (_targetTransform == null) PoolManager.ReturnObjectToPool(gameObject);
+        else
+        {
+            Vector3 targetPosition = new Vector3(_targetTransform.position.x, _targetTransform.position.y + ATTACK_HIGH_OFFSET, _targetTransform.position.z);
+
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, weaponData.Speed * Time.deltaTime);
+            Debug.Log($"ATTACK_HIGH_OFFSET {ATTACK_HIGH_OFFSET}\nTarget position " + targetPosition);
+        }
+    }
 
     protected override void OnTriggerEnter(Collider other)
     {
