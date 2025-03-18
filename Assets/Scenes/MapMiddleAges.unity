@@ -21011,6 +21011,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   levelText: {fileID: 1622424829}
   fill: {fileID: 1606873134}
+  _levelUpAudio: {fileID: 8300000, guid: eabf5cbe24c3cdf4581acdb592664586, type: 3}
 --- !u!1 &1174644674
 GameObject:
   m_ObjectHideFlags: 0
@@ -45848,6 +45849,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1481544306742155273, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: _step
+      value: 
+      objectReference: {fileID: 8300000, guid: 2fb7ab8195b3a90449e4f5903891c762, type: 3}
+    - target: {fileID: 1481544306742155273, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _speed
       value: 50
       objectReference: {fileID: 0}
@@ -45876,6 +45881,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3828877970640562796, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: _hit
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c0dc1c323ba87046be18fd9d589c7c6, type: 3}
+    - target: {fileID: 3828877970640562796, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _maxHp
       value: 100
       objectReference: {fileID: 0}
@@ -45885,7 +45894,7 @@ PrefabInstance:
       objectReference: {fileID: 679234633}
     - target: {fileID: 3828877970640562796, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _percentageUpgradeHp
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3829020531716391293, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_IsActive
