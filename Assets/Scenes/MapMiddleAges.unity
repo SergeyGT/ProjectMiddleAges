@@ -20955,8 +20955,8 @@ RectTransform:
   m_Children:
   - {fileID: 1041021622}
   - {fileID: 1127685590}
-  - {fileID: 1606873133}
   - {fileID: 517229772}
+  - {fileID: 1606873133}
   m_Father: {fileID: 1260278055}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -45790,6 +45790,10 @@ PrefabInstance:
     - target: {fileID: 3366364585479063543, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3828877970640562796, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: _maxHp
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3828877970640562796, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _activeWeapon
