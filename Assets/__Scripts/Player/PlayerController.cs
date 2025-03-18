@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rb;
     private Camera _cam;
-
+    private Animator _animator;
     private Vector3 _mousePoint;
     public Vector3 LastRotationVector { get; private set; }
     public Vector3 MovementVector { get; private set; }
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         _pricel.SetActive(true);
 
         _rb = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
         _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         _cam = Camera.main;
@@ -43,7 +44,12 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        MoveLogic();
+        if (MovementVector != Vector3.zero) MoveLogic();
+        else
+        {
+            _animator.SetBool("Walk", false);
+            _animator.SetBool("Idle", true);
+        }
     }
 
 
@@ -86,6 +92,8 @@ public class PlayerController : MonoBehaviour
 
     private void MoveLogic()
     {
+        _animator.SetBool("Idle", false);
+        _animator.SetBool("Walk", true);
         _rb.AddForce(MovementVector * _speed);
     }
 
