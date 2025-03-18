@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 1098542053540645812, guid: 7fca1e734cf790b43b72987eb81858b6, type: 3}
   _damage: 50
-  _cooldownDuration: 2
+  _cooldownDuration: 20
   _speed: 5
   _duration: 6
   _level: 0
