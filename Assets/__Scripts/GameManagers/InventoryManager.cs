@@ -46,8 +46,8 @@ public class InventoryManager : MonoBehaviour
 
         _weaponLevels[slotIndex] = weaponController.weaponData.Level;
 
-        _weaponUISlots[slotIndex].enabled = true;
         _weaponUISlots[slotIndex].sprite = weaponController.weaponData.Icon;
+        _weaponUISlots[slotIndex].enabled = true;
 
 
         if (GameManager.Instance!=null && GameManager.Instance.isChoosingUpgrade)
@@ -130,6 +130,11 @@ public class InventoryManager : MonoBehaviour
     {
         RemoveUpgradeOptions();
         ApplyUpgradeOptions();
+    }
+
+    public List<Image> GetCurrentWeaponUISlots()
+    {
+        return _weaponUISlots;
     }
 
 }

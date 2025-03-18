@@ -72,6 +72,7 @@ public class Player : MonoBehaviour, IDamagable
         if (!GameManager.Instance.IsGameOver)
         {
             GameManager.Instance.AssignLevelReachedUI(Level.L.numL);
+            GameManager.Instance.AssignChosenWeaponsToUI(_inventory.GetCurrentWeaponUISlots());
             GameManager.Instance.GameOver();
         }
         Destroy(this.gameObject);

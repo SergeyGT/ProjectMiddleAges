@@ -226,4 +226,28 @@ public class GameManager : MonoBehaviour
         _levelUpScreen.SetActive(false);
         ChangeState(GameState.Gameplay);
     }
+
+    public void AssignChosenWeaponsToUI(List<Image> chosenWeapons)
+    {
+
+        if (chosenWeaponsDisplay.Count != chosenWeapons.Count)
+        {
+            Debug.Log("UI weapon list is not equal to paramter list");
+            return;
+        }
+
+        for (int i = 0; i < chosenWeaponsDisplay.Count; i++)
+        {
+            if (chosenWeapons[i].sprite)
+            {
+                chosenWeaponsDisplay[i].enabled = true;
+                chosenWeaponsDisplay[i].sprite = chosenWeapons[i].sprite;
+            }
+            else //optional
+            {
+                chosenWeaponsDisplay[i].enabled = false;    
+            }
+        }
+
+    }
 }
