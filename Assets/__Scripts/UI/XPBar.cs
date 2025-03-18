@@ -23,6 +23,9 @@ public class XPBar : MonoBehaviour
     private Diamonds _diamond;
     private List<Diamonds> diamondsList = new List<Diamonds>();
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip _levelUpAudio;
+
     public static Action MaxLevel;
 
     private void Start()
@@ -82,6 +85,7 @@ public class XPBar : MonoBehaviour
                 }
                 else
                 {
+                    SoundManager.Instance.PlaySound(_levelUpAudio);
                     Level.L.numL++;
                     currentLevel++;
                     UpdateLevel();

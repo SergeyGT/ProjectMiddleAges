@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject _pricel;
 
+    [SerializeField] private AudioClip _step;
+
+    private AudioSource _source;
+
 
     private Rigidbody _rb;
     private Camera _cam;
@@ -28,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
         _rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
+        _source = GetComponent<AudioSource>();
+
         _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         _cam = Camera.main;
@@ -48,6 +54,7 @@ public class PlayerController : MonoBehaviour
         if (MovementVector != Vector3.zero) MoveLogic();
         else
         {
+            StopAudioPLaying(_step);
             _animator.SetBool("Walk", false);
             _animator.SetBool("Idle", true);
         }
@@ -95,8 +102,18 @@ public class PlayerController : MonoBehaviour
     {
         _animator.SetBool("Idle", false);
         _animator.SetBool("Walk", true);
+        if (!_source.isPlaying)
+        {
+            SoundManager.Instance.PlayLocalSound(_source, _step);
+        }
         _rb.AddForce(MovementVector * _speed);
     }
 
-
+    private void StopAudioPLaying(AudioClip clip)
+    {
+        if (_source.isPlaying && _source.clip == clip)
+        {
+            _source.Stop();
+        }
+    }
 }

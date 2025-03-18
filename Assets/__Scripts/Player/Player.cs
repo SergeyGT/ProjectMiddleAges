@@ -12,6 +12,9 @@ public class Player : MonoBehaviour, IDamagable
     [Range(1,100)][SerializeField] private int _percentageUpgradeHp;
 
     [SerializeField] private GameObject _activeWeapon;
+    [SerializeField] private AudioClip _hit;
+
+    private AudioSource _source;
 
     private InventoryManager _inventory;
     private int _weaponIndex;
@@ -54,11 +57,13 @@ public class Player : MonoBehaviour, IDamagable
         SpawnWeapon(_activeWeapon);
 
         _animator = GetComponent<Animator>();
+        _source = GetComponent<AudioSource>();
 
     }
 
     public void TakeDamage(int damage)
     {
+        SoundHitActivate();
         CurrentHp = Mathf.Max(0, CurrentHp - damage);
         OnHealthChanged?.Invoke(CurrentHp, _maxHp);
         if (CurrentHp == 0)
@@ -67,6 +72,13 @@ public class Player : MonoBehaviour, IDamagable
         }
     }
 
+    private void SoundHitActivate()
+    {
+        if(!_source.isPlaying)
+        {
+            SoundManager.Instance.PlayLocalSound(_source, _hit);
+        }
+    }
     private void Kill()
     {
         if (!GameManager.Instance.IsGameOver)
@@ -116,6 +128,7 @@ public class Player : MonoBehaviour, IDamagable
     private void ChangeMaxHp()
     {
         CurrentHp += CurrentHp * _percentageUpgradeHp / 100;
+        print(CurrentHp);
         OnHealthChanged?.Invoke(Mathf.RoundToInt(CurrentHp), _maxHp);
     }
 
