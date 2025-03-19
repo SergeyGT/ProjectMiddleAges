@@ -69,11 +69,9 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        MovementVector = new Vector3(horizontalInput, 0.0f, verticalInput).normalized;
+        MovementVector = new Vector3(horizontalInput, 0.0f, verticalInput);
 
-        transform.rotation = Quaternion.LookRotation(MovementVector);
-
-        LastRotationVector = transform.forward;
+        LastRotationVector = transform.rotation.eulerAngles;
     }
 
     private void Aim()
@@ -83,13 +81,6 @@ public class PlayerController : MonoBehaviour
             var direction = _mousePoint - transform.position;
 
             _activeShootAim.forward = direction;
-
-
-            direction.y = 0;
-
-            //transform.forward = direction.normalized;
-
-            //LastRotationVector = transform.forward;
         }
     }
 
@@ -107,14 +98,31 @@ public class PlayerController : MonoBehaviour
 
     private void MoveLogic()
     {
-        _animator.SetBool("Idle", false);
-        _animator.SetBool("Walk", true);
-        if (!_source.isPlaying)
+        if (MovementVector != Vector3.zero)
         {
-            SoundManager.Instance.PlayLocalSound(_source, _step);
+            _animator.SetBool("Idle", false);
+            _animator.SetBool("Walk", true);
+
+            if (!_source.isPlaying)
+            {
+                SoundManager.Instance.PlayLocalSound(_source, _step);
+            }
+
+            // Поворот в направление движения
+            Quaternion targetRotation = Quaternion.LookRotation(MovementVector);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 10f);
+
+            // Движение
+            Vector3 moveDelta = MovementVector.normalized * _speed * Time.fixedDeltaTime;
+            _rb.MovePosition(_rb.position + moveDelta);
         }
-        //_partilceDust.Play();
-        _rb.AddForce(MovementVector * _speed);
+        else
+        {
+            StopAudioPLaying(_step);
+            //_partilceDust.Stop();
+            _animator.SetBool("Walk", false);
+            _animator.SetBool("Idle", true);
+        }
     }
 
     private void StopAudioPLaying(AudioClip clip)

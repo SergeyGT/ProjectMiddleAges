@@ -50708,7 +50708,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 2fb7ab8195b3a90449e4f5903891c762, type: 3}
     - target: {fileID: 1481544306742155273, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _speed
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1481544306742155273, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _pricel
