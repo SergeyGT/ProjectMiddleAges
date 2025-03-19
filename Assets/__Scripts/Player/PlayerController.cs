@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Задает transform.forward контроллеру активки")]
     [SerializeField] private Transform _activeShootAim;
 
-    [SerializeField] public float _speed = 0.3f;
+    [SerializeField] public float _speed = 12f;
 
     [SerializeField] private GameObject _pricel;
 
