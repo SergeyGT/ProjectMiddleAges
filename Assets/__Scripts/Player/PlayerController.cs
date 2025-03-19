@@ -6,8 +6,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private Transform _activeShootAim;
     [SerializeField] public float _speed = 12f;
+
     [SerializeField] private float _rotationSpeed = 10f;
     [SerializeField] private GameObject _pricel;
+
     [SerializeField] private AudioClip _step;
 
     private Rigidbody _rb;
@@ -19,8 +21,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _pricel.SetActive(true);
-
         _rb = GetComponent<Rigidbody>();
         _rb.interpolation = RigidbodyInterpolation.Interpolate;
         _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, _groundMask))
         {
             _mousePoint = hitInfo.point;
-            _pricel.transform.position = _mousePoint;
             return true;
         }
         return false;
