@@ -3,31 +3,44 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private LayerMask _groundMask;
-    [SerializeField] private Transform _activeShootAim;
-    [SerializeField] public float _speed = 12f;
 
-    [SerializeField] private float _rotationSpeed = 10f;
+    [Tooltip("Маска для всего, во что может целиться игрок")]
+    [SerializeField] private LayerMask _groundMask;
+
+    [Tooltip("Задает transform.forward контроллеру активки")]
+    [SerializeField] private Transform _activeShootAim;
+
+    [SerializeField] public float _speed = 0.3f;
+
     [SerializeField] private GameObject _pricel;
 
     [SerializeField] private AudioClip _step;
 
+    private ParticleSystem _partilceDust;
+    private AudioSource _source;
+
+
     private Rigidbody _rb;
     private Camera _cam;
     private Animator _animator;
-    private AudioSource _source;
     private Vector3 _mousePoint;
-    private Vector3 _movementVector;
+    public Vector3 LastRotationVector { get; private set; }
+    public Vector3 MovementVector { get; private set; }
 
     private void Start()
     {
+        _pricel.SetActive(true);
+
         _rb = GetComponent<Rigidbody>();
-        _rb.interpolation = RigidbodyInterpolation.Interpolate;
+        _animator = GetComponent<Animator>();
+        _source = GetComponent<AudioSource>();
+        //_partilceDust = GetComponentInChildren<ParticleSystem>();
+
         _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         _cam = Camera.main;
-        _animator = GetComponent<Animator>();
-        _source = GetComponent<AudioSource>();
+
+        LastRotationVector = transform.forward;
     }
 
     private void Update()
@@ -36,33 +49,27 @@ public class PlayerController : MonoBehaviour
         {
             InputLogic();
             Aim();
-            MoveLogic();
         }
-
-        if (_movementVector != Vector3.zero)
-        {
-            _animator.SetBool("Idle", false);
-            _animator.SetBool("Walk", true);
-
-            if (!_source.isPlaying)
-            {
-                SoundManager.Instance.PlayLocalSound(_source, _step);
-            }
-        }
+    }
+    private void FixedUpdate()
+    {
+        if (MovementVector != Vector3.zero) MoveLogic();
         else
         {
-            StopAudioPlaying(_step);
+            StopAudioPLaying(_step);
+            //_partilceDust.Stop();
             _animator.SetBool("Walk", false);
             _animator.SetBool("Idle", true);
         }
     }
+
 
     private void InputLogic()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        _movementVector = new Vector3(horizontalInput, 0.0f, verticalInput).normalized;
+        MovementVector = new Vector3(horizontalInput, 0.0f, verticalInput).normalized;
     }
 
     private void Aim()
@@ -70,8 +77,15 @@ public class PlayerController : MonoBehaviour
         if (GetMousePosition())
         {
             var direction = _mousePoint - transform.position;
-            direction.y = 0;
+
             _activeShootAim.forward = direction;
+
+
+            direction.y = 0;
+
+            transform.forward = direction.normalized;
+
+            LastRotationVector = transform.forward;
         }
     }
 
@@ -81,6 +95,7 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, _groundMask))
         {
             _mousePoint = hitInfo.point;
+            _pricel.transform.position = _mousePoint;
             return true;
         }
         return false;
@@ -88,17 +103,17 @@ public class PlayerController : MonoBehaviour
 
     private void MoveLogic()
     {
-        if (_movementVector != Vector3.zero)
+        _animator.SetBool("Idle", false);
+        _animator.SetBool("Walk", true);
+        if (!_source.isPlaying)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(_movementVector);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
-
-            Vector3 moveDelta = _movementVector * _speed * Time.deltaTime;
-            _rb.MovePosition(transform.position + moveDelta);
+            SoundManager.Instance.PlayLocalSound(_source, _step);
         }
+        //_partilceDust.Play();
+        _rb.AddForce(MovementVector * _speed);
     }
 
-    private void StopAudioPlaying(AudioClip clip)
+    private void StopAudioPLaying(AudioClip clip)
     {
         if (_source.isPlaying && _source.clip == clip)
         {
