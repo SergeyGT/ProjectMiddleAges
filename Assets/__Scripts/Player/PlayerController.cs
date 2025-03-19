@@ -12,8 +12,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] public float _speed = 12f;
 
-    [SerializeField] private GameObject _pricel;
-
     [SerializeField] private AudioClip _step;
 
     private ParticleSystem _partilceDust;
@@ -29,8 +27,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _pricel.SetActive(true);
-
         _rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
         _source = GetComponent<AudioSource>();
@@ -90,7 +86,6 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, _groundMask))
         {
             _mousePoint = hitInfo.point;
-            _pricel.transform.position = _mousePoint;
             return true;
         }
         return false;
