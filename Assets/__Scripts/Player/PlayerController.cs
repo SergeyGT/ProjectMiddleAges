@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
         _source = GetComponent<AudioSource>();
-        _partilceDust = GetComponentInChildren<ParticleSystem>();
+        //_partilceDust = GetComponentInChildren<ParticleSystem>();
 
         _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             StopAudioPLaying(_step);
-            _partilceDust.Stop();
+            //_partilceDust.Stop();
             _animator.SetBool("Walk", false);
             _animator.SetBool("Idle", true);
         }
@@ -70,6 +70,10 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         MovementVector = new Vector3(horizontalInput, 0.0f, verticalInput).normalized;
+
+        transform.rotation = Quaternion.LookRotation(MovementVector);
+
+        LastRotationVector = transform.forward;
     }
 
     private void Aim()
@@ -83,9 +87,9 @@ public class PlayerController : MonoBehaviour
 
             direction.y = 0;
 
-            transform.forward = direction.normalized;
+            //transform.forward = direction.normalized;
 
-            LastRotationVector = transform.forward;
+            //LastRotationVector = transform.forward;
         }
     }
 
@@ -109,7 +113,7 @@ public class PlayerController : MonoBehaviour
         {
             SoundManager.Instance.PlayLocalSound(_source, _step);
         }
-        _partilceDust.Play();
+        //_partilceDust.Play();
         _rb.AddForce(MovementVector * _speed);
     }
 

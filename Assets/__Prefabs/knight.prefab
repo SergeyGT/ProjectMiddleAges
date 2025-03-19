@@ -268,8 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44144924bf365cf4586b956e5a1bdfc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 1037715513984232, guid: 259746fbc59909b4eb14377c46a80363, type: 3}
-  <CooldownDuration>k__BackingField: 3
+  weaponData: {fileID: 0}
 --- !u!1 &1184802010340056972
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +442,7 @@ GameObject:
   - component: {fileID: 1481544306742155273}
   - component: {fileID: 3828877970640562796}
   - component: {fileID: 629374497872245707}
+  - component: {fileID: 8061069840733001871}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Player
@@ -560,7 +560,10 @@ MonoBehaviour:
   _groundMask:
     serializedVersion: 2
     m_Bits: 8
+  _activeShootAim: {fileID: 0}
   _speed: 20
+  _pricel: {fileID: 0}
+  _step: {fileID: 0}
 --- !u!114 &3828877970640562796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,6 +577,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHp: 1000
+  _percentageUpgradeHp: 1
+  _activeWeapon: {fileID: 0}
+  _hit: {fileID: 0}
 --- !u!195 &629374497872245707
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -596,6 +602,23 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8061069840733001871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3233385969688005693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd653784559e01743a7166df013f8109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponSlots: []
+  _weaponUISlots: []
+  _weaponLevels: 
+  _weaponUpgradeOptions: []
+  _uiUpgradeOptions: []
 --- !u!1 &3375390437262567083
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +724,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1588537553890543021}
   - component: {fileID: 739035327230825834}
-  - component: {fileID: 2755155000436621671}
   - component: {fileID: 1785750028375515590}
   m_Layer: 0
   m_Name: MagicScroll Controller
@@ -737,30 +759,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a3d291790050f499e65da9b3c04572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 735418425677371570, guid: e33094c1c36d6bb40abad90bf3aac4a0, type: 3}
-  <CooldownDuration>k__BackingField: 3
---- !u!64 &2755155000436621671
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3829020531716391293}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  weaponData: {fileID: 0}
+  DETECTION_RADIUS: 10
+  _detectedEnemies: []
 --- !u!33 &1785750028375515590
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1057,8 +1058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f68db2278fba24db3a0c548ba1399d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 1262024422686863543, guid: ec874a530099f0949ab1563ba7f47c5f, type: 3}
-  <CooldownDuration>k__BackingField: 3
+  weaponData: {fileID: 0}
 --- !u!1 &6141896826022389905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,7 +1169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2c70253e045484b82da0707f6279e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 4215178691555361600, guid: 9e5e098eff8f30240976e51229a2b5d8, type: 3}
+  weaponData: {fileID: 0}
 --- !u!1 &6589443266727739819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,8 +1278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e105264998ab8b84dafb23737b10441c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 1098542053540645812, guid: 7fca1e734cf790b43b72987eb81858b6, type: 3}
-  <CooldownDuration>k__BackingField: 4
+  weaponData: {fileID: 0}
 --- !u!1 &7646125085146495097
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,8 +1419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f004e8d236c6a4db37a8a247f746f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 1845237839428460, guid: ab8ac2017bc4c9e40b484324e5ee20e7, type: 3}
-  <CooldownDuration>k__BackingField: 5
+  weaponData: {fileID: 0}
 --- !u!1 &8347875449922778188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,8 +1560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf7a2c3899f26f41a805370cc824811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: {fileID: 1381989502469514, guid: d2959226abee63e42afe64c17736919a, type: 3}
-  <CooldownDuration>k__BackingField: 3
+  weaponData: {fileID: 0}
 --- !u!1 &9073615394597115205
 GameObject:
   m_ObjectHideFlags: 0

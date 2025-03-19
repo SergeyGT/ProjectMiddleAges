@@ -20,17 +20,17 @@ public class Shooter : TankEnemy
 
         _distanceBetweenPlayer = (transform.position - _playerPosition.position).magnitude;
 
-        if (!base._agent.enabled || !base._agent.isOnNavMesh)
+        if (!base._agent.isOnNavMesh)
         {
-            Debug.LogWarning("NavMeshAgent отключен или не на NavMesh!");
+            Debug.LogWarning("NavMeshAgent не на NavMesh!");
             return;
         }
 
         if (_distanceBetweenPlayer > _shooterRadiusAttack)
         {
             _isAttackRadius = false;
-            base.Move();
             base._agent.speed = base._speedMove;
+            base.Move();
         }
         else _isAttackRadius = true;
     }
@@ -38,7 +38,7 @@ public class Shooter : TankEnemy
 
     protected override void Attack()
     {
-        if (base._playerIDamagable != null && !base.isAttacking && _agent.isStopped)
+        if (base._playerIDamagable != null && !base.isAttacking)
         {
             base._agent.speed = 0;
             base.Attack();
@@ -46,7 +46,7 @@ public class Shooter : TankEnemy
             _animator.SetBool("Attack", true);
             print("Shooter Attack");
             base._playerIDamagable.TakeDamage(_damage);
-            StartCoroutine(base.DelayAttack(_speedAttack));
+            StartCoroutine(base.DelayAttack(_speedAttack));     
         }
     }
     

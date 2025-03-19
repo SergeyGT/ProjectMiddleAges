@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
     public bool IsGamePaused { get; private set; }
     public bool isChoosingUpgrade {  get; private set; }
 
+
+    private int _gameLevel = 0;
+
+
     //Состояния игры
     public enum GameState
     {
@@ -94,10 +98,18 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case GameState.LevelUp:
+
+                if (_gameLevel==20)
+                {
+                    GameOver();
+                }
+
+
                 if (!isChoosingUpgrade)
                 {
                     isChoosingUpgrade=true;
                     Time.timeScale = 0f;
+                    _gameLevel++;
                     _levelUpScreen.SetActive(true);
                 }
                 break;

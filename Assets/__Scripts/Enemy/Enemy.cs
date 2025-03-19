@@ -34,6 +34,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
+        _agent.enabled = true;
     }
 
     public void Init(Transform playerTransform, IDamagable playerDamagable)
@@ -60,11 +61,14 @@ public abstract class Enemy : MonoBehaviour, IDamagable
             }
             _animator.SetBool("Attack", false);
             _animator.SetBool("Walk", true);
+            if (_agent.isStopped)
+            {
+                _agent.isStopped = false;
+            }
             _agent.SetDestination(_playerPosition.position);
         } else
         {
             _animator.SetBool("Walk", false);
-            _agent.isStopped = true;
         }
     }
 
