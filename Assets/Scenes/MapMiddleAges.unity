@@ -16787,7 +16787,7 @@ GameObject:
   - component: {fileID: 705323562}
   - component: {fileID: 705323564}
   - component: {fileID: 705323563}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ruins_1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34730,6 +34730,10 @@ PrefabInstance:
       value: castle (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f676d190f8126564ba90e3469d3ac1f8, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f676d190f8126564ba90e3469d3ac1f8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -37615,7 +37619,7 @@ GameObject:
   - component: {fileID: 1787952643}
   - component: {fileID: 1787952645}
   - component: {fileID: 1787952644}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ruins_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46922,6 +46926,10 @@ PrefabInstance:
       value: castle
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f676d190f8126564ba90e3469d3ac1f8, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f676d190f8126564ba90e3469d3ac1f8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -50835,10 +50843,10 @@ PrefabInstance:
     - target: {fileID: 1481544306742155273, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _step
       value: 
-      objectReference: {fileID: 8300000, guid: 2fb7ab8195b3a90449e4f5903891c762, type: 3}
+      objectReference: {fileID: 8300000, guid: b218fcb1c73836143b746a4699218a97, type: 3}
     - target: {fileID: 1481544306742155273, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _speed
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1481544306742155273, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _pricel
