@@ -10731,6 +10731,8 @@ GameObject:
   - component: {fileID: 354589590}
   - component: {fileID: 354589589}
   - component: {fileID: 354589591}
+  - component: {fileID: 354589593}
+  - component: {fileID: 354589592}
   m_Layer: 0
   m_Name: ruins_2 (1)
   m_TagString: Untagged
@@ -10823,6 +10825,48 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!65 &354589592
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354589587}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.12977806, y: 0.14799465, z: 0.04114336}
+  m_Center: {x: 0.08, y: -0.19, z: 0.02027071}
+--- !u!65 &354589593
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354589587}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.09449337, y: 0.8000002, z: 0.052080233}
+  m_Center: {x: -0.017936762, y: 0.26999992, z: 0.05999998}
 --- !u!1001 &355840374
 PrefabInstance:
   m_ObjectHideFlags: 0
