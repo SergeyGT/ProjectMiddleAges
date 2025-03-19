@@ -50425,12 +50425,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 492918321603705544, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 492918321603705544, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 492918321603705544, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 492918321603705544, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_Constraints
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 492918321603705544, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_ImplicitCom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 492918321603705544, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_ImplicitTensor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 492918321603705544, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 629374497872245707, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_Speed
-      value: 100
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 629374497872245707, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_AutoBraking
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 739035327230825834, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: weaponData
@@ -50506,7 +50534,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 2fb7ab8195b3a90449e4f5903891c762, type: 3}
     - target: {fileID: 1481544306742155273, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _speed
-      value: 13
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1481544306742155273, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _pricel
@@ -50560,6 +50588,18 @@ PrefabInstance:
       propertyPath: weaponData
       value: 
       objectReference: {fileID: 11400000, guid: fe125334b30649c46980898690356084, type: 2}
+    - target: {fileID: 4942926783564639679, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_Radius
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942926783564639679, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4942926783564639679, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_Center.y
+      value: 2.11
+      objectReference: {fileID: 0}
     - target: {fileID: 4942926783564639679, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -50708,6 +50748,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8232360429389619183, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e95e4da352b19594a9c304ba5e2e158f, type: 2}
     - target: {fileID: 9052810114471529621, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_IsActive
       value: 0

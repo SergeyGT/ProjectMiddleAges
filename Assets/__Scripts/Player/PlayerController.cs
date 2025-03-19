@@ -3,44 +3,31 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-
-    [Tooltip("Маска для всего, во что может целиться игрок")]
     [SerializeField] private LayerMask _groundMask;
-
-    [Tooltip("Задает transform.forward контроллеру активки")]
     [SerializeField] private Transform _activeShootAim;
-
     [SerializeField] public float _speed = 12f;
-
+    [SerializeField] private float _rotationSpeed = 10f;
     [SerializeField] private GameObject _pricel;
-
     [SerializeField] private AudioClip _step;
-
-    private ParticleSystem _partilceDust;
-    private AudioSource _source;
-
 
     private Rigidbody _rb;
     private Camera _cam;
     private Animator _animator;
+    private AudioSource _source;
     private Vector3 _mousePoint;
-    public Vector3 LastRotationVector { get; private set; }
-    public Vector3 MovementVector { get; private set; }
+    private Vector3 _movementVector;
 
     private void Start()
     {
         _pricel.SetActive(true);
 
         _rb = GetComponent<Rigidbody>();
-        _animator = GetComponent<Animator>();
-        _source = GetComponent<AudioSource>();
-        //_partilceDust = GetComponentInChildren<ParticleSystem>();
-
+        _rb.interpolation = RigidbodyInterpolation.Interpolate;
         _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         _cam = Camera.main;
-
-        LastRotationVector = transform.forward;
+        _animator = GetComponent<Animator>();
+        _source = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -49,29 +36,33 @@ public class PlayerController : MonoBehaviour
         {
             InputLogic();
             Aim();
+            MoveLogic();
         }
-    }
-    private void FixedUpdate()
-    {
-        if (MovementVector != Vector3.zero) MoveLogic();
+
+        if (_movementVector != Vector3.zero)
+        {
+            _animator.SetBool("Idle", false);
+            _animator.SetBool("Walk", true);
+
+            if (!_source.isPlaying)
+            {
+                SoundManager.Instance.PlayLocalSound(_source, _step);
+            }
+        }
         else
         {
-            StopAudioPLaying(_step);
-            //_partilceDust.Stop();
+            StopAudioPlaying(_step);
             _animator.SetBool("Walk", false);
             _animator.SetBool("Idle", true);
         }
     }
-
 
     private void InputLogic()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        MovementVector = new Vector3(horizontalInput, 0.0f, verticalInput);
-
-        LastRotationVector = transform.rotation.eulerAngles;
+        _movementVector = new Vector3(horizontalInput, 0.0f, verticalInput).normalized;
     }
 
     private void Aim()
@@ -79,7 +70,7 @@ public class PlayerController : MonoBehaviour
         if (GetMousePosition())
         {
             var direction = _mousePoint - transform.position;
-
+            direction.y = 0;
             _activeShootAim.forward = direction;
         }
     }
@@ -98,34 +89,17 @@ public class PlayerController : MonoBehaviour
 
     private void MoveLogic()
     {
-        if (MovementVector != Vector3.zero)
+        if (_movementVector != Vector3.zero)
         {
-            _animator.SetBool("Idle", false);
-            _animator.SetBool("Walk", true);
+            Quaternion targetRotation = Quaternion.LookRotation(_movementVector);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotationSpeed * Time.deltaTime);
 
-            if (!_source.isPlaying)
-            {
-                SoundManager.Instance.PlayLocalSound(_source, _step);
-            }
-
-            // Поворот в направление движения
-            Quaternion targetRotation = Quaternion.LookRotation(MovementVector);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 10f);
-
-            // Движение
-            Vector3 moveDelta = MovementVector.normalized * _speed * Time.fixedDeltaTime;
-            _rb.MovePosition(_rb.position + moveDelta);
-        }
-        else
-        {
-            StopAudioPLaying(_step);
-            //_partilceDust.Stop();
-            _animator.SetBool("Walk", false);
-            _animator.SetBool("Idle", true);
+            Vector3 moveDelta = _movementVector * _speed * Time.deltaTime;
+            _rb.MovePosition(transform.position + moveDelta);
         }
     }
 
-    private void StopAudioPLaying(AudioClip clip)
+    private void StopAudioPlaying(AudioClip clip)
     {
         if (_source.isPlaying && _source.clip == clip)
         {
