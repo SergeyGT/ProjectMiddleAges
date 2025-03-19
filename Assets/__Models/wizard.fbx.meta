@@ -31,7 +31,6 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-
     clipAnimations:
     - serializedVersion: 16
       name: t-pose
@@ -207,9 +206,6 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-
-    clipAnimations: []
-
     isReadable: 0
   meshes:
     lODScreenPercentages: []
