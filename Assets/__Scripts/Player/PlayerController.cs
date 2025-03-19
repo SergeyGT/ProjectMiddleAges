@@ -70,6 +70,10 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         MovementVector = new Vector3(horizontalInput, 0.0f, verticalInput).normalized;
+
+        transform.rotation = Quaternion.LookRotation(MovementVector);
+
+        LastRotationVector = transform.forward;
     }
 
     private void Aim()
@@ -83,9 +87,9 @@ public class PlayerController : MonoBehaviour
 
             direction.y = 0;
 
-            transform.forward = direction.normalized;
+            //transform.forward = direction.normalized;
 
-            LastRotationVector = transform.forward;
+            //LastRotationVector = transform.forward;
         }
     }
 
