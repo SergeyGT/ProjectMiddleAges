@@ -19,7 +19,7 @@ MonoBehaviour:
   _duration: 9
   _level: 0
   _repetings: 0
-  <Icon>k__BackingField: {fileID: 21300000, guid: a3f126afb65f4954384c287d014f1cb2, type: 3}
+  <Icon>k__BackingField: {fileID: -36629289, guid: dc07727d933bf0842be2163a27764086, type: 3}
   <Name>k__BackingField: "\u041C\u0430\u0433\u0438\u0447\u0435\u0441\u043A\u0438\u0439
     \u0421\u0432\u0438\u0442\u043E\u043A"
   <Description>k__BackingField: "\u041C\u0430\u0433\u0438\u044F \u0432 \u0441\u0432\u0438\u0442\u043A\u0435

@@ -98,7 +98,6 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case GameState.LevelUp:
-                _gameLevel++;
 
                 if (_gameLevel==20)
                 {
@@ -110,6 +109,7 @@ public class GameManager : MonoBehaviour
                 {
                     isChoosingUpgrade=true;
                     Time.timeScale = 0f;
+                    _gameLevel++;
                     _levelUpScreen.SetActive(true);
                 }
                 break;
