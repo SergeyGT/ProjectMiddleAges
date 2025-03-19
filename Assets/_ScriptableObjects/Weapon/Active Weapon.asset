@@ -15,7 +15,7 @@ MonoBehaviour:
   weapon: {fileID: 9070549338345054840, guid: 49964e47962ed3a49b56a3ce99226327, type: 3}
   _damage: 5
   _cooldownDuration: 0
-  _speed: 10
+  _speed: 20
   _duration: 5
   _level: 0
   _repetings: 0

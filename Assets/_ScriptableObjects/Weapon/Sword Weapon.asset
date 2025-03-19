@@ -16,7 +16,7 @@ MonoBehaviour:
   _damage: 10
   _cooldownDuration: 15
   _speed: 5
-  _duration: 5
+  _duration: 0.5
   _level: 0
   _repetings: 1
   <Icon>k__BackingField: {fileID: 1202354171, guid: dc07727d933bf0842be2163a27764086, type: 3}
