@@ -18,11 +18,11 @@ public class SceneController : MonoBehaviour
 
     void Update()
     {
-        //float currentRotation = RenderSettings.skybox.GetFloat("_Rotation");
+        float currentRotation = RenderSettings.skybox.GetFloat("_Rotation");
 
-        //currentRotation += rotationSpeed * Time.deltaTime;
+        currentRotation += rotationSpeed * Time.deltaTime;
 
-        //RenderSettings.skybox.SetFloat("_Rotation", currentRotation);
+        RenderSettings.skybox.SetFloat("_Rotation", currentRotation);
     }
     public void SceneChange(string name)
     {
