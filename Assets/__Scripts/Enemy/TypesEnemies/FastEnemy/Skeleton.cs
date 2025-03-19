@@ -14,16 +14,17 @@ public class Skeleton : FastEnemy
     {
         if (base._playerIDamagable != null && !base.isAttacking)
         {
+            print("Skelet Attack");
             base.Attack();
             if (!base._agent.enabled || !base._agent.isOnNavMesh)
             {
                 Debug.LogWarning("NavMeshAgent отключен или не на NavMesh!");
                 return;
             }
-            _agent.isStopped = true;
             _animator.SetBool("Walk", false);
             _animator.SetBool("Attack", true);
             base._playerIDamagable.TakeDamage(_damage);
+            print("Skelet Damage");
             StartCoroutine(base.DelayAttack(_speedAttack));
         }
     }

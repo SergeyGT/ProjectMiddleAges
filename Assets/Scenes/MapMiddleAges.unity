@@ -50738,7 +50738,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 492918321603705544, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_Drag
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 492918321603705544, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_UseGravity
@@ -50746,7 +50746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 492918321603705544, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_AngularDrag
-      value: 0.01
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 492918321603705544, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_Constraints
@@ -50766,7 +50766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 629374497872245707, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_Speed
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 629374497872245707, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_AutoBraking
@@ -50846,7 +50846,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: b218fcb1c73836143b746a4699218a97, type: 3}
     - target: {fileID: 1481544306742155273, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _speed
-      value: 5
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1481544306742155273, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _pricel
@@ -50878,7 +50878,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 4c0dc1c323ba87046be18fd9d589c7c6, type: 3}
     - target: {fileID: 3828877970640562796, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _maxHp
-      value: 100
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3828877970640562796, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: _activeWeapon
@@ -50902,15 +50902,15 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: fe125334b30649c46980898690356084, type: 2}
     - target: {fileID: 4942926783564639679, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_Radius
-      value: 0.54
+      value: 0.71
       objectReference: {fileID: 0}
     - target: {fileID: 4942926783564639679, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4942926783564639679, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_Center.y
-      value: 2.11
+      value: 1.24
       objectReference: {fileID: 0}
     - target: {fileID: 4942926783564639679, guid: 8011d1a7ad23f124d95bab3b7c6448ca, type: 3}
       propertyPath: m_IsTrigger

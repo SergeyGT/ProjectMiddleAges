@@ -66,10 +66,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
                 _agent.isStopped = false;
             }
             _agent.SetDestination(_playerPosition.position);
-        } else
-        {
-            _animator.SetBool("Walk", false);
-        }
+        } 
     }
 
     public void TakeDamage(int damage)
