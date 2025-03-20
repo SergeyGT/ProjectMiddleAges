@@ -21,7 +21,5 @@ MonoBehaviour:
   _repetings: 1
   <Icon>k__BackingField: {fileID: -664271414, guid: dc07727d933bf0842be2163a27764086, type: 3}
   <Name>k__BackingField: "\u041A\u043E\u0441\u0430"
-  <Description>k__BackingField: "\u0420\u0430\u0437\u0440\u0443\u0431\u0430\u0435\u0442
-    \u043B\u044E\u0431\u044B\u0445 \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A\u043E\u0432
-    \u0432\u043E\u043A\u0440\u0443\u0433 \u0441\u0435\u0431\u044F"
+  <Description>k__BackingField: Cuts down any opponents around him
   _upgradeData: {fileID: 11400000, guid: e4de761366711c54d84e7ec6bad94f9c, type: 2}

@@ -21,6 +21,5 @@ MonoBehaviour:
   _repetings: 0
   <Icon>k__BackingField: {fileID: -284425439, guid: dc07727d933bf0842be2163a27764086, type: 3}
   <Name>k__BackingField: "\u041D\u043E\u0436"
-  <Description>k__BackingField: "\u041B\u0435\u0442\u0438\u0442 \u0432 \u0441\u0442\u043E\u0440\u043E\u043D\u0443
-    \u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F \u0438\u0433\u0440\u043E\u043A\u0430"
+  <Description>k__BackingField: Flies towards the player's movement
   _upgradeData: {fileID: 11400000, guid: 86839d4cff25cbb4ca48e48e74c38b2a, type: 2}
