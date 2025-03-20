@@ -15,6 +15,7 @@ public class Player : MonoBehaviour, IDamagable
     [SerializeField] private AudioClip _hit;
 
     private AudioSource _source;
+    public ParticleSystem _particleSystem;
 
     private InventoryManager _inventory;
     private int _weaponIndex;
@@ -44,6 +45,7 @@ public class Player : MonoBehaviour, IDamagable
     private void Awake()
     {
         _inventory = GetComponent<InventoryManager>();
+        _particleSystem = GetComponent<ParticleSystem>();
     }
 
 
@@ -143,5 +145,17 @@ public class Player : MonoBehaviour, IDamagable
         weapon.SetActive(true);
         _inventory.AddWeapon(_weaponIndex, weapon);
         _weaponIndex++;
+    }
+
+    public void StartParticles()
+    {
+        StartCoroutine(WaitParticles());
+    }
+
+    private IEnumerator WaitParticles()
+    {
+        _particleSystem.Play();
+        yield return new WaitForSeconds(2f);
+        _particleSystem.Stop();
     }
 }
