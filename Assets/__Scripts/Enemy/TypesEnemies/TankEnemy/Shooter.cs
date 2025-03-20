@@ -60,7 +60,10 @@ public class Shooter : TankEnemy
         Move();
         if (_isAttackRadius)
         {
-            transform.rotation = Quaternion.LookRotation(_playerPosition.position - transform.position);
+            if (_playerPosition!=null)
+            {
+                transform.rotation = Quaternion.LookRotation(_playerPosition.position - transform.position);
+            }
             Attack();
         }
     }
