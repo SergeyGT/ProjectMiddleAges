@@ -6,15 +6,20 @@ public class FireBall : MonoBehaviour
 {
     [SerializeField] private int _damage;
 
+    private void Start()
+    {
+        transform.position = new Vector3(0, 1, 0);
+    }
+
     private void FixedUpdate()
     {
-        transform.Translate(new Vector3(1,0,0) * 2f);
+        transform.Translate(new Vector3(0,0,1) * 2f * Time.fixedDeltaTime  );
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            Player player = collision.gameObject.GetComponent<Player>();
+            Player player = other.gameObject.GetComponent<Player>();
             player.TakeDamage(_damage);
             Destroy(this.gameObject);
         }

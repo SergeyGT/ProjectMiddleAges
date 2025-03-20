@@ -65,7 +65,7 @@ public class Shooter : TankEnemy
 
     private void BallSpawn()
     {
-        GameObject ball = Instantiate (base._weapon) as GameObject;
+        PoolManager.SpawnObject(_weapon, transform, PoolManager.PoolType.Projectiles);
         
     }
 
