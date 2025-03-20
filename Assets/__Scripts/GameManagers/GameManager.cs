@@ -98,20 +98,7 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case GameState.LevelUp:
-
-                if (_gameLevel==20)
-                {
-                    GameOver();
-                }
-
-
-                if (!isChoosingUpgrade)
-                {
-                    isChoosingUpgrade=true;
-                    Time.timeScale = 0f;
-                    _gameLevel++;
-                    _levelUpScreen.SetActive(true);
-                }
+                LevelUp();
                 break;
             default:
                 Debug.LogWarning("Недопустимое игровое состояние! " + _currentState);
@@ -189,6 +176,25 @@ public class GameManager : MonoBehaviour
     {
         _gameplayScreen.SetActive(false);
         _resultsScreen.SetActive(true);
+    }
+
+    private void LevelUp()
+    {
+        if (_gameLevel == 20)
+        {
+            GameOver();
+        }
+
+
+        //[ToDo] Запуск партикла и задержка пока она играет
+
+        if (!isChoosingUpgrade)
+        {
+            isChoosingUpgrade = true;
+            Time.timeScale = 0f;
+            _gameLevel++;
+            _levelUpScreen.SetActive(true);
+        }
     }
 
     public void AssignLevelReachedUI(int levelReached)
