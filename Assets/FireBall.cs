@@ -5,15 +5,16 @@ using UnityEngine;
 public class FireBall : MonoBehaviour
 {
     [SerializeField] private int _damage;
+    [SerializeField] private int _speed;
 
     private void Start()
     {
-        transform.position = new Vector3(0, 1, 0);
+        transform.position = transform.position + new Vector3(0, 1, 0);
     }
 
     private void FixedUpdate()
     {
-        transform.Translate(new Vector3(0,0,1) * 2f * Time.fixedDeltaTime  );
+        transform.Translate(new Vector3(0,0,1) * _speed * Time.fixedDeltaTime  );
     }
     private void OnTriggerEnter(Collider other)
     {
