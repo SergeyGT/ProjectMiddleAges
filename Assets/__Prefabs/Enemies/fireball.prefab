@@ -99,8 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a65b6b274ddb136488b2a997e7fa7004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
-  _speed: 10
+  weaponData: {fileID: 11400000, guid: da8901ae92d7d4e40a4967cc6ca4b950, type: 2}
 --- !u!65 &5409519363257906529
 BoxCollider:
   m_ObjectHideFlags: 0

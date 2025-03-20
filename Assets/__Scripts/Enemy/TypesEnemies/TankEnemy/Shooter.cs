@@ -48,6 +48,7 @@ public class Shooter : TankEnemy
             _animator.SetBool("Attack", true);
             print("Shooter Attack");
             //base._playerIDamagable.TakeDamage(_damage);
+
             BallSpawn();
             StartCoroutine(base.DelayAttack(_speedAttack));     
         }
@@ -57,16 +58,17 @@ public class Shooter : TankEnemy
     private void FixedUpdate()
     {
         Move();
-        if (_isAttackRadius) 
-        { 
+        if (_isAttackRadius)
+        {
+            transform.rotation = Quaternion.LookRotation(_playerPosition.position - transform.position);
             Attack();
         }
     }
 
     private void BallSpawn()
     {
-        PoolManager.SpawnObject(_weapon, transform, PoolManager.PoolType.Projectiles);
-        
+        PoolManager.SpawnObject(_weapon, transform, PoolManager.PoolType.Projectiles)
+            .GetComponent<FireBall>();
     }
 
     protected override void FallDrop()

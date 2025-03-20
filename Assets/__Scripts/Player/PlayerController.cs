@@ -103,7 +103,6 @@ public class PlayerController : MonoBehaviour
             SoundManager.Instance.PlayLocalSound(_source, _step);
         }
         //_partilceDust.Play();
-        Debug.Log("Movement vector " + MovementVector);
         transform.rotation = Quaternion.LookRotation(MovementVector);
 
         LastRotationVector = transform.forward;
