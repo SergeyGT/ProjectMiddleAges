@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &893746270520206706
+--- !u!1 &1439597179616450042
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 517045153834188744}
-  - component: {fileID: 3495693014969397357}
-  - component: {fileID: 1686533255215465639}
-  - component: {fileID: 5046084271230093987}
-  - component: {fileID: 5409519363257906529}
+  - component: {fileID: 2158750881220444819}
+  - component: {fileID: 7592681765633005954}
+  - component: {fileID: 4252553496247396214}
+  - component: {fileID: 2996721183557388979}
+  - component: {fileID: -1628339179627832622}
   m_Layer: 0
-  m_Name: fireball
+  m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &517045153834188744
+--- !u!4 &2158750881220444819
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893746270520206706}
+  m_GameObject: {fileID: 1439597179616450042}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.7071069, y: 0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3495693014969397357
+--- !u!33 &7592681765633005954
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893746270520206706}
-  m_Mesh: {fileID: -5495902117074765545, guid: 81044055c03c60f419b178c31c1b154f, type: 3}
---- !u!23 &1686533255215465639
+  m_GameObject: {fileID: 1439597179616450042}
+  m_Mesh: {fileID: 4493585093827132993, guid: 6158051353602834381d7c9a22981b61, type: 3}
+--- !u!23 &4252553496247396214
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893746270520206706}
+  m_GameObject: {fileID: 1439597179616450042}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,9 +63,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 81044055c03c60f419b178c31c1b154f, type: 3}
-  - {fileID: 4874126678125670354, guid: 81044055c03c60f419b178c31c1b154f, type: 3}
-  - {fileID: -3846018093981099296, guid: 81044055c03c60f419b178c31c1b154f, type: 3}
+  - {fileID: -6478536213147159724, guid: 6158051353602834381d7c9a22981b61, type: 3}
+  - {fileID: 4874126678125670354, guid: 6158051353602834381d7c9a22981b61, type: 3}
+  - {fileID: -3846018093981099296, guid: 6158051353602834381d7c9a22981b61, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,26 +87,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5046084271230093987
+--- !u!114 &2996721183557388979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893746270520206706}
+  m_GameObject: {fileID: 1439597179616450042}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a65b6b274ddb136488b2a997e7fa7004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: da8901ae92d7d4e40a4967cc6ca4b950, type: 2}
---- !u!65 &5409519363257906529
-BoxCollider:
+--- !u!135 &-1628339179627832622
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893746270520206706}
+  m_GameObject: {fileID: 1439597179616450042}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -119,5 +119,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.004018857, y: 0.004018856, z: 0.004018856}
-  m_Center: {x: 0, y: 0, z: -1.164153e-10}
+  m_Radius: 0.0020094286
+  m_Center: {x: 0, y: 0, z: -1.1641532e-10}
