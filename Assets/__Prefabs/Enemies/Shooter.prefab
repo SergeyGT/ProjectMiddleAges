@@ -1014,6 +1014,7 @@ MonoBehaviour:
   _damage: 10
   _speedAttack: 1
   _speedMove: 3
+  _weapon: {fileID: 893746270520206706, guid: 9dd8e7ec54312af4e9d1229c11bc52de, type: 3}
   _enemySource: {fileID: 6900234927597494132}
   _attack: {fileID: 0}
   _walk: {fileID: 0}
