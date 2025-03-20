@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using Cinemachine.Utility;
 
 public class Shooter : TankEnemy
 {
@@ -45,7 +47,8 @@ public class Shooter : TankEnemy
             _animator.SetBool("Walk", false);
             _animator.SetBool("Attack", true);
             print("Shooter Attack");
-            base._playerIDamagable.TakeDamage(_damage);
+            //base._playerIDamagable.TakeDamage(_damage);
+            BallSpawn();
             StartCoroutine(base.DelayAttack(_speedAttack));     
         }
     }
@@ -58,6 +61,12 @@ public class Shooter : TankEnemy
         { 
             Attack();
         }
+    }
+
+    private void BallSpawn()
+    {
+        GameObject ball = Instantiate (base._weapon) as GameObject;
+        
     }
 
     protected override void FallDrop()
