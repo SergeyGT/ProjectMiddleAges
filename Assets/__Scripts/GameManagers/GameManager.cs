@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField] private GameObject _player;
+    
+    private Player _playerScript;
 
     public bool IsGameOver { get; private set; }
     public bool IsGamePaused { get; private set; }
@@ -76,6 +78,7 @@ public class GameManager : MonoBehaviour
     {
         //Пока без переключения треков
         SoundManager.Instance.PlayMusic(_audioClipList[0]);
+        _playerScript = _player.GetComponent<Player>();
     }
 
     private void Update()
@@ -187,14 +190,19 @@ public class GameManager : MonoBehaviour
 
 
         //[ToDo] Запуск партикла и задержка пока она играет
+        _playerScript.StartParticles();
 
-        if (!isChoosingUpgrade)
+        if (_playerScript._particleSystem.isPlaying)
         {
-            isChoosingUpgrade = true;
-            Time.timeScale = 0f;
-            _gameLevel++;
-            _levelUpScreen.SetActive(true);
+            if (!isChoosingUpgrade)
+            {
+                isChoosingUpgrade = true;
+                Time.timeScale = 0f;
+                _gameLevel++;
+                _levelUpScreen.SetActive(true);
+            }
         }
+        
     }
 
     public void AssignLevelReachedUI(int levelReached)
