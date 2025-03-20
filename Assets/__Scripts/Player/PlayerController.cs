@@ -79,13 +79,6 @@ public class PlayerController : MonoBehaviour
             var direction = _mousePoint - transform.position;
 
             _activeShootAim.forward = direction;
-
-
-            direction.y = 0;
-
-            transform.forward = direction.normalized;
-
-            LastRotationVector = transform.forward;
         }
     }
 
@@ -110,6 +103,10 @@ public class PlayerController : MonoBehaviour
             SoundManager.Instance.PlayLocalSound(_source, _step);
         }
         //_partilceDust.Play();
+        Debug.Log("Movement vector " + MovementVector);
+        transform.rotation = Quaternion.LookRotation(MovementVector);
+
+        LastRotationVector = transform.forward;
         _rb.AddForce(MovementVector * _speed);
     }
 
