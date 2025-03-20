@@ -92,7 +92,7 @@ public class InventoryManager : MonoBehaviour
                 upgradeOption.upgradeButton.onClick.AddListener(() => _player.SpawnWeapon(modifiedWeaponObject));
             }
             
-            upgradeOption.upgradeNameDisplay.text = $"{modifiedWeaponController.weaponData.name} ({modifiedWeaponController.weaponData.Level+1} Уровень)";
+            upgradeOption.upgradeNameDisplay.text = $"{modifiedWeaponController.weaponData.name} ({modifiedWeaponController.weaponData.Level+1} Level)";
             upgradeOption.upgradeDescriptionDisplay.text = modifiedWeaponController.weaponData.Description;
             upgradeOption.upgradeIcon.sprite = modifiedWeaponController.weaponData.Icon;
 
